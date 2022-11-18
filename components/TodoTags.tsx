@@ -1,13 +1,17 @@
 import { routes } from "consts/routes";
 import Link from "next/link";
-import { TODO_TAGS } from "mock/todos";
+import { TodoTagInterface } from "types/todos";
 
-function TodoTags() {
+interface Props {
+  tags: TodoTagInterface[];
+}
+
+function TodoTags({ tags }: Props) {
   return (
     <div className="flex flex-col gap-y-2">
-      {TODO_TAGS.map((tag) => (
+      {tags.map(({ id, tag }) => (
         <Link
-          key={tag}
+          key={id}
           className="p-2 bg-zinc-600 text-white text-center uppercase rounded-md"
           href={`${routes.todos}/${tag}`}
         >

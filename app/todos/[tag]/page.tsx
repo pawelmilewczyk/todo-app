@@ -1,5 +1,6 @@
+import SingleTodo from "components/SingleTodo";
 import { routes } from "consts/routes";
-import { TODO_LIST_DATA, TODO_TAGS } from "mock/todos";
+import { FILTERS, TODO_LIST_DATA, TODO_TAGS } from "mock/todos";
 import Link from "next/link";
 
 export interface TodoProps {
@@ -8,8 +9,16 @@ export interface TodoProps {
   };
 }
 
-function TodoList({ params }: TodoProps) {
-  const todos = TODO_LIST_DATA.filter(({ tag }) => tag === params.tag);
+export async function generateStaticParams() {
+  return TODO_TAGS.map(({ tag }) => ({ tag }));
+}
+
+async function fetchTodos(tag: string) {
+  return TODO_LIST_DATA.filter((todo) => todo.tag === tag);
+}
+
+async function TodoList({ params }: TodoProps) {
+  const todos = await fetchTodos(params.tag);
 
   return (
     <>
@@ -25,38 +34,33 @@ function TodoList({ params }: TodoProps) {
           {params.tag}
         </h1>
       </header>
-      <main className="flex flex-col gap-y-4 mt-4">
-        {todos.length ? (
-          todos.map(({ id, title, completed, tag }) => (
-            <div
-              key={id}
-              className="flex bg-zinc-600 rounded-md gap-x-3 items-center justify-between"
-            >
-              <div className="flex gap-x-3 items-center p-4">
-                <input
-                  type="checkbox"
-                  id={id.toString()}
-                  defaultChecked={completed}
-                  className="w-5 h-5 rounded-full bg-transparent appearance-none cursor-pointer border border-white outline-none 
-              checked:bg-white checked:outline checked:outline-1 checked:outline-white checked:border-transparent"
-                />
-                <label htmlFor={id.toString()} className="text-white">
-                  {title}
-                </label>
+      <main className="flex flex-col gap-y-4 mt-4 text-white">
+        <div className="flex gap-x-2 items-center justify-center uppercase text-xs">
+          {FILTERS.map(({ group, filters }, index) => (
+            <>
+              {!!index && <span>|</span>}
+              <div key={group} className="flex gap-x-2">
+                {filters.map(({ label, active }) => (
+                  <span
+                    key={label}
+                    className={`px-2 py-1 rounded-sm text-white cursor-pointer ${
+                      active && "text-zinc-800 bg-white"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                ))}
               </div>
-              <Link
-                href={`${routes.todos}/${tag}/${id}`}
-                className="text-white py-2 px-4"
-              >
-                Edit
-              </Link>
-            </div>
-          ))
-        ) : (
-          <div className="text-center text-white text-xs uppercase">
-            No tasks added yet
-          </div>
-        )}
+            </>
+          ))}
+        </div>
+        <div className="flex flex-col gap-y-4 mt-4">
+          {todos.length ? (
+            todos.map((props) => <SingleTodo {...props} key={props.id} />)
+          ) : (
+            <p className="text-center text-xs uppercase">No tasks added yet</p>
+          )}
+        </div>
       </main>
     </>
   );

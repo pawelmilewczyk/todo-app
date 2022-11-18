@@ -1,3 +1,4 @@
+import EditTodo from "components/EditTodo";
 import { routes } from "consts/routes";
 import { TODO_LIST_DATA } from "mock/todos";
 import Link from "next/link";
@@ -9,8 +10,13 @@ export interface TodoProps {
   };
 }
 
-function page({ params }: TodoProps) {
-  const todo = TODO_LIST_DATA.find(({ id }) => String(id) === params.id);
+async function fetchTodo(id: string) {
+  return TODO_LIST_DATA.find((todo) => String(todo.id) === id);
+}
+
+async function page({ params }: TodoProps) {
+  const todo = await fetchTodo(params.id);
+
   return (
     <div className="flex flex-col h-full w-screen absolute bg-zinc-700 top-0 left-0">
       <header className="relative flex justify-between items-center text-white">
@@ -23,13 +29,11 @@ function page({ params }: TodoProps) {
       </header>
       <main className="text-zinc-100 p-2">
         {todo ? (
-          <>
-            <h1>title: {todo.title}</h1>
-            <h2>tag: {todo.tag}</h2>
-            <p>completed: {String(todo.completed)}</p>
-          </>
+          <EditTodo {...todo} />
         ) : (
-          <p className="text-center text-lg">No todo with provided id</p>
+          <p className="text-center text-lg">
+            Todo with provided id does not exist
+          </p>
         )}
       </main>
     </div>
