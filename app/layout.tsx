@@ -1,4 +1,4 @@
-import Nav from "components/Nav";
+import Nav from "components/layout/Nav";
 import { PropsWithChildren } from "react";
 import "styles/globals.css";
 

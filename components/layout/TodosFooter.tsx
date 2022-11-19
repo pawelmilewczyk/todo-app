@@ -3,7 +3,7 @@
 import { routes } from "consts/routes";
 import { usePathname } from "next/navigation";
 
-function Footer() {
+function TodosFooter() {
   const pathname = usePathname();
   return (
     <footer className="flex items-center px-1 py-3 justify-between text-white">
@@ -19,4 +19,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default TodosFooter;

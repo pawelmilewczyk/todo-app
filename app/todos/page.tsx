@@ -1,4 +1,4 @@
-import TodoTags from "components/TodoTags";
+import TodoTags from "components/todos/TodoTags";
 import { TODO_TAGS } from "mock/todos";
 
 async function fetchTags() {

@@ -1,4 +1,4 @@
-import EditTodo from "components/EditTodo";
+import EditTodo from "components/todos/EditTodo";
 import { routes } from "consts/routes";
 import { TODO_LIST_DATA } from "mock/todos";
 import Link from "next/link";

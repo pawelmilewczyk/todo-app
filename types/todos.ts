@@ -12,11 +12,12 @@ export interface TodoInterface {
 }
 
 export type FilterGroup = "date" | "completion";
+export type FilterName = "today" | "week" | "completed" | "all";
 
 export interface TodoFilter {
   group: FilterGroup;
   filters: {
-    label: string;
+    name: FilterName;
     active: boolean;
   }[];
 }
