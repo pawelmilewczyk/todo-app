@@ -20,7 +20,7 @@ export const FILTERS: TodoFilter[] = [
   {
     group: "date",
     filters: [
-      { name: "today", active: false },
+      { name: "today", active: true },
       { name: "week", active: false },
     ],
   },
@@ -28,7 +28,7 @@ export const FILTERS: TodoFilter[] = [
     group: "completion",
     filters: [
       { name: "completed", active: false },
-      { name: "all", active: true },
+      { name: "all", active: false },
     ],
   },
 ];

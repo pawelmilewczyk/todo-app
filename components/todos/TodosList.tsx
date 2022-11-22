@@ -16,11 +16,7 @@ function TodosList({ todos: initTodos }: Props) {
 
   return (
     <main className="flex flex-col gap-y-4 mt-4 text-white">
-      <TodosFilters
-        filters={filters}
-        setFilters={setFilters}
-        setTodos={setTodos}
-      />
+      <TodosFilters filters={filters} setFilters={setFilters} />
       <div className="flex flex-col gap-y-4 mt-4">
         {todos.length ? (
           todos.map((props) => <SingleTodo {...props} key={props.id} />)
