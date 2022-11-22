@@ -30,8 +30,8 @@ function TodosFilters({ filters, setFilters }: Props) {
             <button
               aria-label={name}
               key={name}
-              className={`px-2 py-1 rounded-lg text-white cursor-pointer select-none uppercase ${
-                active ? "text-zinc-800 bg-white" : ""
+              className={`px-2 py-1 rounded-lg text-white cursor-pointer select-none uppercase transition-colors ${
+                active ? "text-zinc-800 bg-white" : "hover:bg-zinc-500"
               }`}
               onClick={onClick(name, group)}
             >
