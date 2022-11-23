@@ -1,13 +1,13 @@
-export interface TodoTagInterface {
+export interface TodoGroupInterface {
   id: number;
-  tag: string;
+  group: string;
 }
 
 export interface TodoInterface {
   id: number;
   title: string;
   description?: string;
-  tag: string;
+  group: string;
   completed: boolean;
 }
 

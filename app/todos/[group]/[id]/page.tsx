@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export interface TodoProps {
   params: {
-    tag: string;
+    group: string;
     id: string;
   };
 }
@@ -20,10 +20,10 @@ async function page({ params }: TodoProps) {
   return (
     <div className="flex flex-col h-full w-screen absolute bg-zinc-700 top-0 left-0">
       <header className="relative flex justify-between items-center text-white">
-        <Link href={`${routes.todos}/${params.tag}`} className="px-4 py-2">
+        <Link href={`${routes.todos}/${params.group}`} className="px-4 py-2">
           Cancel
         </Link>
-        <Link href={`${routes.todos}/${params.tag}`} className="px-4 py-2">
+        <Link href={`${routes.todos}/${params.group}`} className="px-4 py-2">
           Done
         </Link>
       </header>

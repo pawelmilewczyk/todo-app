@@ -1,16 +1,16 @@
-import TodoTags from "components/todos/TodoTags";
-import { TODO_TAGS } from "mock/todos";
+import TodoGroups from "components/todos/TodoGroups";
+import { TODO_GROUPS } from "mock/todos";
 
-async function fetchTags() {
-  return TODO_TAGS;
+async function fetchGroups() {
+  return TODO_GROUPS;
 }
 
 async function Todos() {
-  const tags = await fetchTags();
+  const groups = await fetchGroups();
 
   return (
     <main className="text-center text-lg text-white">
-      <TodoTags tags={tags} />
+      <TodoGroups groups={groups} />
     </main>
   );
 }

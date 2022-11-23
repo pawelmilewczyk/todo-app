@@ -1,25 +1,25 @@
 import { routes } from "consts/routes";
 import Link from "next/link";
-import { TodoTagInterface } from "types/todos";
+import { TodoGroupInterface } from "types/todos";
 
 interface Props {
-  tags: TodoTagInterface[];
+  groups: TodoGroupInterface[];
 }
 
-function TodoTags({ tags }: Props) {
+function TodoGroups({ groups }: Props) {
   return (
     <div className="flex flex-col gap-y-2">
-      {tags.map(({ id, tag }) => (
+      {groups.map(({ id, group }) => (
         <Link
           key={id}
           className="p-2 bg-zinc-600 text-white text-center uppercase rounded-md"
-          href={`${routes.todos}/${tag}`}
+          href={`${routes.todos}/${group}`}
         >
-          {tag}
+          {group}
         </Link>
       ))}
     </div>
   );
 }
 
-export default TodoTags;
+export default TodoGroups;

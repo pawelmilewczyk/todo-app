@@ -1,24 +1,24 @@
 import TodosList from "components/todos/TodosList";
 import { routes } from "consts/routes";
-import { TODO_LIST_DATA, TODO_TAGS } from "mock/todos";
+import { TODO_LIST_DATA, TODO_GROUPS } from "mock/todos";
 import Link from "next/link";
 
 export interface TodoProps {
   params: {
-    tag: string;
+    group: string;
   };
 }
 
 export async function generateStaticParams() {
-  return TODO_TAGS.map(({ tag }) => ({ tag }));
+  return TODO_GROUPS.map(({ group }) => ({ group }));
 }
 
-async function fetchTodos(tag: string) {
-  return TODO_LIST_DATA.filter((todo) => todo.tag === tag);
+async function fetchTodos(group: string) {
+  return TODO_LIST_DATA.filter((todo) => todo.group === group);
 }
 
 async function TodoList({ params }: TodoProps) {
-  const todos = await fetchTodos(params.tag);
+  const todos = await fetchTodos(params.group);
 
   return (
     <>
@@ -31,7 +31,7 @@ async function TodoList({ params }: TodoProps) {
           &#x2190;
         </Link>
         <h1 className="font-medium text-lg text-center uppercase">
-          {params.tag}
+          {params.group}
         </h1>
       </header>
       <TodosList todos={todos} />

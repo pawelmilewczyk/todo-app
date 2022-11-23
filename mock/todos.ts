@@ -1,27 +1,27 @@
-import { TodoFilter, TodoInterface, TodoTagInterface } from "types/todos";
+import { TodoFilter, TodoInterface, TodoGroupInterface } from "types/todos";
 
 export const TODO_LIST_DATA: TodoInterface[] = [
-  { id: 1, title: "bread", tag: "shopping", completed: true },
-  { id: 2, title: "meat", tag: "shopping", completed: true },
-  { id: 3, title: "50 push-ups", tag: "gym", completed: false },
-  { id: 4, title: "20 pull-ups", tag: "gym", completed: false },
-  { id: 5, title: "100 squats", tag: "gym", completed: false },
-  { id: 6, title: "clean bathroom", tag: "home", completed: true },
-  { id: 7, title: "wash dog", tag: "home", completed: false },
-  { id: 8, title: "water flowers", tag: "home", completed: false },
-  { id: 9, title: "milk", tag: "shopping", completed: false },
-  { id: 10, title: "water", tag: "shopping", completed: false },
-  { id: 11, title: "vegetables", tag: "shopping", completed: false },
-  { id: 12, title: "practice spanish", tag: "learning", completed: true },
-  { id: 13, title: "english homework", tag: "learning", completed: true },
+  { id: 1, title: "bread", group: "shopping", completed: true },
+  { id: 2, title: "meat", group: "shopping", completed: true },
+  { id: 3, title: "50 push-ups", group: "gym", completed: false },
+  { id: 4, title: "20 pull-ups", group: "gym", completed: false },
+  { id: 5, title: "100 squats", group: "gym", completed: false },
+  { id: 6, title: "clean bathroom", group: "home", completed: true },
+  { id: 7, title: "wash dog", group: "home", completed: false },
+  { id: 8, title: "water flowers", group: "home", completed: false },
+  { id: 9, title: "milk", group: "shopping", completed: false },
+  { id: 10, title: "water", group: "shopping", completed: false },
+  { id: 11, title: "vegetables", group: "shopping", completed: false },
+  { id: 12, title: "practice spanish", group: "learning", completed: true },
+  { id: 13, title: "english homework", group: "learning", completed: true },
 ];
 
-export const TODO_TAGS: TodoTagInterface[] = [
-  { id: 1, tag: "shopping" },
-  { id: 2, tag: "gym" },
-  { id: 3, tag: "home" },
-  { id: 4, tag: "others" },
-  { id: 5, tag: "learning" },
+export const TODO_GROUPS: TodoGroupInterface[] = [
+  { id: 1, group: "shopping" },
+  { id: 2, group: "gym" },
+  { id: 3, group: "home" },
+  { id: 4, group: "others" },
+  { id: 5, group: "learning" },
 ];
 
 export const FILTERS: TodoFilter[] = [

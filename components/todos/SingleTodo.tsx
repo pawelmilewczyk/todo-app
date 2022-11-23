@@ -3,12 +3,12 @@ import { routes } from "consts/routes";
 import Link from "next/link";
 import { TodoInterface } from "types/todos";
 
-function SingleTodo({ id, completed, tag, title }: TodoInterface) {
+function SingleTodo({ id, completed, group, title }: TodoInterface) {
   return (
     <div className="flex bg-zinc-600 rounded-md gap-x-3 items-center justify-between">
       <Checkbox label={title} defaultChecked={completed} />
       <Link
-        href={`${routes.todos}/${tag}/${id}`}
+        href={`${routes.todos}/${group}/${id}`}
         className="text-white py-2 px-4"
       >
         Edit
