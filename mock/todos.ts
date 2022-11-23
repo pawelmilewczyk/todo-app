@@ -23,20 +23,3 @@ export const TODO_GROUPS: TodoGroupInterface[] = [
   { id: 4, group: "others" },
   { id: 5, group: "learning" },
 ];
-
-export const FILTERS: TodoFilter[] = [
-  {
-    group: "date",
-    filters: [
-      { name: "today", active: true },
-      { name: "week", active: false },
-    ],
-  },
-  {
-    group: "completion",
-    filters: [
-      { name: "completed", active: false },
-      { name: "all", active: false },
-    ],
-  },
-];

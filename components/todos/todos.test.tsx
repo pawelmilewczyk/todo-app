@@ -1,17 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { group } from "console";
-import { FILTERS, TODO_LIST_DATA } from "mock/todos";
-import { FilterGroup, FilterName, TodoFilter } from "types/todos";
+import { initFilters } from "consts/filters";
+import { TODO_LIST_DATA } from "mock/todos";
+import { FilterGroup, FilterName } from "types/todos";
 import { updateFilters } from "./todos.utils";
 import TodosFilters from "./TodosFilters";
 import TodosList from "./TodosList";
 
 describe("filters", () => {
   test("display correct number of filters", async () => {
-    render(<TodosFilters filters={FILTERS} setFilters={jest.fn()} />);
+    render(<TodosFilters filters={initFilters} setFilters={jest.fn()} />);
 
-    const filtersLength = FILTERS.reduce(
+    const filtersLength = initFilters.reduce(
       (prev, { filters }) => prev + filters.length,
       0
     );
@@ -21,7 +21,6 @@ describe("filters", () => {
   });
 
   test("correctly update filters", async () => {
-    const initFilters = FILTERS;
     const getFilter = (
       filterGroup: FilterGroup,
       filterName: FilterName,

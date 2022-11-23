@@ -1,6 +1,6 @@
 "use client";
 
-import { FILTERS as initFilters } from "mock/todos";
+import { initFilters } from "consts/filters";
 import { useState } from "react";
 import { TodoInterface } from "types/todos";
 import SingleTodo from "./SingleTodo";

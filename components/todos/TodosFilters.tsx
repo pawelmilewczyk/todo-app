@@ -1,10 +1,5 @@
 import { SetState } from "types/setState";
-import {
-  FilterName,
-  FilterGroup,
-  TodoFilter,
-  TodoInterface,
-} from "types/todos";
+import { FilterGroup, FilterName, TodoFilter } from "types/todos";
 import { updateFilters } from "./todos.utils";
 
 interface Props {
