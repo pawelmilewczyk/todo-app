@@ -1,13 +1,12 @@
-import { ChangeEventHandler } from "react";
+import { DetailedHTMLProps, SelectHTMLAttributes } from "react";
 
-interface SelectProps {
+interface SelectProps
+  extends DetailedHTMLProps<
+    SelectHTMLAttributes<HTMLSelectElement>,
+    HTMLSelectElement
+  > {
   label: string;
-  value?: string;
-  defaultValue?: string;
-  onChange?: ChangeEventHandler<HTMLSelectElement>;
   options: { id: number; name: string }[];
-  id?: string;
-  name?: string;
 }
 
 function Select({

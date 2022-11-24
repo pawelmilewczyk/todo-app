@@ -1,13 +1,11 @@
-import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
+import { DetailedHTMLProps, InputHTMLAttributes } from "react";
 
-interface TextFieldProps {
+interface TextFieldProps
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   label: string;
-  defaultValue?: string;
-  value?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  type?: HTMLInputTypeAttribute;
-  id?: string;
-  name?: string;
 }
 
 function TextField({

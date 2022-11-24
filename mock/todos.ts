@@ -17,9 +17,9 @@ export const TODO_LIST_DATA: TodoInterface[] = [
 ];
 
 export const TODO_GROUPS: TodoGroupInterface[] = [
-  { id: 1, group: "shopping" },
-  { id: 2, group: "gym" },
-  { id: 3, group: "home" },
-  { id: 4, group: "others" },
-  { id: 5, group: "learning" },
+  { id: 1, name: "shopping" },
+  { id: 2, name: "gym" },
+  { id: 3, name: "home" },
+  { id: 4, name: "others" },
+  { id: 5, name: "learning" },
 ];

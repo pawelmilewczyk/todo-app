@@ -1,23 +1,18 @@
 import TodosList from "components/todos/TodosList";
 import { routes } from "consts/routes";
-import { TODO_LIST_DATA, TODO_GROUPS } from "mock/todos";
 import Link from "next/link";
-
-export interface TodoProps {
-  params: {
-    group: string;
-  };
-}
-
-export async function generateStaticParams() {
-  return TODO_GROUPS.map(({ group }) => ({ group }));
-}
+import { PageProps, TodosPageParams } from "types/pages";
+import { TodoGroupInterface, TodoInterface } from "types/todos";
+import fetchData from "utils/fetchData";
 
 async function fetchTodos(group: string) {
-  return TODO_LIST_DATA.filter((todo) => todo.group === group);
+  const { response } = await fetchData<TodoInterface[]>({
+    url: `/todos/${group}`,
+  });
+  return response;
 }
 
-async function TodoList({ params }: TodoProps) {
+async function TodosPage({ params }: PageProps<TodosPageParams>) {
   const todos = await fetchTodos(params.group);
 
   return (
@@ -34,9 +29,16 @@ async function TodoList({ params }: TodoProps) {
           {params.group}
         </h1>
       </header>
-      <TodosList todos={todos} />
+      {todos ? <TodosList todos={todos} /> : "Couldn't load data"}
     </>
   );
 }
 
-export default TodoList;
+export default TodosPage;
+
+export async function generateStaticParams() {
+  const { response } = await fetchData<TodoGroupInterface[]>({
+    url: "/groups",
+  });
+  return response?.map(({ name }: TodoGroupInterface) => ({ group: name }));
+}

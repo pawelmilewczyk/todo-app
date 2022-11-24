@@ -1,16 +1,15 @@
 import { FilterGroup, FilterName, TodoFilter } from "types/todos";
 
-export const updateFilters =
-  (group: FilterGroup, filter: FilterName) => (filters: TodoFilter[]) =>
-    filters.map((groups) =>
-      groups.group === group
-        ? {
-            group,
-            filters: groups.filters.map(({ name, active }) =>
-              filter === name
-                ? { name, active: !active }
-                : { name, active: false }
-            ),
-          }
-        : groups
-    );
+export const updateFilters = (
+  filters: TodoFilter[],
+  group: FilterGroup,
+  name: FilterName
+) =>
+  filters.map((filter) =>
+    filter.group === group
+      ? {
+          ...filter,
+          active: filter.name === name ? !filter.active : false,
+        }
+      : filter
+  );

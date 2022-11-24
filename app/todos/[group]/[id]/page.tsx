@@ -1,43 +1,27 @@
 import EditTodo from "components/todos/EditTodo";
-import { routes } from "consts/routes";
-import { TODO_LIST_DATA } from "mock/todos";
-import Link from "next/link";
+import { PageProps, TodoPageParams } from "types/pages";
+import { TodoGroupInterface, TodoInterface } from "types/todos";
+import fetchData from "utils/fetchData";
 
-export interface TodoProps {
-  params: {
-    group: string;
-    id: string;
-  };
+async function fetchTodo(group: string, id: string) {
+  const { response } = await fetchData<TodoInterface>({
+    url: `/todos/${group}/${id}`,
+  });
+  return response;
 }
 
-async function fetchTodo(id: string) {
-  return TODO_LIST_DATA.find((todo) => String(todo.id) === id);
+async function fetchGroups() {
+  const { response } = await fetchData<TodoGroupInterface[]>({
+    url: "/groups",
+  });
+  return response ?? [];
 }
 
-async function page({ params }: TodoProps) {
-  const todo = await fetchTodo(params.id);
+async function TodoPage({ params }: PageProps<TodoPageParams>) {
+  const todo = await fetchTodo(params.group, params.id);
+  const groups = await fetchGroups();
 
-  return (
-    <div className="flex flex-col h-full w-screen absolute bg-zinc-700 top-0 left-0">
-      <header className="relative flex justify-between items-center text-white">
-        <Link href={`${routes.todos}/${params.group}`} className="px-4 py-2">
-          Cancel
-        </Link>
-        <Link href={`${routes.todos}/${params.group}`} className="px-4 py-2">
-          Done
-        </Link>
-      </header>
-      <main className="text-zinc-100 p-2">
-        {todo ? (
-          <EditTodo {...todo} />
-        ) : (
-          <p className="text-center text-lg">
-            Todo with provided id does not exist
-          </p>
-        )}
-      </main>
-    </div>
-  );
+  return <EditTodo todo={todo} groups={groups} params={params} />;
 }
 
-export default page;
+export default TodoPage;

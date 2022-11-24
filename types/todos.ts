@@ -1,6 +1,6 @@
 export interface TodoGroupInterface {
   id: number;
-  group: string;
+  name: string;
 }
 
 export interface TodoInterface {
@@ -16,8 +16,6 @@ export type FilterName = "today" | "week" | "completed" | "all";
 
 export interface TodoFilter {
   group: FilterGroup;
-  filters: {
-    name: FilterName;
-    active: boolean;
-  }[];
+  name: FilterName;
+  active: boolean;
 }

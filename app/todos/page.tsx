@@ -1,18 +1,22 @@
 import TodoGroups from "components/todos/TodoGroups";
-import { TODO_GROUPS } from "mock/todos";
+import { TodoGroupInterface } from "types/todos";
+import fetchData from "utils/fetchData";
 
 async function fetchGroups() {
-  return TODO_GROUPS;
+  const { response } = await fetchData<TodoGroupInterface[]>({
+    url: "/groups",
+  });
+  return response;
 }
 
-async function Todos() {
+async function TodoGroupsPage() {
   const groups = await fetchGroups();
 
   return (
     <main className="text-center text-lg text-white">
-      <TodoGroups groups={groups} />
+      {groups ? <TodoGroups groups={groups} /> : "Couldn't load data"}
     </main>
   );
 }
 
-export default Todos;
+export default TodoGroupsPage;

@@ -2,52 +2,33 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { initFilters } from "consts/filters";
 import { TODO_LIST_DATA } from "mock/todos";
-import { FilterGroup, FilterName } from "types/todos";
+import { FilterName } from "types/todos";
 import { updateFilters } from "./todos.utils";
-import TodosFilters from "./TodosFilters";
 import TodosList from "./TodosList";
 
 describe("filters", () => {
-  test("display correct number of filters", async () => {
-    render(<TodosFilters filters={initFilters} setFilters={jest.fn()} />);
-
-    const filtersLength = initFilters.reduce(
-      (prev, { filters }) => prev + filters.length,
-      0
-    );
-
-    const filters = screen.getAllByRole("button");
-    expect(filters).toHaveLength(filtersLength);
-  });
-
   test("correctly update filters", async () => {
-    const getFilter = (
-      filterGroup: FilterGroup,
-      filterName: FilterName,
-      filters = initFilters
-    ) =>
-      filters
-        .find(({ group }) => group === filterGroup)
-        ?.filters.find(({ name }) => name === filterName);
+    const getFilter = (filterName: FilterName, filters = initFilters) =>
+      filters.find(({ name }) => name === filterName);
 
     // Check init state
-    let filter = getFilter("completion", "completed");
+    let filter = getFilter("completed");
     expect(filter?.active).toBeFalsy();
 
-    filter = getFilter("completion", "all");
+    filter = getFilter("all");
     expect(filter?.active).toBeFalsy();
 
     // Click on "completed" filter
-    let updatedFilters = updateFilters("completion", "completed")(initFilters);
-    filter = getFilter("completion", "completed", updatedFilters);
+    let updatedFilters = updateFilters(initFilters, "completion", "completed");
+    filter = getFilter("completed", updatedFilters);
     expect(filter?.active).toBeTruthy();
 
     // Click on "all" filter
-    updatedFilters = updateFilters("completion", "all")(initFilters);
-    filter = getFilter("completion", "all", updatedFilters);
+    updatedFilters = updateFilters(initFilters, "completion", "all");
+    filter = getFilter("all", updatedFilters);
     expect(filter?.active).toBeTruthy();
 
-    filter = getFilter("completion", "completed", updatedFilters);
+    filter = getFilter("completed", updatedFilters);
     expect(filter?.active).toBeFalsy();
   });
 
