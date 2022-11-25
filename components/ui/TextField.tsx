@@ -20,8 +20,9 @@ function TextField({
         {label}
       </label>
       <input
-        name={name}
         id={id}
+        name={name}
+        aria-label={label}
         className="bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full focus:border-zinc-300  outline-none"
         {...props}
       />

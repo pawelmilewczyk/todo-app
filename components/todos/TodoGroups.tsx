@@ -8,7 +8,7 @@ interface Props {
 
 function TodoGroups({ groups }: Props) {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-4">
       {groups.map(({ id, name }) => (
         <Link
           key={id}

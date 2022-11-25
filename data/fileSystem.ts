@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import { AllPossibleUndefined } from "types/allPossibleUndefined";
 import { TodoGroupInterface, TodoInterface } from "types/todos";
 
 interface DataInterface {
@@ -11,10 +12,6 @@ type NewObject<Key extends keyof DataInterface> = Omit<
   DataInterface[Key][0],
   "id"
 >;
-
-type AllPossibleUndefined<M extends Record<string, any>> = {
-  [Key in keyof M]?: M[Key];
-};
 
 interface Filters<Key extends keyof DataInterface> {
   key: keyof DataInterface[Key][0];
@@ -50,7 +47,9 @@ export const addData = async <Key extends keyof DataInterface>(
 
   const newObject = {
     ...object,
-    id: Math.max(...allData[collection].map(({ id }) => id)) + 1,
+    id: String(
+      Math.max(...allData[collection].map(({ id }) => Number(id))) + 1
+    ),
   };
 
   const fileData = {
@@ -64,14 +63,14 @@ export const addData = async <Key extends keyof DataInterface>(
 
 export const updateData = async <Key extends keyof DataInterface>(
   collection: Key,
-  objectId: number,
+  objectId: string,
   newObject: AllPossibleUndefined<NewObject<Key>>
 ) => {
   const allData = await getAll();
 
   const objectToUpdate = (
     allData[collection] as Array<DataInterface[Key][0]>
-  ).find(({ id }) => id == objectId);
+  ).find(({ id }) => id === objectId);
 
   if (!objectToUpdate) return null;
 

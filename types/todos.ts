@@ -1,10 +1,10 @@
 export interface TodoGroupInterface {
-  id: number;
+  id: string;
   name: string;
 }
 
 export interface TodoInterface {
-  id: number;
+  id: string;
   title: string;
   description?: string;
   group: string;

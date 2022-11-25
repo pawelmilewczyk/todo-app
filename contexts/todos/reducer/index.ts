@@ -1,7 +1,7 @@
-import { updateFilters } from "components/todos/todos.utils";
 import { initFilters } from "consts/filters";
 import { GetAction } from "types/reducerAction";
 import { StateInterface, TodoAction, TodoPayload } from "./types";
+import { sortTodos } from "./utils";
 
 export const initialState: StateInterface = {
   todos: [],
@@ -16,9 +16,18 @@ export const todoReducer = (
   switch (type) {
     // TODOS
     case TodoAction.SetTodos:
-      return { ...state, todos: payload };
+      return { ...state, todos: payload.sort(sortTodos) };
     case TodoAction.AddTodo:
       return { ...state, todos: [...state.todos, payload] };
+    case TodoAction.UpdateTodo:
+      return {
+        ...state,
+        todos: state.todos
+          .map((todo) =>
+            todo.id === payload.id ? { ...todo, ...payload.data } : todo
+          )
+          .filter(({ group }) => group === payload.data.group ?? true),
+      };
     case TodoAction.DeleteTodo:
       return {
         ...state,
@@ -29,7 +38,8 @@ export const todoReducer = (
     case TodoAction.FilterTodos:
       return {
         ...state,
-        filters: updateFilters(state.filters, payload.group, payload.name),
+        filters: payload,
+        todos: state.todos.sort(sortTodos),
       };
 
     // GROUPS

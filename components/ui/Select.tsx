@@ -6,7 +6,7 @@ interface SelectProps
     HTMLSelectElement
   > {
   label: string;
-  options: { id: number; name: string }[];
+  options: { id: string; name: string }[];
 }
 
 function Select({
@@ -24,6 +24,7 @@ function Select({
       <select
         id={id}
         name={name}
+        aria-label={label}
         className="bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full focus:border-zinc-300  outline-none"
         {...props}
       >

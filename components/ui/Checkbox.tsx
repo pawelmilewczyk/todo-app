@@ -18,7 +18,7 @@ function Checkbox({
   ...props
 }: CheckboxProps) {
   return (
-    <div className="flex gap-x-3 items-center p-4">
+    <div className="flex items-center px-4">
       {labelPlacement === "left" && (
         <label htmlFor={id} className="text-white">
           {label}
@@ -28,12 +28,13 @@ function Checkbox({
         type="checkbox"
         id={id}
         name={name}
+        aria-label={label}
         className="w-5 h-5 rounded-full bg-transparent appearance-none cursor-pointer border border-white outline-none 
         checked:bg-white checked:outline checked:outline-1 checked:outline-white checked:border-transparent"
         {...props}
       />
       {labelPlacement === "right" && (
-        <label htmlFor={id} className="text-white">
+        <label htmlFor={id} className="text-white p-4 cursor-pointer">
           {label}
         </label>
       )}

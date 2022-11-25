@@ -40,5 +40,7 @@ export async function generateStaticParams() {
   const { response } = await fetchData<TodoGroupInterface[]>({
     url: "/groups",
   });
-  return response?.map(({ name }: TodoGroupInterface) => ({ group: name }));
+  return response
+    ? response?.map(({ name }: TodoGroupInterface) => ({ group: name }))
+    : [];
 }

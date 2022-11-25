@@ -11,7 +11,6 @@ async function fetchGroups() {
 
 async function TodoGroupsPage() {
   const groups = await fetchGroups();
-
   return (
     <main className="text-center text-lg text-white">
       {groups ? <TodoGroups groups={groups} /> : "Couldn't load data"}

@@ -12,7 +12,7 @@ function TodosFooter() {
       </button>
       {pathname === routes.todos && (
         <button className="uppercase text-sm hover:bg-zinc-600 transition-colors px-4 py-2 rounded-md">
-          Add list
+          + Add list
         </button>
       )}
     </footer>

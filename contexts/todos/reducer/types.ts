@@ -1,3 +1,4 @@
+import { AllPossibleUndefined } from "types/allPossibleUndefined";
 import {
   TodoInterface,
   TodoGroupInterface,
@@ -15,6 +16,7 @@ export interface StateInterface {
 export enum TodoAction {
   SetTodos = "SET_TODOS",
   AddTodo = "CREATE_TODO",
+  UpdateTodo = "UPDATE_TODO",
   DeleteTodo = "DELETE_TODO",
   FilterTodos = "FILTER_TODOS",
   SetGroups = "SET_GROUPS",
@@ -25,13 +27,14 @@ export enum TodoAction {
 export interface TodoPayload {
   [TodoAction.SetTodos]: TodoInterface[];
   [TodoAction.AddTodo]: TodoInterface;
+  [TodoAction.UpdateTodo]: {
+    id: string;
+    data: AllPossibleUndefined<TodoInterface>;
+  };
   [TodoAction.DeleteTodo]: {
-    id: number;
+    id: string;
   };
-  [TodoAction.FilterTodos]: {
-    group: FilterGroup;
-    name: FilterName;
-  };
+  [TodoAction.FilterTodos]: TodoFilter[];
   [TodoAction.SetGroups]: TodoGroupInterface[];
   [TodoAction.AddGroup]: TodoGroupInterface;
   [TodoAction.DeleteGroup]: {

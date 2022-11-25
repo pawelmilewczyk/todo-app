@@ -1,6 +1,4 @@
-import { NextPage } from "next";
-
-const HomePage: NextPage = () => {
+function HomePage() {
   return (
     <div className="flex flex-col justify-center items-center p-4">
       <header>
@@ -15,6 +13,6 @@ const HomePage: NextPage = () => {
       </main>
     </div>
   );
-};
+}
 
 export default HomePage;
