@@ -6,7 +6,7 @@ export default function TodosLayout({ children }: PropsWithChildren) {
   return (
     <div className="h-full flex flex-col justify-between">
       <TodoConfig>
-        <div className="overflow-auto px-4 py-2"> {children}</div>
+        <div className="overflow-auto"> {children}</div>
       </TodoConfig>
       <Footer />
     </div>

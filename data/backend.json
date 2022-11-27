@@ -2,19 +2,22 @@
   "todos": [
     {
       "id": "1",
-      "title": "buy new clothes",
+      "title": "buy new clothes - additional text to check component",
+      "description": "description for testing visual effect",
       "group": "home",
       "completed": false
     },
     {
       "id": "2",
       "title": "meat",
+      "description": "another description for testing visual effect",
       "group": "shopping",
       "completed": true
     },
     {
       "id": "3",
       "title": "50 push-ups",
+      "description": "description",
       "group": "gym",
       "completed": true
     },
@@ -81,23 +84,23 @@
   ],
   "groups": [
     {
-      "id": "1",
+      "id": "3",
       "name": "shopping"
     },
     {
-      "id": "2",
+      "id": "4",
       "name": "gym"
     },
     {
-      "id": "3",
+      "id": "5",
       "name": "home"
     },
     {
-      "id": "4",
+      "id": "6",
       "name": "others"
     },
     {
-      "id": "5",
+      "id": "7",
       "name": "learning"
     }
   ]

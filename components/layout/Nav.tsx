@@ -17,10 +17,10 @@ function Nav() {
         <Link
           key={name}
           href={href}
-          className={`px-2 py-1 rounded-lg uppercase text-md transition ${
+          className={`px-2 py-1 rounded-lg uppercase text-md transition focus:outline-zinc-600 ${
             pathname === href || isNestedPathActive(href)
               ? "bg-white text-zinc-700 shadow-md"
-              : "text-white hover:bg-zinc-500 hover:shadow-md active:scale-95"
+              : "text-white hover:bg-zinc-600 hover:shadow-md active:scale-95"
           }`}
         >
           {name}

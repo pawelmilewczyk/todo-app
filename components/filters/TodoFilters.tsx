@@ -1,3 +1,5 @@
+"use client";
+
 import { TodoAction } from "contexts/todos/reducer/types";
 import { TodosContext } from "contexts/todos/todosContext";
 import { useContext } from "react";
@@ -16,7 +18,7 @@ function TodosFilters() {
   };
 
   return (
-    <div className="flex gap-x-2 justify-center text-xs">
+    <div className="flex gap-x-2 justify-center text-xs text-white">
       {getGroupedFilters(filters).map(({ group, filters }, index) => (
         <div
           key={group}
@@ -28,8 +30,8 @@ function TodosFilters() {
             <button
               key={name}
               aria-label={name}
-              className={`px-2 py-1 rounded-lg text-white cursor-pointer select-none uppercase transition-colors ${
-                active ? "text-zinc-800 bg-white" : "hover:bg-zinc-500"
+              className={`px-2 py-1 rounded-lg cursor-pointer select-none uppercase transition-colors focus:outline-zinc-600 ${
+                active ? "text-zinc-800 bg-white" : "hover:bg-zinc-600"
               }`}
               onClick={onClick(group, name)}
             >

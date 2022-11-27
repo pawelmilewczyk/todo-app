@@ -1,3 +1,4 @@
+import TodosFilters from "components/filters/TodoFilters";
 import TodosList from "components/todos/TodosList";
 import { routes } from "consts/routes";
 import Link from "next/link";
@@ -16,21 +17,22 @@ async function TodosPage({ params }: PageProps<TodosPageParams>) {
   const todos = await fetchTodos(params.group);
 
   return (
-    <>
-      <header className="relative text-white">
+    <div className="flex flex-col h-full">
+      <header className="flex flex-col gap-y-4 relative text-white top-0 mt-2">
         <Link
           href={routes.todos}
-          className="absolute left-0 top-1/2 -translate-y-1/2 text-2xl cursor-pointer p-2 leading-none rounded-full 
-        hover:bg-zinc-600 active:scale-95 transition"
+          className="absolute left-4 top-0 -translate-y-1 text-2xl cursor-pointer p-2 leading-none rounded-full 
+        hover:bg-zinc-600 active:scale-95 transition focus:outline-zinc-600"
         >
           &#x2190;
         </Link>
         <h1 className="font-medium text-lg text-center uppercase">
           {params.group}
         </h1>
+        <TodosFilters />
       </header>
       {todos ? <TodosList todos={todos} /> : "Couldn't load data"}
-    </>
+    </div>
   );
 }
 

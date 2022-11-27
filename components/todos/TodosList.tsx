@@ -28,9 +28,8 @@ function TodosList({ todos: initTodos }: Props) {
   const { allCompleted, emptyList } = checkTodos(todos, filters, loading);
 
   return (
-    <main className="flex flex-col gap-y-4 mt-4 text-white">
-      <TodosFilters />
-      <div className="flex flex-col gap-y-4 mt-4">
+    <main className="flex flex-col gap-y-4 mt-8 text-white h-full overflow-auto px-4">
+      <div className="flex flex-col gap-y-4">
         {loading && <LoadingSkeleton />}
         {emptyList ? (
           <p className="text-center text-xs uppercase">No tasks added yet</p>
