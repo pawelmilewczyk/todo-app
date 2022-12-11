@@ -12,7 +12,7 @@ async function fetchGroups() {
 async function TodoGroupsPage() {
   const groups = await fetchGroups();
   return (
-    <main className="text-center text-lg text-white">
+    <main className="text-center text-lg text-white pt-4">
       {groups ? <TodoGroups groups={groups} /> : "Couldn't load data"}
     </main>
   );

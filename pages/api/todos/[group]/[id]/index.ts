@@ -2,7 +2,7 @@ import { deleteData, getData, updateData } from "data/fileSystem";
 import { NextApiHandler } from "next";
 
 const handler: NextApiHandler = async ({ method, body, query }, res) => {
-  const id = Number(query.id);
+  const id = String(query.id);
   switch (method) {
     case "GET":
       const todos = await getData("todos");

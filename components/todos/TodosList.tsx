@@ -1,13 +1,12 @@
 "use client";
 
+import Spinner from "components/layout/Spinner";
 import { TodoAction } from "contexts/todos/reducer/types";
 import { TodosContext } from "contexts/todos/todosContext";
 import { useContext, useEffect, useState } from "react";
 import { TodoInterface } from "types/todos";
 import SingleTodo from "./SingleTodo";
 import { checkTodos, filterTodos } from "./todos.utils";
-import TodosFilters from "../filters/TodoFilters";
-import LoadingSkeleton from "components/layout/LoadingSkeleton";
 
 interface Props {
   todos: TodoInterface[];
@@ -28,9 +27,9 @@ function TodosList({ todos: initTodos }: Props) {
   const { allCompleted, emptyList } = checkTodos(todos, filters, loading);
 
   return (
-    <main className="flex flex-col gap-y-4 mt-8 text-white h-full overflow-auto px-4">
+    <main className="flex flex-col gap-y-4 mt-8 text-white h-full overflow-auto px-4 py-2">
       <div className="flex flex-col gap-y-4">
-        {loading && <LoadingSkeleton />}
+        {loading && <Spinner />}
         {emptyList ? (
           <p className="text-center text-xs uppercase">No tasks added yet</p>
         ) : allCompleted ? (

@@ -12,15 +12,15 @@ function Nav() {
   };
 
   return (
-    <nav className="p-4 flex gap-x-4 items-center justify-center min-h-[4rem]">
+    <nav className="flex items-center justify-center bg-zinc-600 border-b border-zinc-500">
       {Object.entries(routes).map(([name, href]) => (
         <Link
           key={name}
           href={href}
-          className={`px-2 py-1 rounded-lg uppercase text-md transition focus:outline-zinc-600 ${
+          className={`px-4 py-3 uppercase text-md transition focus-visible:bg-zinc-500 outline-none ${
             pathname === href || isNestedPathActive(href)
-              ? "bg-white text-zinc-700 shadow-md"
-              : "text-white hover:bg-zinc-600 hover:shadow-md active:scale-95"
+              ? "text-white"
+              : "text-zinc-400 hover:text-zinc-300"
           }`}
         >
           {name}

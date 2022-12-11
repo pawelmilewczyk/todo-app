@@ -2,18 +2,14 @@ import Checkbox from "components/ui/Checkbox";
 import { routes } from "consts/routes";
 import { TodoAction } from "contexts/todos/reducer/types";
 import { TodosContext } from "contexts/todos/todosContext";
+import { DeleteIcon } from "icons/DeleteIcon";
+import { EditIcon } from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { TodoInterface } from "types/todos";
 import fetchData from "utils/fetchData";
 
-function SingleTodo({
-  id,
-  completed,
-  group,
-  title,
-  description,
-}: TodoInterface) {
+function SingleTodo({ id, completed, group, title }: TodoInterface) {
   const { dispatch } = useContext(TodosContext);
 
   const { push } = useRouter();
@@ -35,40 +31,30 @@ function SingleTodo({
   const actions = [
     {
       label: "Edit",
-      color: "blue",
+      Icon: EditIcon,
       onClick: () => {
         push(`${routes.todos}/${group}/${id}`);
       },
     },
-    { label: "Delete", color: "red", onClick: () => {} },
+    { label: "Delete", Icon: DeleteIcon, onClick: () => {} },
   ];
 
   return (
     <div className="flex bg-zinc-600 rounded-md gap-x-3 items-center justify-between overflow-hidden">
-      <div className="relative">
-        <Checkbox
-          label={title}
-          defaultChecked={completed}
-          onChange={onChange}
-        />
-        {description && (
-          <p className="text-xs text-zinc-300 pointer-events-none -mt-3 ml-12 pl-1 pb-2">
-            {description}
-          </p>
-        )}
-      </div>
+      <Checkbox label={title} defaultChecked={completed} onChange={onChange} />
       <div className="flex text-white text-sm h-full">
-        {actions.map(({ label, color, onClick }) => (
+        {actions.map(({ label, onClick, Icon }) => (
           <div
             key={label}
             onClick={onClick}
-            className={`h-full w-16 hover:bg-${color}-500 cursor-pointer transition-colors`}
+            className={`h-full hover:bg-zinc-500 cursor-pointer transition-colors`}
           >
             <button
-              className={`flex items-center justify-center h-full w-full outline-none transition-colors 
-              pointer-events-none focus:bg-${color}-500`}
+              aria-label={label}
+              className={`flex items-center justify-center h-full w-full px-2 outline-none transition-colors 
+              pointer-events-none focus:bg-zinc-500`}
             >
-              {label}
+              <Icon />
             </button>
           </div>
         ))}

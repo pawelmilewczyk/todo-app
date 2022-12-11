@@ -26,20 +26,18 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const names = ["title", "description", "group"];
-    const [title, group, description] = names.map((name) =>
-      formData.get(name)?.toString()
-    );
+    const names = ["title", "group"];
+    const [title, group] = names.map((name) => formData.get(name)?.toString());
     if (title && group) {
       const { ok } = await fetchData({
         url: `/todos/${params.group}/${params.id}`,
         method: "PUT",
-        body: { title, group, description },
+        body: { title, group },
       });
       if (ok) {
         dispatch({
           type: TodoAction.UpdateTodo,
-          payload: { id: params.id, data: { title, group, description } },
+          payload: { id: params.id, data: { title, group } },
         });
         push(`${routes.todos}/${group ?? params.group}`);
       }
@@ -63,7 +61,6 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
         {todo ? (
           <div className="p-4 flex flex-col gap-y-4">
             <TextField label="Title" defaultValue={todo.title} required />
-            <TextField label="Description" defaultValue={todo.description} />
             <Select
               options={groups}
               label="Group"

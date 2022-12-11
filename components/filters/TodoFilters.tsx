@@ -30,7 +30,7 @@ function TodosFilters() {
             <button
               key={name}
               aria-label={name}
-              className={`px-2 py-1 rounded-lg cursor-pointer select-none uppercase transition-colors focus:outline-zinc-600 ${
+              className={`px-2 py-1 rounded-md cursor-pointer select-none uppercase transition-colors outline-none  focus-visible:outline-zinc-300 ${
                 active ? "text-zinc-800 bg-white" : "hover:bg-zinc-600"
               }`}
               onClick={onClick(group, name)}

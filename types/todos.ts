@@ -6,7 +6,7 @@ export interface TodoGroupInterface {
 export interface TodoInterface {
   id: string;
   title: string;
-  description?: string;
+  deadline?: string;
   group: string;
   completed: boolean;
 }

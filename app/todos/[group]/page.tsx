@@ -17,16 +17,16 @@ async function TodosPage({ params }: PageProps<TodosPageParams>) {
   const todos = await fetchTodos(params.group);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full pt-2">
       <header className="flex flex-col gap-y-4 relative text-white top-0 mt-2">
         <Link
           href={routes.todos}
-          className="absolute left-4 top-0 -translate-y-1 text-2xl cursor-pointer p-2 leading-none rounded-full 
-        hover:bg-zinc-600 active:scale-95 transition focus:outline-zinc-600"
+          className="absolute left-4 top-0 -translate-y-1 text-2xl cursor-pointer p-1 leading-none rounded-full outline-none
+        hover:bg-zinc-600 active:scale-95 transition focus-visible:outline-zinc-300"
         >
           &#x2190;
         </Link>
-        <h1 className="font-medium text-lg text-center uppercase">
+        <h1 className="font-medium text-md text-center uppercase">
           {params.group}
         </h1>
         <TodosFilters />

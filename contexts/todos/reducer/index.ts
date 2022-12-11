@@ -26,7 +26,9 @@ export const todoReducer = (
           .map((todo) =>
             todo.id === payload.id ? { ...todo, ...payload.data } : todo
           )
-          .filter(({ group }) => group === payload.data.group ?? true),
+          .filter(({ group }) =>
+            payload.data.group ? group === payload.data.group : true
+          ),
       };
     case TodoAction.DeleteTodo:
       return {

@@ -1,7 +1,7 @@
-import LoadingSkeleton from "components/layout/LoadingSkeleton";
+import Spinner from "components/layout/Spinner";
 
 function loading() {
-  return <LoadingSkeleton />;
+  return <Spinner />;
 }
 
 export default loading;
