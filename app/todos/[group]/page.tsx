@@ -1,42 +1,17 @@
-import TodosFilters from "components/filters/TodoFilters";
-import TodosList from "components/todos/TodosList";
-import { routes } from "consts/routes";
-import Link from "next/link";
 import { PageProps, TodosPageParams } from "types/pages";
-import { TodoGroupInterface, TodoInterface } from "types/todos";
+import { TodoGroupInterface } from "types/todos";
 import fetchData from "utils/fetchData";
 
-async function fetchTodos(group: string) {
-  const { response } = await fetchData<TodoInterface[]>({
-    url: `/todos/${group}`,
-  });
-  return response;
-}
-
-async function TodosPage({ params }: PageProps<TodosPageParams>) {
-  const todos = await fetchTodos(params.group);
-
+async function EditGroupPage({ params }: PageProps<TodosPageParams>) {
   return (
-    <div className="flex flex-col h-full pt-2">
-      <header className="flex flex-col gap-y-4 relative text-white top-0 mt-2">
-        <Link
-          href={routes.todos}
-          className="absolute left-4 top-0 -translate-y-1 text-2xl cursor-pointer p-1 leading-none rounded-full outline-none
-        hover:bg-zinc-600 active:scale-95 transition focus-visible:outline-zinc-300"
-        >
-          &#x2190;
-        </Link>
-        <h1 className="font-medium text-md text-center uppercase">
-          {params.group}
-        </h1>
-        <TodosFilters />
-      </header>
-      {todos ? <TodosList todos={todos} /> : "Couldn't load data"}
+    <div className="">
+      <h1 className="font-medium text-md text-center uppercase">Edit group</h1>
+      <p className="text-center">{params.group}</p>
     </div>
   );
 }
 
-export default TodosPage;
+export default EditGroupPage;
 
 export async function generateStaticParams() {
   const { response } = await fetchData<TodoGroupInterface[]>({

@@ -4,6 +4,7 @@ import { NextApiHandler } from "next";
 
 const handler: NextApiHandler = async ({ method, body, query }, res) => {
   const group = query.group?.toString().toLowerCase();
+  console.log(query);
   switch (method) {
     case "GET":
       const allTodos = await getData("todos");

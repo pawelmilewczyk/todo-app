@@ -17,11 +17,11 @@ async function fetchGroups() {
   return response ?? [];
 }
 
-async function TodoPage({ params }: PageProps<TodoPageParams>) {
+async function EditTodoPage({ params }: PageProps<TodoPageParams>) {
   const todo = await fetchTodo(params.group, params.id);
   const groups = await fetchGroups();
 
   return <EditTodo todo={todo} groups={groups} params={params} />;
 }
 
-export default TodoPage;
+export default EditTodoPage;

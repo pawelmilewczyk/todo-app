@@ -45,36 +45,28 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
   };
 
   return (
-    <form
-      className="flex flex-col h-full w-full max-w-5xl absolute bg-zinc-700 top-0 left-1/2 -translate-x-1/2"
-      onSubmit={onSubmit}
-    >
-      <div className="relative flex justify-between items-center text-white">
-        <Link className="px-4 py-2" href={`${routes.todos}/${params.group}`}>
-          Cancel
-        </Link>
-        <button className="px-4 py-2" type="submit">
-          Done
-        </button>
-      </div>
-      <div className="text-zinc-100 p-2">
-        {todo ? (
-          <div className="p-4 flex flex-col gap-y-4">
-            <TextField label="Title" defaultValue={todo.title} required />
-            <Select
-              options={groups}
-              label="Group"
-              defaultValue={todo.group}
-              required
-            />
-          </div>
-        ) : (
-          <p className="text-center text-lg">
-            Todo with provided id does not exist
-          </p>
-        )}
-      </div>
-    </form>
+    <div>
+      <h1 className="font-medium text-md text-center uppercase">Edit todo</h1>
+      <form className="flex flex-col" onSubmit={onSubmit}>
+        <div className="text-zinc-100 p-2">
+          {todo ? (
+            <div className="p-4 flex flex-col gap-y-4">
+              <TextField label="Title" defaultValue={todo.title} required />
+              <Select
+                options={groups}
+                label="Group"
+                defaultValue={todo.group}
+                required
+              />
+            </div>
+          ) : (
+            <p className="text-center text-lg">
+              Todo with provided id does not exist
+            </p>
+          )}
+        </div>
+      </form>
+    </div>
   );
 }
 

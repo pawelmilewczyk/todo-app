@@ -1,3 +1,5 @@
+"use client";
+
 import { DetailedHTMLProps, SelectHTMLAttributes } from "react";
 
 interface SelectProps

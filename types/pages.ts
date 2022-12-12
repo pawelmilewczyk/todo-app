@@ -7,4 +7,7 @@ export interface TodosPageParams {
   group: string;
 }
 
-export type PageProps<T extends {}> = { params: T };
+export type PageProps<Params extends {}, SearchParams extends {} = {}> = {
+  params: Params;
+  searchParams: SearchParams;
+};

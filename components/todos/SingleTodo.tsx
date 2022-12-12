@@ -1,3 +1,5 @@
+"use client";
+
 import Checkbox from "components/ui/Checkbox";
 import { routes } from "consts/routes";
 import { TodoAction } from "contexts/todos/reducer/types";
@@ -40,24 +42,30 @@ function SingleTodo({ id, completed, group, title }: TodoInterface) {
   ];
 
   return (
-    <div className="flex bg-zinc-600 rounded-md gap-x-3 items-center justify-between overflow-hidden">
-      <Checkbox label={title} defaultChecked={completed} onChange={onChange} />
-      <div className="flex text-white text-sm h-full">
-        {actions.map(({ label, onClick, Icon }) => (
-          <div
-            key={label}
-            onClick={onClick}
-            className={`h-full hover:bg-zinc-500 cursor-pointer transition-colors`}
-          >
-            <button
-              aria-label={label}
-              className={`flex items-center justify-center h-full w-full px-2 outline-none transition-colors 
-              pointer-events-none focus:bg-zinc-500`}
+    <div>
+      <div className="h-full flex overflow-hidden gap-x-3 items-center justify-between bg-zinc-600 rounded-md">
+        <Checkbox
+          label={title}
+          defaultChecked={completed}
+          onChange={onChange}
+        />
+        <div className="flex text-white text-sm h-full">
+          {actions.map(({ label, onClick, Icon }) => (
+            <div
+              key={label}
+              onClick={onClick}
+              className={`h-full hover:bg-zinc-500 cursor-pointer transition-colors`}
             >
-              <Icon />
-            </button>
-          </div>
-        ))}
+              <button
+                aria-label={label}
+                className={`flex items-center justify-center h-full w-full px-2 outline-none transition-colors
+              pointer-events-none focus:bg-zinc-500`}
+              >
+                <Icon />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

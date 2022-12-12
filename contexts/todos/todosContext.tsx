@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, Dispatch, PropsWithChildren, useReducer } from "react";
 import { GetAction } from "types/reducerAction";
 import { initialState, todoReducer } from "./reducer";
