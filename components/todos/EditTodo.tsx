@@ -2,12 +2,9 @@
 
 import Select from "components/ui/Select";
 import TextField from "components/ui/TextField";
-import { routes } from "consts/routes";
-import { TodoAction } from "contexts/todos/reducer/types";
-import { TodosContext } from "contexts/todos/todosContext";
-import Link from "next/link";
+import { getTodosListRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
-import { FormEventHandler, useContext } from "react";
+import { FormEventHandler } from "react";
 import { TodoPageParams } from "types/pages";
 import { TodoGroupInterface, TodoInterface } from "types/todos";
 import fetchData from "utils/fetchData";
@@ -19,8 +16,6 @@ interface EditTodoProps {
 }
 
 function EditTodo({ params, todo, groups }: EditTodoProps) {
-  const { dispatch } = useContext(TodosContext);
-
   const { push } = useRouter();
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -34,13 +29,7 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
         method: "PUT",
         body: { title, group },
       });
-      if (ok) {
-        dispatch({
-          type: TodoAction.UpdateTodo,
-          payload: { id: params.id, data: { title, group } },
-        });
-        push(`${routes.todos}/${group ?? params.group}`);
-      }
+      if (ok) push(getTodosListRoute(group ?? params.group));
     }
   };
 
@@ -58,6 +47,7 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
                 defaultValue={todo.group}
                 required
               />
+              <button type="submit">Save</button>
             </div>
           ) : (
             <p className="text-center text-lg">

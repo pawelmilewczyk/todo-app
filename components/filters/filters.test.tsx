@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { initFilters } from "consts/filters";
-import { TodosProvider } from "contexts/todos/todosContext";
 import { TODO_LIST_DATA } from "mock/todos";
 import { FilterName } from "types/todos";
 import TodosList from "../todos/TodosList";
@@ -34,11 +33,7 @@ describe("filters", () => {
   });
 
   test("highlight active filter", async () => {
-    render(
-      <TodosProvider>
-        <TodosList todos={TODO_LIST_DATA} />
-      </TodosProvider>
-    );
+    render(<TodosList todos={TODO_LIST_DATA} />);
     const user = userEvent.setup();
 
     const completedFilter = screen.getByRole("button", { name: /completed/i });

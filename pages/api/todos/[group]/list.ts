@@ -1,23 +1,15 @@
-import { StaticGroups } from "consts/groups";
 import { addData, deleteData, getData, updateData } from "data/fileSystem";
 import { NextApiHandler } from "next";
+import { filterTodos, sortTodos } from "utils/todos";
 
+// api/todos/[group]/list
 const handler: NextApiHandler = async ({ method, body, query }, res) => {
   const group = query.group?.toString().toLowerCase();
-  console.log(query);
+
   switch (method) {
     case "GET":
       const allTodos = await getData("todos");
-      const todos = allTodos.filter((todo) => {
-        if (group === StaticGroups.Today) {
-          // return all with deadline for today
-          return true;
-        } else if (group === StaticGroups.Scheduled) {
-          // return all with assigned deadline date
-          return true;
-        }
-        return group === todo.group.toLowerCase();
-      });
+      const todos = allTodos.filter(filterTodos(query)).sort(sortTodos);
       return res.status(200).json(todos);
     case "POST":
       const newTodo = await addData("todos", body);

@@ -1,6 +1,9 @@
+import { Filters } from "./filters";
+
 export interface TodoGroupInterface {
   id: string;
   name: string;
+  filters?: Filters;
 }
 
 export interface TodoInterface {

@@ -1,4 +1,4 @@
-import { Filters, TimeFilters, StatusFilters } from "types/filters";
+import { Filters } from "types/filters";
 import { TodoFilter } from "types/todos";
 
 export const initFilters: TodoFilter[] = [
@@ -9,6 +9,5 @@ export const initFilters: TodoFilter[] = [
 ];
 
 export const defaultFilters: Filters = {
-  time: TimeFilters.All,
-  status: StatusFilters.Todo,
+  completed: false,
 };

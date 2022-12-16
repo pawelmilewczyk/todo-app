@@ -4,48 +4,48 @@
       "id": "1",
       "title": "buy new clothes - additional text to check component",
       "group": "home",
-      "deadline": "24-12-2022",
+      "deadline": "2022/12/24",
       "completed": true
     },
     {
       "id": "2",
       "title": "meat",
       "group": "shopping",
-      "deadline": "20-12-2022",
+      "deadline": "2022/12/16",
       "completed": true
     },
     {
       "id": "3",
       "title": "50 push-ups",
       "group": "gym",
-      "deadline": "12-12-2022",
+      "deadline": "2022/12/16",
       "completed": true
     },
     {
       "id": "4",
       "title": "20 pull-ups",
       "group": "gym",
-      "completed": true
+      "completed": false
     },
     {
       "id": "5",
       "title": "100 squats",
       "group": "gym",
-      "deadline": "03-12-2022",
+      "deadline": "2022/12/16",
       "completed": false
     },
     {
       "id": "6",
       "title": "clean bathroom",
       "group": "home",
-      "deadline": "04-12-2022",
+      "deadline": "2022/12/14",
       "completed": true
     },
     {
       "id": "7",
       "title": "wash dog",
       "group": "home",
-      "deadline": "06-12-2022",
+      "deadline": "2022/12/13",
       "completed": false
     },
     {
@@ -58,19 +58,22 @@
       "id": "9",
       "title": "juice",
       "group": "shopping",
+      "deadline": "2022/12/19",
       "completed": false
     },
     {
       "id": "10",
       "title": "water",
       "group": "shopping",
+      "deadline": "2022/12/15",
       "completed": true
     },
     {
       "id": "11",
       "title": "vegetables",
       "group": "shopping",
-      "completed": true
+      "deadline": "2022/12/15",
+      "completed": false
     },
     {
       "id": "12",

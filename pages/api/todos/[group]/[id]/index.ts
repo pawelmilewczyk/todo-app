@@ -1,6 +1,7 @@
 import { deleteData, getData, updateData } from "data/fileSystem";
 import { NextApiHandler } from "next";
 
+// api/todos/[group]/[todoId]
 const handler: NextApiHandler = async ({ method, body, query }, res) => {
   const id = String(query.id);
   switch (method) {

@@ -1,6 +1,5 @@
 import fs from "fs/promises";
 import path from "path";
-import { AllPossibleUndefined } from "types/allPossibleUndefined";
 import { TodoGroupInterface, TodoInterface } from "types/todos";
 
 interface DataInterface {
@@ -64,7 +63,7 @@ export const addData = async <Key extends keyof DataInterface>(
 export const updateData = async <Key extends keyof DataInterface>(
   collection: Key,
   objectId: string,
-  newObject: AllPossibleUndefined<NewObject<Key>>
+  newObject: Partial<NewObject<Key>>
 ) => {
   const allData = await getAll();
 

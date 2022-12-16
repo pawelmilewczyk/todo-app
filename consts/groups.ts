@@ -1,17 +1,20 @@
 import { TodoGroupInterface } from "types/todos";
+import { defaultFilters } from "./filters";
 
 export enum StaticGroups {
   Today = "today",
   Scheduled = "scheduled",
 }
 
-export const initGroups: TodoGroupInterface[] = [
+export const staticGroups: TodoGroupInterface[] = [
   {
-    name: StaticGroups.Today,
     id: "1",
+    name: StaticGroups.Today,
+    filters: { ...defaultFilters, today: true },
   },
   {
-    name: StaticGroups.Scheduled,
     id: "2",
+    name: StaticGroups.Scheduled,
+    filters: { ...defaultFilters, scheduled: true },
   },
 ];

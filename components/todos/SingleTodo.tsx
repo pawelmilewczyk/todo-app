@@ -1,20 +1,15 @@
 "use client";
 
 import Checkbox from "components/ui/Checkbox";
-import { routes } from "consts/routes";
-import { TodoAction } from "contexts/todos/reducer/types";
-import { TodosContext } from "contexts/todos/todosContext";
+import { getEditGroupRoute, routes } from "consts/routes";
 import { DeleteIcon } from "icons/DeleteIcon";
 import { EditIcon } from "icons/EditIcon";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
 import { TodoInterface } from "types/todos";
 import fetchData from "utils/fetchData";
 
-function SingleTodo({ id, completed, group, title }: TodoInterface) {
-  const { dispatch } = useContext(TodosContext);
-
-  const { push } = useRouter();
+function SingleTodo({ id, completed, group, title, deadline }: TodoInterface) {
+  const { push, refresh } = useRouter();
 
   const onChange = async (completed: boolean) => {
     const { ok } = await fetchData({
@@ -22,21 +17,14 @@ function SingleTodo({ id, completed, group, title }: TodoInterface) {
       method: "PUT",
       body: { completed },
     });
-    if (ok) {
-      dispatch({
-        type: TodoAction.UpdateTodo,
-        payload: { id, data: { completed } },
-      });
-    }
+    if (ok) refresh();
   };
 
   const actions = [
     {
       label: "Edit",
       Icon: EditIcon,
-      onClick: () => {
-        push(`${routes.todos}/${group}/${id}`);
-      },
+      onClick: () => push(getEditGroupRoute(group, id)),
     },
     { label: "Delete", Icon: DeleteIcon, onClick: () => {} },
   ];
@@ -49,6 +37,7 @@ function SingleTodo({ id, completed, group, title }: TodoInterface) {
           defaultChecked={completed}
           onChange={onChange}
         />
+        {deadline && <span>{deadline}</span>}
         <div className="flex text-white text-sm h-full">
           {actions.map(({ label, onClick, Icon }) => (
             <div

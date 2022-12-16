@@ -1,16 +1,12 @@
-export enum TimeFilters {
-  All = "all",
-  Today = "today",
-  Week = "week",
-}
-
 export enum StatusFilters {
+  Completed = "completed",
   All = "all",
-  Done = "done",
-  Todo = "todo",
 }
 
 export interface Filters {
-  time: TimeFilters;
-  status: StatusFilters;
+  completed?: boolean;
+  today?: boolean;
+  scheduled?: boolean;
 }
+
+export type SearchParams = Partial<Record<keyof Filters, string>>;

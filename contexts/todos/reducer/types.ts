@@ -1,4 +1,3 @@
-import { AllPossibleUndefined } from "types/allPossibleUndefined";
 import {
   TodoInterface,
   TodoGroupInterface,
@@ -29,7 +28,7 @@ export interface TodoPayload {
   [TodoAction.AddTodo]: TodoInterface;
   [TodoAction.UpdateTodo]: {
     id: string;
-    data: AllPossibleUndefined<TodoInterface>;
+    data: Partial<TodoInterface>;
   };
   [TodoAction.DeleteTodo]: {
     id: string;

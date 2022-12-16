@@ -1,13 +1,7 @@
 import BackButton from "components/layout/BackButton";
 import { PropsWithChildren } from "react";
 
-interface LayoutProps extends PropsWithChildren {
-  params: {
-    group: string;
-  };
-}
-
-function Layout({ children, params }: LayoutProps) {
+function Layout({ children }: PropsWithChildren) {
   return (
     <div className="relative text-white py-4 h-full flex flex-col">
       <BackButton />

@@ -6,6 +6,7 @@ import fetchData from "utils/fetchData";
 async function fetchTodo(group: string, id: string) {
   const { response } = await fetchData<TodoInterface>({
     url: `/todos/${group}/${id}`,
+    cache: "no-store",
   });
   return response;
 }
