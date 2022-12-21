@@ -15,15 +15,15 @@ function BackButton() {
     } else back();
   };
 
-  return (
+  return pathname !== routes.todos ? (
     <button
       onClick={onClick}
-      className="mt-4 absolute left-10 top-0 cursor-pointer p-1 leading-none rounded-full outline-none
+      className="mt-3 absolute left-4 top-0 cursor-pointer p-1 text-white leading-none rounded-full outline-none
     hover:bg-zinc-600 active:scale-95 transition focus-visible:outline-zinc-300"
     >
       <ChevronIcon />
     </button>
-  );
+  ) : null;
 }
 
 export default BackButton;

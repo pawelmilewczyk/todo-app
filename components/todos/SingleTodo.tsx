@@ -1,60 +1,22 @@
 "use client";
 
-import Checkbox from "components/ui/Checkbox";
-import { getEditGroupRoute, routes } from "consts/routes";
-import { DeleteIcon } from "icons/DeleteIcon";
-import { EditIcon } from "icons/EditIcon";
-import { useRouter } from "next/navigation";
 import { TodoInterface } from "types/todos";
-import fetchData from "utils/fetchData";
+import Actions from "./elements/TodoActions";
+import Checkbox from "./elements/TodoCheckbox";
+import Deadline from "./elements/TodoDeadline";
+import TodoLabel from "./elements/TodoLabel";
 
-function SingleTodo({ id, completed, group, title, deadline }: TodoInterface) {
-  const { push, refresh } = useRouter();
-
-  const onChange = async (completed: boolean) => {
-    const { ok } = await fetchData({
-      url: `/todos/${group}/${id}`,
-      method: "PUT",
-      body: { completed },
-    });
-    if (ok) refresh();
-  };
-
-  const actions = [
-    {
-      label: "Edit",
-      Icon: EditIcon,
-      onClick: () => push(getEditGroupRoute(group, id)),
-    },
-    { label: "Delete", Icon: DeleteIcon, onClick: () => {} },
-  ];
-
+function SingleTodo(todo: TodoInterface) {
   return (
     <div>
-      <div className="h-full flex overflow-hidden gap-x-3 items-center justify-between bg-zinc-600 rounded-md">
-        <Checkbox
-          label={title}
-          defaultChecked={completed}
-          onChange={onChange}
+      <div className="grid grid-cols-[min-content_1fr_min-content] gap-x-2 items-center justify-between h-full overflow-hidden bg-zinc-600 rounded-md">
+        <Checkbox todo={todo} className="row-start-1 row-end-3" />
+        <TodoLabel todo={todo} />
+        <Actions
+          todo={todo}
+          className="col-start-3 col-end-4 row-start-1 row-end-3"
         />
-        {deadline && <span>{deadline}</span>}
-        <div className="flex text-white text-sm h-full">
-          {actions.map(({ label, onClick, Icon }) => (
-            <div
-              key={label}
-              onClick={onClick}
-              className={`h-full hover:bg-zinc-500 cursor-pointer transition-colors`}
-            >
-              <button
-                aria-label={label}
-                className={`flex items-center justify-center h-full w-full px-2 outline-none transition-colors
-              pointer-events-none focus:bg-zinc-500`}
-              >
-                <Icon />
-              </button>
-            </div>
-          ))}
-        </div>
+        <Deadline todo={todo} className="col-start-2 col-end-3" />
       </div>
     </div>
   );

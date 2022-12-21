@@ -33,7 +33,7 @@ function TodosFilters(initFilters: Filters) {
   };
 
   return (
-    <div className="flex gap-x-2 justify-center text-xs text-white">
+    <div className="flex flex-wrap gap-2 justify-center text-xs text-white">
       <FilterButton
         label={StatusFilters.Completed}
         active={initFilters.completed === true}

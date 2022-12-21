@@ -1,5 +1,5 @@
-import { staticGroups } from "consts/groups";
-import { isToday, getTime, getMilliseconds } from "date-fns";
+import { StaticGroups } from "consts/groups";
+import { getTime, isToday } from "date-fns";
 import { NextApiRequest } from "next";
 import { TodoInterface } from "types/todos";
 import { searchParamsToFilters } from "./searchParams";
@@ -11,16 +11,16 @@ export const filterTodos =
     const filters = searchParamsToFilters(searchParams);
 
     let isValid = true;
+
     if (filters?.completed !== undefined) {
       isValid = isValid && todo.completed === filters.completed;
     }
-    if (filters?.scheduled !== undefined) {
+
+    if (group === StaticGroups.Scheduled) {
       isValid = isValid && !!todo.deadline;
-    }
-    if (filters?.today) {
+    } else if (group === StaticGroups.Today) {
       isValid = isValid && !!todo.deadline && isToday(new Date(todo.deadline));
-    }
-    if (!staticGroups.some(({ name }) => name === group)) {
+    } else {
       isValid = isValid && group === todo.group.toLowerCase();
     }
     return isValid;
@@ -47,7 +47,4 @@ export const sortTodos = (a: TodoInterface, b: TodoInterface) => {
     return compareStringAsDates("asc", [a.deadline, b.deadline]);
   }
   return a.completed > b.completed ? 1 : -1;
-
-  // TODO
-  // completed -> task deadline -> title
 };

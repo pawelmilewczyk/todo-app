@@ -10,9 +10,10 @@ function FilterButton<T>({ label, active, onClick }: FilterButtonProps<T>) {
   return (
     <button
       aria-label={label as string}
-      className={`px-2 py-1 rounded-md cursor-pointer select-none uppercase transition-colors outline-none  focus-visible:outline-zinc-300 ${
-        active ? "text-zinc-800 bg-white" : "hover:bg-zinc-600"
-      }`}
+      className={`w-[8rem] px-2 py-1 rounded-md cursor-pointer select-none uppercase transition-colors 
+                outline-none border border-zinc-400 focus-visible:outline-zinc-400 focus-visible:outline-offset-0 ${
+                  active ? "text-zinc-800 bg-zinc-100" : "hover:bg-zinc-600"
+                }`}
       onClick={handleClick}
     >
       {label as string}

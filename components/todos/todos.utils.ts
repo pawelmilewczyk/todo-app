@@ -1,40 +1,42 @@
-import { FilterName, TodoFilter, TodoInterface } from "types/todos";
+import {
+  isValid,
+  format,
+  isBefore,
+  isToday,
+  isTomorrow,
+  isYesterday,
+  formatDistance,
+} from "date-fns";
 
-const getFiltersObject = (filters: TodoFilter[]) =>
-  filters.reduce(
-    (prev, { name, active }) => ({ ...prev, [name]: active }),
-    {}
-  ) as Record<FilterName, boolean>;
-
-export const filterTodos = (filters: TodoFilter[]) => (todo: TodoInterface) => {
-  const { all, completed } = getFiltersObject(filters);
-  let filter = true;
-
-  if (completed) {
-    filter = todo.completed;
-  } else if (!all) {
-    filter = !todo.completed;
-  }
-  // TODO add date filters
-
-  return filter;
-};
-
-export const checkTodos = (
-  todos: TodoInterface[],
-  filters: TodoFilter[],
-  loading: boolean
+export const formatDate = (
+  deadline: string | undefined,
+  completed: boolean
 ) => {
-  const { completed, all } = getFiltersObject(filters);
+  if (!deadline) return null;
 
-  const allCompleted =
-    !loading &&
-    !completed &&
-    !all &&
-    todos.length &&
-    todos.every(({ completed }) => completed);
+  const date = new Date(deadline);
+  if (isValid(date)) {
+    let formattedDate = format(date, "yyyy/MM/dd");
+    const isPast = isBefore(date, Date.now()) && !isToday(date);
 
-  const emptyList = !loading && !todos.length;
+    if (!completed) {
+      if (isToday(date)) {
+        formattedDate = "Today";
+      } else if (isTomorrow(date)) {
+        formattedDate = "Tomorrow";
+      } else if (isYesterday(date)) {
+        formattedDate = "Yesterday";
+      } else if (isPast) {
+        formattedDate = formatDistance(date, Date.now(), { addSuffix: true });
+      }
 
-  return { allCompleted, emptyList };
+      const time = format(date, "HH:mm");
+      if (time !== "00:00") {
+        formattedDate = `${formattedDate}, ${time}`;
+      }
+    }
+
+    return { formattedDate, isPast, isToday: isToday(date) };
+  }
+  return null;
 };

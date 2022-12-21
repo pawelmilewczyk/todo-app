@@ -10,7 +10,9 @@ const handler: NextApiHandler = async ({ method, body, query }, res) => {
     case "GET":
       const allTodos = await getData("todos");
       const todos = allTodos.filter(filterTodos(query)).sort(sortTodos);
-      return res.status(200).json(todos);
+      const isEmpty = !allTodos.filter(filterTodos({ group })).length;
+
+      return res.status(200).json({ list: todos, isEmpty });
     case "POST":
       const newTodo = await addData("todos", body);
       return res.status(201).json(newTodo);

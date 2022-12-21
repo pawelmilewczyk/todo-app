@@ -1,8 +1,14 @@
-import { Filters, SearchParams } from "types/filters";
+import { SearchParams } from "types/filters";
 
-export const routes = {
+export const navRoutes = {
   home: "/",
   todos: "/todos",
+};
+
+export const routes = {
+  ...navRoutes,
+  newGroup: "/todos/new-group",
+  newTask: "/todos/new-task",
 };
 
 export const getGroupRoute = (group: string) => `${routes.todos}/${group}`;

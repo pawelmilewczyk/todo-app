@@ -3,7 +3,7 @@ import TodosList from "components/todos/TodosList";
 import { getTodosListRoute } from "consts/routes";
 import { SearchParams } from "types/filters";
 import { PageProps } from "types/pages";
-import { TodoInterface } from "types/todos";
+import { TodosFetchInterface } from "types/todos";
 import fetchData from "utils/fetchData";
 import { searchParamsToFilters } from "utils/searchParams";
 
@@ -11,10 +11,10 @@ interface Params {
   group: string;
 }
 
-async function fetchTodos(group: string, filters: SearchParams) {
-  const { response } = await fetchData<TodoInterface[]>({
+async function fetchTodoData(group: string, filters: SearchParams) {
+  const { response } = await fetchData<TodosFetchInterface>({
     url: getTodosListRoute(group, filters),
-    cache: "no-store",
+    cache: "no-cache",
   });
   return response;
 }
@@ -23,15 +23,20 @@ async function TodosListPage({
   params,
   searchParams,
 }: PageProps<Params, SearchParams>) {
-  const todos = await fetchTodos(params.group, searchParams);
+  const data = await fetchTodoData(params.group, searchParams);
+  const filters = searchParamsToFilters(searchParams);
 
   return (
-    <main className="text-white px-4 flex flex-col h-full overflow-auto gap-y-4">
+    <main className="text-white flex flex-col h-full overflow-auto gap-y-4 ">
       <h1 className="font-medium text-md text-center uppercase">
         {params.group}
       </h1>
-      <TodosFilters {...searchParamsToFilters(searchParams)} />
-      {todos ? <TodosList todos={todos} /> : "Could not load todos"}
+      <TodosFilters {...filters} />
+      {data ? (
+        <TodosList data={data} filters={filters} />
+      ) : (
+        "Could not load todos"
+      )}
     </main>
   );
 }

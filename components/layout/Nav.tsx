@@ -1,6 +1,6 @@
 "use client";
 
-import { routes } from "consts/routes";
+import { navRoutes } from "consts/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,12 +8,12 @@ function Nav() {
   const pathname = usePathname();
 
   const isNestedPathActive = (href: string) => {
-    return href !== routes.home && !!pathname?.startsWith(href);
+    return href !== navRoutes.home && !!pathname?.startsWith(href);
   };
 
   return (
     <nav className="flex items-center justify-center bg-zinc-600 border-b border-zinc-500">
-      {Object.entries(routes).map(([name, href]) => (
+      {Object.entries(navRoutes).map(([name, href]) => (
         <Link
           key={name}
           href={href}
