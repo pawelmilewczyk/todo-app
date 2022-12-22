@@ -13,7 +13,7 @@ export const routes = {
 
 export const getGroupRoute = (group: string) => `${routes.todos}/${group}`;
 
-export const getEditGroupRoute = (group: string, id: string) =>
+export const getEditTodoRoute = (group: string, id: string) =>
   `${getGroupRoute(group)}/${id}`;
 
 export const getTodosListRoute = (group: string, filters?: SearchParams) => {

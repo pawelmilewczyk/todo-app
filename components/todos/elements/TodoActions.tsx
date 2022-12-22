@@ -1,4 +1,4 @@
-import { getEditGroupRoute } from "consts/routes";
+import { getEditTodoRoute } from "consts/routes";
 import { DeleteIcon } from "icons/DeleteIcon";
 import { EditIcon } from "icons/EditIcon";
 import { useRouter } from "next/navigation";
@@ -11,7 +11,7 @@ function TodoActions({ todo: { group, id }, className }: TodoElementProps) {
     {
       label: "Edit",
       Icon: EditIcon,
-      onClick: () => push(getEditGroupRoute(group, id)),
+      onClick: () => push(getEditTodoRoute(group, id)),
     },
     { label: "Delete", Icon: DeleteIcon, onClick: () => {} },
   ];

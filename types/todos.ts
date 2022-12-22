@@ -11,6 +11,8 @@ export interface TodoInterface {
   completed: boolean;
 }
 
+export type NewTodoInterface = Omit<TodoInterface, "id" | "completed">;
+
 export interface TodosFetchInterface {
   list: TodoInterface[];
   isEmpty: boolean;
