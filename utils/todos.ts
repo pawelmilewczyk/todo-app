@@ -64,6 +64,11 @@ export const sortTodos = (a: TodoInterface, b: TodoInterface) => {
   return a.completed > b.completed ? 1 : -1;
 };
 
+export const isTimeValid = (time?: string) => {
+  if (!time) return false;
+  return !!time.match(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
+};
+
 export const formatDate = (
   dateAsString: string | undefined,
   time: string | undefined,
@@ -71,7 +76,7 @@ export const formatDate = (
 ) => {
   if (!dateAsString) return null;
 
-  const date = time
+  const date = isTimeValid(time)
     ? new Date(`${dateAsString}, ${time}`)
     : new Date(dateAsString);
 
@@ -90,7 +95,7 @@ export const formatDate = (
         formattedDate = formatDistance(date, Date.now(), { addSuffix: true });
       }
 
-      if (time) {
+      if (isTimeValid(time)) {
         formattedDate = `${formattedDate}, ${time}`;
       }
     }
