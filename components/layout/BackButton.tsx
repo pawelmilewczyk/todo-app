@@ -1,7 +1,7 @@
 "use client";
 
 import { routes } from "consts/routes";
-import { ChevronIcon } from "icons/ChevronLeft";
+import ChevronIcon from "icons/ChevronIcon";
 import { usePathname, useRouter } from "next/navigation";
 
 function BackButton() {
@@ -21,7 +21,7 @@ function BackButton() {
       className="mt-3 absolute left-4 top-0 cursor-pointer p-1 text-white leading-none rounded-full outline-none
     hover:bg-zinc-600 active:scale-95 transition focus-visible:outline-zinc-300"
     >
-      <ChevronIcon />
+      <ChevronIcon size="md" />
     </button>
   ) : null;
 }

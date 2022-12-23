@@ -1,8 +1,8 @@
 import { defaultFilters } from "consts/filters";
 import { staticGroups } from "consts/groups";
 import { getGroupRoute, getTodosListRoute } from "consts/routes";
-import { DeleteIcon } from "icons/DeleteIcon";
-import { EditIcon } from "icons/EditIcon";
+import DeleteIcon from "icons/DeleteIcon";
+import EditIcon from "icons/EditIcon";
 import Link from "next/link";
 import { TodoGroupInterface } from "types/todos";
 import { filtersToSearchParams } from "utils/searchParams";
@@ -24,10 +24,10 @@ function TodoGroups({ groups }: Props) {
               className="p-1 hover:text-zinc-100 overflow-hidden"
               href={getGroupRoute(name)}
             >
-              <EditIcon size="1rem" />
+              <EditIcon />
             </Link>
             <button className="p-1 hover:text-zinc-100">
-              <DeleteIcon size="1rem" />
+              <DeleteIcon />
             </button>
           </div>
           <Link

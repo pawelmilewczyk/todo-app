@@ -2,7 +2,6 @@
 
 import { getEditTodoRoute, getTodosListRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
-import { FormEventHandler } from "react";
 import { TodoPageParams } from "types/pages";
 import {
   NewTodoInterface,
@@ -30,13 +29,15 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
     if (ok) push(getTodosListRoute(group));
   };
 
-  return (
+  return todo ? (
     <TodoForm
       groups={groups}
       values={todo}
       title="Edit todo"
       onSubmit={onSubmit}
     />
+  ) : (
+    <p>Something went wrong</p>
   );
 }
 

@@ -9,12 +9,16 @@ import {
 } from "date-fns";
 
 export const formatDate = (
-  deadline: string | undefined,
+  dateAsString: string | undefined,
+  time: string | undefined,
   completed: boolean
 ) => {
-  if (!deadline) return null;
+  if (!dateAsString) return null;
 
-  const date = new Date(deadline);
+  const date = time
+    ? new Date(`${dateAsString}, ${time}`)
+    : new Date(dateAsString);
+
   if (isValid(date)) {
     let formattedDate = format(date, "yyyy/MM/dd");
     const isPast = isBefore(date, Date.now()) && !isToday(date);
@@ -30,8 +34,7 @@ export const formatDate = (
         formattedDate = formatDistance(date, Date.now(), { addSuffix: true });
       }
 
-      const time = format(date, "HH:mm");
-      if (time !== "00:00") {
+      if (time) {
         formattedDate = `${formattedDate}, ${time}`;
       }
     }

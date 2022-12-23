@@ -1,3 +1,3 @@
 export interface IconInterface {
-  size?: string | number;
+  size?: "sm" | "md" | "lg";
 }

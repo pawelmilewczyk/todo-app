@@ -2,10 +2,14 @@
 
 import { getTodosListRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
-import { FormEventHandler } from "react";
 import { NewTodoInterface, TodoGroupInterface } from "types/todos";
 import fetchData from "utils/fetchData";
 import TodoForm from "./elements/TodoForm";
+
+const defaultValues: NewTodoInterface = {
+  title: "",
+  group: "",
+};
 
 interface Props {
   groups: TodoGroupInterface[];
@@ -14,16 +18,23 @@ interface Props {
 function CreateTodo({ groups }: Props) {
   const { push } = useRouter();
 
-  const onSubmit = async ({ title, group, deadline }: NewTodoInterface) => {
+  const onSubmit = async ({ title, group, date, time }: NewTodoInterface) => {
     const { ok } = await fetchData({
       url: `/todos`,
       method: "POST",
-      body: { title, group, deadline },
+      body: { title, group, date, time, completed: false },
     });
     if (ok) push(getTodosListRoute(group));
   };
 
-  return <TodoForm groups={groups} title="New todo" onSubmit={onSubmit} />;
+  return (
+    <TodoForm
+      groups={groups}
+      values={defaultValues}
+      title="New todo"
+      onSubmit={onSubmit}
+    />
+  );
 }
 
 export default CreateTodo;

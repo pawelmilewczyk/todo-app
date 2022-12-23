@@ -13,7 +13,7 @@ async function fetchTodo(group: string, id: string) {
 
 async function fetchGroups() {
   const { response } = await fetchData<TodoGroupInterface[]>({
-    url: "/groups",
+    url: "todos/groups",
   });
   return response ?? [];
 }

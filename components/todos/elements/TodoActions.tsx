@@ -1,6 +1,6 @@
 import { getEditTodoRoute } from "consts/routes";
-import { DeleteIcon } from "icons/DeleteIcon";
-import { EditIcon } from "icons/EditIcon";
+import DeleteIcon from "icons/DeleteIcon";
+import EditIcon from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { TodoElementProps } from "./elements.types";
 
@@ -28,7 +28,7 @@ function TodoActions({ todo: { group, id }, className }: TodoElementProps) {
             aria-label={label}
             className="flex items-center justify-center h-full w-full px-2 outline-none transition-colors pointer-events-none focus:bg-zinc-500"
           >
-            <Icon />
+            <Icon size="md" />
           </button>
         </div>
       ))}

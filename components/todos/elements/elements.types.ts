@@ -12,7 +12,7 @@ export interface TodoElementProps {
 
 export interface TodoFormProps {
   groups: TodoGroupInterface[];
-  values?: NewTodoInterface;
+  values: NewTodoInterface;
   title: string;
   onSubmit: (values: NewTodoInterface) => void;
 }

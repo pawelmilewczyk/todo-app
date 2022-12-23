@@ -3,7 +3,7 @@
 import { TodoInterface } from "types/todos";
 import Actions from "./elements/TodoActions";
 import Checkbox from "./elements/TodoCheckbox";
-import Deadline from "./elements/TodoDeadline";
+import Deadline from "./elements/TodoDate";
 import TodoLabel from "./elements/TodoLabel";
 
 function SingleTodo(todo: TodoInterface) {

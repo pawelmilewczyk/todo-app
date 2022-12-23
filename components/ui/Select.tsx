@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronIcon } from "icons/ChevronLeft";
+import { colors } from "consts/style";
+import ChevronIcon from "icons/ChevronIcon";
 import {
   ChangeEventHandler,
   DetailedHTMLProps,
@@ -50,7 +51,7 @@ function Select({
         {label}
       </label>
       <span className="absolute top-8 right-3 z-10 -rotate-90 pointer-events-none">
-        <ChevronIcon size="1rem" />
+        <ChevronIcon />
       </span>
       <select
         id={id}
@@ -58,9 +59,9 @@ function Select({
         aria-label={label}
         value={value}
         onChange={onChange}
-        style={{ color: placeholder && !value ? "rgb(161 161 170)" : "" }}
+        style={{ color: placeholder && !value ? colors.gray : colors.white }}
         className="relative bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full outline-none appearance-none
-        focus:border-zinc-300"
+        focus:border-zinc-400"
         {...props}
       >
         {options.map(({ id, name }) => (
