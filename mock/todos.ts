@@ -6,7 +6,7 @@ export const TODOS: TodoInterface[] = [
     id: "1",
     title: "Apples",
     group: "shopping",
-    completed: false,
+    completed: true,
   },
   {
     id: "2",
@@ -41,6 +41,14 @@ export const TODOS: TodoInterface[] = [
     group: "learning",
     completed: false,
     date: getTodayDate(),
+    time: "16:00",
+  },
+  {
+    id: "7",
+    title: "english",
+    group: "learning",
+    completed: true,
+    date: "2022-12-19",
   },
 ];
 

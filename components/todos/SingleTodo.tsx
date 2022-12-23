@@ -1,12 +1,15 @@
 "use client";
 
+import { TODOS } from "mock/todos";
 import { TodoInterface } from "types/todos";
+import { sortTodos } from "utils/todos";
 import Actions from "./elements/TodoActions";
 import Checkbox from "./elements/TodoCheckbox";
 import Deadline from "./elements/TodoDate";
 import TodoLabel from "./elements/TodoLabel";
 
 function SingleTodo(todo: TodoInterface) {
+  console.log(TODOS.sort(sortTodos));
   return (
     <div>
       <div className="grid grid-cols-[min-content_1fr_min-content] gap-x-2 items-center justify-between h-full overflow-hidden bg-zinc-600 rounded-md">

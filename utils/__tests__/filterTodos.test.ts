@@ -23,12 +23,6 @@ describe("filterTodos", () => {
     const filtered = TODOS.filter(filterTodos(query));
     expect(filtered).toMatchObject([
       {
-        id: "1",
-        title: "Apples",
-        group: "shopping",
-        completed: false,
-      },
-      {
         id: "3",
         title: "Bananas",
         group: "shopping",
@@ -68,6 +62,14 @@ describe("filterTodos", () => {
         group: "learning",
         completed: false,
         date: getTodayDate(),
+        time: "16:00",
+      },
+      {
+        id: "7",
+        title: "english",
+        group: "learning",
+        completed: true,
+        date: "2022-12-19",
       },
     ]);
   });
@@ -89,6 +91,7 @@ describe("filterTodos", () => {
         group: "learning",
         completed: false,
         date: getTodayDate(),
+        time: "16:00",
       },
     ]);
   });
