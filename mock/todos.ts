@@ -1,80 +1,47 @@
-import { format } from "date-fns";
 import { TodoGroupInterface, TodoInterface } from "types/todos";
+import { getTodayDate } from "utils/dates";
 
-export const TODO_LIST_DATA: TodoInterface[] = [
+export const TODOS: TodoInterface[] = [
   {
     id: "1",
-    title: "bread",
+    title: "Apples",
     group: "shopping",
-    completed: true,
-    date: "2022-12-16",
+    completed: false,
   },
   {
     id: "2",
-    title: "meat",
+    title: "Oranges",
     group: "shopping",
     completed: true,
-    date: "2022-12-17",
+    date: "2022-12-20",
   },
   {
     id: "3",
-    title: "50 push-ups",
-    group: "gym",
+    title: "Bananas",
+    group: "shopping",
     completed: false,
-    date: "2022-12-15",
   },
   {
     id: "4",
-    title: "20 pull-ups",
-    group: "gym",
+    title: "clean bathroom",
+    group: "home",
     completed: false,
-    date: "2022-12-16",
+    date: "2022-12-22",
   },
   {
     id: "5",
-    title: "100 squats",
+    title: "100 push-ups",
     group: "gym",
     completed: false,
-    date: "2022-12-20",
-  },
-  { id: "6", title: "clean bathroom", group: "home", completed: true },
-  {
-    id: "7",
-    title: "wash dog",
-    group: "home",
-    completed: false,
-    date: format(Date.now(), "yyyy-MM-dd"),
+    date: getTodayDate(),
   },
   {
-    id: "8",
-    title: "water flowers",
-    group: "home",
-    completed: false,
-    date: format(Date.now(), "yyyy-MM-dd"),
-  },
-  { id: "9", title: "milk", group: "shopping", completed: false },
-  {
-    id: "10",
-    title: "water",
-    group: "shopping",
-    completed: false,
-    date: format(Date.now(), "yyyy-MM-dd"),
-  },
-  {
-    id: "11",
-    title: "vegetables",
-    group: "shopping",
-    completed: false,
-    date: format(Date.now(), "yyyy-MM-dd"),
-  },
-  {
-    id: "12",
-    title: "practice spanish",
+    id: "6",
+    title: "spanish",
     group: "learning",
-    completed: true,
-    date: format(Date.now(), "yyyy-MM-dd"),
+    completed: false,
+    date: getTodayDate(),
   },
-  { id: "13", title: "english homework", group: "learning", completed: true },
 ];
 
 export const TODO_GROUPS: TodoGroupInterface[] = [

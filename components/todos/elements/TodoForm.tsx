@@ -3,7 +3,7 @@ import Input from "components/ui/Input";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { NewTodoInterface } from "types/todos";
 import { TodoFormProps } from "./elements.types";
-import { format } from "date-fns";
+import { getTodayDate } from "utils/dates";
 
 const inputNames: Array<keyof NewTodoInterface> = [
   "title",
@@ -35,7 +35,7 @@ function TodoForm({ groups, values, onSubmit, title }: TodoFormProps) {
   const onTimeChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
     setTime(target.value);
     if (!date) {
-      setDate(format(Date.now(), "yyyy-MM-dd"));
+      setDate(getTodayDate());
     }
   };
 
