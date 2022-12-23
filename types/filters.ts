@@ -3,8 +3,11 @@ export enum StatusFilters {
   All = "all",
 }
 
-export interface Filters {
+export interface Filters
+  extends Partial<Record<string, string | boolean | number>> {
   completed?: boolean;
 }
 
-export type SearchParams = Partial<Record<keyof Filters, string>>;
+export type SearchParameter = string | string[] | undefined;
+
+export type SearchParams = Record<keyof Required<Filters>, SearchParameter>;

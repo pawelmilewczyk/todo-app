@@ -1,8 +1,17 @@
 import { StaticGroups } from "consts/groups";
-import { getTime, isToday } from "date-fns";
 import { NextApiRequest } from "next";
 import { TodoInterface } from "types/todos";
 import { searchParamsToFilters } from "./searchParams";
+import {
+  format,
+  isBefore,
+  getTime,
+  isValid,
+  isToday,
+  isTomorrow,
+  isYesterday,
+  formatDistance,
+} from "date-fns";
 
 export const filterTodos =
   (query: NextApiRequest["query"]) => (todo: TodoInterface) => {
@@ -53,4 +62,40 @@ export const sortTodos = (a: TodoInterface, b: TodoInterface) => {
     return compareStringAsDates("asc", [a.date, b.date]);
   }
   return a.completed > b.completed ? 1 : -1;
+};
+
+export const formatDate = (
+  dateAsString: string | undefined,
+  time: string | undefined,
+  completed: boolean
+) => {
+  if (!dateAsString) return null;
+
+  const date = time
+    ? new Date(`${dateAsString}, ${time}`)
+    : new Date(dateAsString);
+
+  if (isValid(date)) {
+    let formattedDate = format(date, "yyyy/MM/dd");
+    const isPast = isBefore(date, Date.now()) && !isToday(date);
+
+    if (!completed) {
+      if (isToday(date)) {
+        formattedDate = "Today";
+      } else if (isTomorrow(date)) {
+        formattedDate = "Tomorrow";
+      } else if (isYesterday(date)) {
+        formattedDate = "Yesterday";
+      } else if (isPast) {
+        formattedDate = formatDistance(date, Date.now(), { addSuffix: true });
+      }
+
+      if (time) {
+        formattedDate = `${formattedDate}, ${time}`;
+      }
+    }
+
+    return { formattedDate, isPast, isToday: isToday(date) };
+  }
+  return null;
 };

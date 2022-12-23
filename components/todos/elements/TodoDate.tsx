@@ -1,6 +1,6 @@
 import { colors } from "consts/style";
 import { useMemo } from "react";
-import { formatDate } from "../todos.utils";
+import { formatDate } from "utils/todos";
 import { TodoElementProps } from "./elements.types";
 
 function TodoDate({
