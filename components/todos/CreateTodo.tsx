@@ -18,13 +18,13 @@ interface Props {
 function CreateTodo({ groups }: Props) {
   const { push } = useRouter();
 
-  const onSubmit = async ({ title, group, date, time }: NewTodoInterface) => {
+  const onSubmit = async (props: NewTodoInterface) => {
     const { ok } = await fetchData({
       url: `/todos`,
       method: "POST",
-      body: { title, group, date, time, completed: false },
+      body: { ...props, completed: false },
     });
-    if (ok) push(getTodosListRoute(group));
+    if (ok) push(getTodosListRoute(props.group));
   };
 
   return (

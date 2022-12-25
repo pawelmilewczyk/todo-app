@@ -13,15 +13,13 @@ const handler: NextApiHandler = async ({ method, body, query }, res) => {
       }
       return res
         .status(404)
-        .json({ message: `Couldn't get the task. Try again.` });
+        .json({ message: `Todo with id ${id} does not exist` });
     case "PUT":
       const updatedTodo = await updateData("todos", id, body);
       if (updatedTodo) {
         return res.status(200).json(updatedTodo);
       }
-      return res
-        .status(404)
-        .json({ message: `Couldn't update the task. Try again.` });
+      return res.status(404).json({ message: `Couldn't update the task` });
     case "DELETE":
       await deleteData("todos", { key: "id", value: id });
       res.status(200);

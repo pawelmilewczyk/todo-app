@@ -20,13 +20,13 @@ interface EditTodoProps {
 function EditTodo({ params, todo, groups }: EditTodoProps) {
   const { push } = useRouter();
 
-  const onSubmit = async ({ title, group }: NewTodoInterface) => {
+  const onSubmit = async (props: NewTodoInterface) => {
     const { ok } = await fetchData({
       url: getEditTodoRoute(params.group, params.id),
       method: "PUT",
-      body: { title, group },
+      body: props,
     });
-    if (ok) push(getTodosListRoute(group));
+    if (ok) push(getTodosListRoute(props.group));
   };
 
   return todo ? (
