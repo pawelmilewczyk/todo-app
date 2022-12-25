@@ -10,7 +10,6 @@ import {
   isToday,
   isTomorrow,
   isYesterday,
-  formatDistance,
 } from "date-fns";
 
 export const filterTodos =
@@ -91,8 +90,6 @@ export const formatDate = (
         formattedDate = "Tomorrow";
       } else if (isYesterday(date)) {
         formattedDate = "Yesterday";
-      } else if (isPast) {
-        formattedDate = formatDistance(date, Date.now(), { addSuffix: true });
       }
 
       if (isTimeValid(time)) {

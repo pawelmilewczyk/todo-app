@@ -25,6 +25,11 @@ describe("formatDate", () => {
     );
   });
 
+  test("returns connected date with time [2022-12-22]", () => {
+    const { formattedDate } = formatDate("2022-12-22", "15:00", false) ?? {};
+    expect(formattedDate).toEqual("2022/12/22, 15:00");
+  });
+
   test("returns connected date with time [today]", () => {
     const { formattedDate } = formatDate(getTodayDate(), "15:00", false) ?? {};
     expect(formattedDate).toEqual(`Today, 15:00`);
@@ -40,11 +45,5 @@ describe("formatDate", () => {
     const yesterday = format(subDays(new Date(), 1), "yyyy-MM-dd");
     const { formattedDate } = formatDate(yesterday, "15:00", false) ?? {};
     expect(formattedDate).toEqual("Yesterday, 15:00");
-  });
-
-  test("returns correct label [5 days ago]", () => {
-    const pastDate = format(subDays(new Date(), 5), "yyyy-MM-dd");
-    const { formattedDate } = formatDate(pastDate, "15:00", false) ?? {};
-    expect(formattedDate).toEqual("5 days ago, 15:00");
   });
 });
