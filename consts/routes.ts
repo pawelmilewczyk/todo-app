@@ -25,7 +25,7 @@ export const routeWithFilters = (url: string, filters?: SearchParams) => {
   if (filters) {
     const params = new URLSearchParams();
     Object.entries(filters).forEach(([key, value]) => {
-      params.append(key, value);
+      if (typeof value === "string") params.append(key, value);
     });
     return `${url}?${params.toString()}`;
   }

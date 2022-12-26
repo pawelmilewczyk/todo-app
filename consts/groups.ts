@@ -1,4 +1,4 @@
-import { TodoGroupInterface } from "types/todos";
+import { NewGroupInterface, TodoGroupInterface } from "types/todos";
 
 export enum StaticGroups {
   Today = "today",
@@ -15,3 +15,5 @@ export const staticGroups: TodoGroupInterface[] = [
     name: StaticGroups.Scheduled,
   },
 ];
+
+export const groupInputs: Array<keyof NewGroupInterface> = ["name"];

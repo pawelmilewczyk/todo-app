@@ -3,6 +3,8 @@ export interface TodoGroupInterface {
   name: string;
 }
 
+export type NewGroupInterface = Omit<TodoGroupInterface, "id">;
+
 export interface TodoInterface {
   id: string;
   title: string;
