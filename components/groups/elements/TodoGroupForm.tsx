@@ -19,8 +19,8 @@ function TodoGroupForm({ values, onSubmit, title }: TodoGroupFormProps) {
       >
         <div className="text-zinc-100 p-6 grid gap-4 max-w-lg w-full mx-auto mb-2">
           <Input
-            label="Title"
-            name="title"
+            label="Name"
+            name="name"
             defaultValue={values.name}
             placeholder="Name your group"
             required

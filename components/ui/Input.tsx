@@ -24,10 +24,6 @@ function Input({
 
   const clearValue = () => setValue("");
 
-  if (type === "date") {
-    console.log({ value, initValue });
-  }
-
   return (
     <div className="relative flex flex-col gap-1">
       <label className="px-1 text-xs" htmlFor={id}>
@@ -46,7 +42,7 @@ function Input({
         type={type}
         value={value}
         onChange={handleChange}
-        style={{ color: !value && !initValue ? colors.gray : colors.white }}
+        style={{ color: !value ? colors.gray : colors.white }}
         className="bg-zinc-600 p-2 pr-8 rounded-md border border-zinc-600 block w-full outline-none focus:border-zinc-400"
         {...props}
       />

@@ -7,7 +7,7 @@ export type NewGroupInterface = Omit<TodoGroupInterface, "id">;
 
 export interface TodoInterface {
   id: string;
-  title: string;
+  name: string;
   group: TodoGroupInterface;
   date?: string;
   time?: string;

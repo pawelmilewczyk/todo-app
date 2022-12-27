@@ -33,7 +33,7 @@ function Select<T extends Option>({
     if (onChange) onChange(e);
   };
 
-  console.log({ options, defaultValue, value, initValue });
+  console.log({ value, initValue, defaultValue });
 
   return (
     <div className="relative flex flex-col gap-1">
@@ -50,8 +50,7 @@ function Select<T extends Option>({
         value={value}
         onChange={handleChange}
         style={{
-          color:
-            placeholder && !value && !initValue ? colors.gray : colors.white,
+          color: placeholder && !value ? colors.gray : colors.white,
         }}
         className="relative bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full outline-none appearance-none
         focus:border-zinc-400"

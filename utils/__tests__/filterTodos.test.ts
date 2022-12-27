@@ -10,7 +10,7 @@ describe("filterTodos", () => {
     expect(filtered).toMatchObject([
       {
         id: "4",
-        title: "clean bathroom",
+        name: "clean bathroom",
         group: { id: "3", name: "home" },
         completed: false,
         date: "2022-12-22",
@@ -24,7 +24,7 @@ describe("filterTodos", () => {
     expect(filtered).toMatchObject([
       {
         id: "3",
-        title: "Bananas",
+        name: "Bananas",
         group: { id: "1", name: "shopping" },
         completed: false,
       },
@@ -37,28 +37,28 @@ describe("filterTodos", () => {
     expect(filtered).toMatchObject([
       {
         id: "2",
-        title: "Oranges",
+        name: "Oranges",
         group: { id: "1", name: "shopping" },
         completed: true,
         date: "2022-12-20",
       },
       {
         id: "4",
-        title: "clean bathroom",
+        name: "clean bathroom",
         group: { id: "3", name: "home" },
         completed: false,
         date: "2022-12-22",
       },
       {
         id: "5",
-        title: "100 push-ups",
+        name: "100 push-ups",
         group: { id: "2", name: "gym" },
         completed: false,
         date: getTodayDate(),
       },
       {
         id: "6",
-        title: "spanish",
+        name: "spanish",
         group: { id: "5", name: "learning" },
         completed: false,
         date: getTodayDate(),
@@ -66,7 +66,7 @@ describe("filterTodos", () => {
       },
       {
         id: "7",
-        title: "english",
+        name: "english",
         group: { id: "5", name: "learning" },
         completed: true,
         date: "2022-12-19",
@@ -80,14 +80,14 @@ describe("filterTodos", () => {
     expect(filtered).toMatchObject([
       {
         id: "5",
-        title: "100 push-ups",
+        name: "100 push-ups",
         group: { id: "2", name: "gym" },
         completed: false,
         date: getTodayDate(),
       },
       {
         id: "6",
-        title: "spanish",
+        name: "spanish",
         group: { id: "5", name: "learning" },
         completed: false,
         date: getTodayDate(),

@@ -2,7 +2,7 @@
   "todos": [
     {
       "id": "1",
-      "title": "buy new clothes - additional text to check component",
+      "name": "buy new clothes - additional text to check component",
       "group": {
         "id": "5",
         "name": "home"
@@ -12,7 +12,7 @@
     },
     {
       "id": "2",
-      "title": "meat",
+      "name": "meat",
       "group": {
         "id": "3",
         "name": "shopping"
@@ -22,7 +22,7 @@
     },
     {
       "id": "3",
-      "title": "50 push-ups",
+      "name": "50 push-ups",
       "group": {
         "id": "4",
         "name": "gym"
@@ -32,7 +32,7 @@
     },
     {
       "id": "4",
-      "title": "20 pull-ups",
+      "name": "20 pull-ups",
       "group": {
         "id": "4",
         "name": "gym"
@@ -41,7 +41,7 @@
     },
     {
       "id": "5",
-      "title": "100 squats",
+      "name": "100 squats",
       "group": {
         "id": "4",
         "name": "gym"
@@ -51,7 +51,7 @@
     },
     {
       "id": "6",
-      "title": "clean bathroom",
+      "name": "clean bathroom",
       "group": {
         "id": "5",
         "name": "home"
@@ -61,7 +61,7 @@
     },
     {
       "id": "7",
-      "title": "wash dog",
+      "name": "wash dog",
       "group": {
         "id": "5",
         "name": "home"
@@ -71,7 +71,7 @@
     },
     {
       "id": "8",
-      "title": "water flowers",
+      "name": "water flowers",
       "group": {
         "id": "5",
         "name": "home"
@@ -80,7 +80,7 @@
     },
     {
       "id": "9",
-      "title": "juice",
+      "name": "juice",
       "group": {
         "id": "3",
         "name": "shopping"
@@ -91,7 +91,7 @@
     },
     {
       "id": "10",
-      "title": "water",
+      "name": "water",
       "group": {
         "id": "3",
         "name": "shopping"
@@ -101,7 +101,7 @@
     },
     {
       "id": "11",
-      "title": "vegetables",
+      "name": "vegetables",
       "group": {
         "id": "3",
         "name": "shopping"
@@ -111,7 +111,7 @@
     },
     {
       "id": "12",
-      "title": "practice spanish",
+      "name": "practice spanish",
       "group": {
         "id": "7",
         "name": "learning"
@@ -120,7 +120,7 @@
     },
     {
       "id": "13",
-      "title": "english homework",
+      "name": "english homework",
       "group": {
         "id": "7",
         "name": "learning"
@@ -129,7 +129,7 @@
     },
     {
       "id": "14",
-      "title": "cheese",
+      "name": "cheese",
       "group": {
         "id": "3",
         "name": "shopping"

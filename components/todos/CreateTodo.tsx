@@ -7,8 +7,8 @@ import fetchData from "utils/fetchData";
 import TodoForm from "./elements/TodoForm";
 
 const defaultValues: NewTodoInterface = {
-  title: "",
-  group: "",
+  name: "",
+  group: { name: "", id: "" },
 };
 
 interface Props {
@@ -24,7 +24,7 @@ function CreateTodo({ groups }: Props) {
       method: "POST",
       body: { ...props, completed: false },
     });
-    if (ok) push(getTodosListRoute(props.group));
+    if (ok) push(getTodosListRoute(props.group.name));
   };
 
   return (

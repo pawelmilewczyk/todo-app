@@ -6,7 +6,12 @@ import { getTodayDate } from "utils/dates";
 import { handleSubmit } from "utils/formSubmit";
 import { TodoFormProps } from "./elements.types";
 
-function TodoForm({ groups, values, onSubmit, title }: TodoFormProps) {
+function TodoForm({
+  groups,
+  values: { name, group, ...values },
+  onSubmit,
+  title,
+}: TodoFormProps) {
   const [date, setDate] = useState(values.date ?? "");
   const [time, setTime] = useState(values.time ?? "");
 
@@ -30,9 +35,9 @@ function TodoForm({ groups, values, onSubmit, title }: TodoFormProps) {
       >
         <div className="text-zinc-100 p-6 grid gap-4 max-w-lg w-full mx-auto mb-2">
           <Input
-            label="Title"
-            name="title"
-            defaultValue={values.title}
+            label="Name"
+            name="name"
+            defaultValue={name}
             placeholder="Name your task"
             required
           />
@@ -40,7 +45,7 @@ function TodoForm({ groups, values, onSubmit, title }: TodoFormProps) {
             options={groups}
             label="Group"
             name="group"
-            defaultValue={JSON.stringify(values.group)}
+            defaultValue={group.name && group.id ? JSON.stringify(group) : ""}
             placeholder="Select group"
             required
           />
