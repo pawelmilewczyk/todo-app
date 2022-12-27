@@ -40,7 +40,7 @@ function TodoForm({ groups, values, onSubmit, title }: TodoFormProps) {
             options={groups}
             label="Group"
             name="group"
-            defaultValue={values.group}
+            defaultValue={JSON.stringify(values.group)}
             placeholder="Select group"
             required
           />

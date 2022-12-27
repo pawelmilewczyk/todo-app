@@ -3,61 +3,88 @@
     {
       "id": "1",
       "title": "buy new clothes - additional text to check component",
-      "group": "home",
+      "group": {
+        "id": "5",
+        "name": "home"
+      },
       "date": "2022-12-24",
       "completed": false
     },
     {
       "id": "2",
       "title": "meat",
-      "group": "shopping",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
       "date": "2022-12-16",
       "completed": true
     },
     {
       "id": "3",
       "title": "50 push-ups",
-      "group": "gym",
+      "group": {
+        "id": "4",
+        "name": "gym"
+      },
       "date": "2022-12-16",
       "completed": false
     },
     {
       "id": "4",
       "title": "20 pull-ups",
-      "group": "gym",
+      "group": {
+        "id": "4",
+        "name": "gym"
+      },
       "completed": false
     },
     {
       "id": "5",
       "title": "100 squats",
-      "group": "gym",
+      "group": {
+        "id": "4",
+        "name": "gym"
+      },
       "date": "2022-12-16",
       "completed": false
     },
     {
       "id": "6",
       "title": "clean bathroom",
-      "group": "home",
+      "group": {
+        "id": "5",
+        "name": "home"
+      },
       "date": "2022-12-14",
       "completed": true
     },
     {
       "id": "7",
       "title": "wash dog",
-      "group": "home",
+      "group": {
+        "id": "5",
+        "name": "home"
+      },
       "date": "2022-12-13",
       "completed": true
     },
     {
       "id": "8",
       "title": "water flowers",
-      "group": "home",
+      "group": {
+        "id": "5",
+        "name": "home"
+      },
       "completed": true
     },
     {
       "id": "9",
       "title": "juice",
-      "group": "shopping",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
       "date": "2022-12-19",
       "time": "17:05",
       "completed": true
@@ -65,33 +92,48 @@
     {
       "id": "10",
       "title": "water",
-      "group": "shopping",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
       "date": "2022-12-15",
       "completed": true
     },
     {
       "id": "11",
       "title": "vegetables",
-      "group": "shopping",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
       "date": "2022-12-15",
       "completed": true
     },
     {
       "id": "12",
       "title": "practice spanish",
-      "group": "learning",
+      "group": {
+        "id": "7",
+        "name": "learning"
+      },
       "completed": true
     },
     {
       "id": "13",
       "title": "english homework",
-      "group": "learning",
+      "group": {
+        "id": "7",
+        "name": "learning"
+      },
       "completed": true
     },
     {
       "id": "14",
       "title": "cheese",
-      "group": "shopping",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
       "date": "2022-12-17",
       "completed": true
     }

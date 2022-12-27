@@ -12,9 +12,10 @@ function Input({
   defaultValue,
   onChange,
   type,
+  value: initValue,
   ...props
 }: InputProps) {
-  const [value, setValue] = useState(defaultValue ?? "");
+  const [value, setValue] = useState(initValue ?? defaultValue ?? "");
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
@@ -22,6 +23,10 @@ function Input({
   };
 
   const clearValue = () => setValue("");
+
+  if (type === "date") {
+    console.log({ value, initValue });
+  }
 
   return (
     <div className="relative flex flex-col gap-1">
@@ -41,7 +46,7 @@ function Input({
         type={type}
         value={value}
         onChange={handleChange}
-        style={{ color: !value && !props.value ? colors.gray : colors.white }}
+        style={{ color: !value && !initValue ? colors.gray : colors.white }}
         className="bg-zinc-600 p-2 pr-8 rounded-md border border-zinc-600 block w-full outline-none focus:border-zinc-400"
         {...props}
       />

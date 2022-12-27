@@ -11,7 +11,7 @@ describe("filterTodos", () => {
       {
         id: "4",
         title: "clean bathroom",
-        group: "home",
+        group: { id: "3", name: "home" },
         completed: false,
         date: "2022-12-22",
       },
@@ -25,7 +25,7 @@ describe("filterTodos", () => {
       {
         id: "3",
         title: "Bananas",
-        group: "shopping",
+        group: { id: "1", name: "shopping" },
         completed: false,
       },
     ]);
@@ -38,28 +38,28 @@ describe("filterTodos", () => {
       {
         id: "2",
         title: "Oranges",
-        group: "shopping",
+        group: { id: "1", name: "shopping" },
         completed: true,
         date: "2022-12-20",
       },
       {
         id: "4",
         title: "clean bathroom",
-        group: "home",
+        group: { id: "3", name: "home" },
         completed: false,
         date: "2022-12-22",
       },
       {
         id: "5",
         title: "100 push-ups",
-        group: "gym",
+        group: { id: "2", name: "gym" },
         completed: false,
         date: getTodayDate(),
       },
       {
         id: "6",
         title: "spanish",
-        group: "learning",
+        group: { id: "5", name: "learning" },
         completed: false,
         date: getTodayDate(),
         time: "16:00",
@@ -67,7 +67,7 @@ describe("filterTodos", () => {
       {
         id: "7",
         title: "english",
-        group: "learning",
+        group: { id: "5", name: "learning" },
         completed: true,
         date: "2022-12-19",
       },
@@ -81,14 +81,14 @@ describe("filterTodos", () => {
       {
         id: "5",
         title: "100 push-ups",
-        group: "gym",
+        group: { id: "2", name: "gym" },
         completed: false,
         date: getTodayDate(),
       },
       {
         id: "6",
         title: "spanish",
-        group: "learning",
+        group: { id: "5", name: "learning" },
         completed: false,
         date: getTodayDate(),
         time: "16:00",

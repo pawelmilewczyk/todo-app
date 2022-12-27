@@ -14,8 +14,8 @@ import {
 
 export const filterTodos =
   (query: NextApiRequest["query"]) => (todo: TodoInterface) => {
-    const { group: queryGroup, ...searchParams } = query;
-    const group = queryGroup?.toString().toLowerCase();
+    const { group, ...searchParams } = query;
+    const queryGroup = group?.toString().toLowerCase();
     const filters = searchParamsToFilters(searchParams);
 
     let isValid = true;
@@ -24,12 +24,12 @@ export const filterTodos =
       isValid = isValid && todo.completed === filters.completed;
     }
 
-    if (group === StaticGroups.Scheduled) {
+    if (queryGroup === StaticGroups.Scheduled) {
       isValid = isValid && !!todo.date;
-    } else if (group === StaticGroups.Today) {
+    } else if (queryGroup === StaticGroups.Today) {
       isValid = isValid && !!todo.date && isToday(new Date(todo.date));
     } else {
-      isValid = isValid && group === todo.group.toLowerCase();
+      isValid = isValid && queryGroup === todo.group.name.toLowerCase();
     }
     return isValid;
   };

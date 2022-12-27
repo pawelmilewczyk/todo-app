@@ -12,9 +12,11 @@ function Select<T extends Option>({
   id = name,
   defaultValue,
   placeholder,
+  value: initValue,
+  onChange,
   ...props
 }: SelectProps<T>) {
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(initValue ?? defaultValue ?? "");
 
   const options = placeholder
     ? [
@@ -26,12 +28,12 @@ function Select<T extends Option>({
       ]
     : initOptions;
 
-  const onChange: ChangeEventHandler<HTMLSelectElement> = ({
-    target: { value },
-  }) => {
-    const objectValue = JSON.parse(value);
-    setValue(objectValue as T);
+  const handleChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setValue(e.target.value);
+    if (onChange) onChange(e);
   };
+
+  console.log({ options, defaultValue, value, initValue });
 
   return (
     <div className="relative flex flex-col gap-1">
@@ -45,12 +47,15 @@ function Select<T extends Option>({
         id={id}
         name={name}
         aria-label={label}
-        onChange={onChange}
-        style={{ color: placeholder && !value ? colors.gray : colors.white }}
+        value={value}
+        onChange={handleChange}
+        style={{
+          color:
+            placeholder && !value && !initValue ? colors.gray : colors.white,
+        }}
         className="relative bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full outline-none appearance-none
         focus:border-zinc-400"
         {...props}
-        value={JSON.stringify(value)}
       >
         {options.map((option) => (
           <option

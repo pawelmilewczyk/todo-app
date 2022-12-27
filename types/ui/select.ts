@@ -6,15 +6,10 @@ export interface Option {
 }
 
 export interface SelectProps<T extends Option>
-  extends Omit<
-    DetailedHTMLProps<
-      SelectHTMLAttributes<HTMLSelectElement>,
-      HTMLSelectElement
-    >,
-    "defaultValue" | "value"
+  extends DetailedHTMLProps<
+    SelectHTMLAttributes<HTMLSelectElement>,
+    HTMLSelectElement
   > {
   label: string;
   options: T[];
-  defaultValue?: T;
-  value?: T;
 }
