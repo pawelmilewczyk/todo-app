@@ -23,7 +23,7 @@ async function EditTodoPage({ params }: PageProps<TodoPageParams>) {
   const groups = await fetchGroups();
 
   return todo ? (
-    <EditTodo todo={todo} groups={groups} params={params} />
+    <EditTodo todo={todo} groups={groups} />
   ) : (
     <p>Something went wrong</p>
   );

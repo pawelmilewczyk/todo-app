@@ -2,20 +2,8 @@
 
 import { colors } from "consts/style";
 import CloseIcon from "icons/CloseIcon";
-import {
-  ChangeEventHandler,
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-  useState,
-} from "react";
-
-interface InputProps
-  extends DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
-  label: string;
-}
+import { ChangeEventHandler, useState } from "react";
+import { InputProps } from "types/ui/input";
 
 function Input({
   label,

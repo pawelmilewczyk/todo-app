@@ -1,5 +1,14 @@
 import { FormEventHandler } from "react";
 
+function isJsonString(string: string) {
+  try {
+    JSON.parse(string);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
 export const handleSubmit =
   <T extends {}>(
     inputs: Array<keyof T>,
@@ -9,13 +18,15 @@ export const handleSubmit =
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
 
-    const values = inputs.reduce(
-      (prev, value) => ({
+    console.log(inputs.map((value) => formData.get(value as string)));
+
+    const values = inputs.reduce((prev, value) => {
+      const input = formData.get(value as string)?.toString() ?? "";
+      return {
         ...prev,
-        [value]: formData.get(value as string)?.toString(),
-      }),
-      {}
-    ) as T;
+        [value]: isJsonString(input) ? JSON.parse(input) : input,
+      };
+    }, {}) as T;
 
     // onSubmit(values);
     console.log(values);

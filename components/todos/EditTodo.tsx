@@ -2,7 +2,6 @@
 
 import { getEditTodoRoute, getTodosListRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
-import { TodoPageParams } from "types/pages";
 import {
   NewTodoInterface,
   TodoGroupInterface,
@@ -12,21 +11,20 @@ import fetchData from "utils/fetchData";
 import TodoForm from "./elements/TodoForm";
 
 interface EditTodoProps {
-  params: TodoPageParams;
   groups: TodoGroupInterface[];
   todo: TodoInterface;
 }
 
-function EditTodo({ params, todo, groups }: EditTodoProps) {
+function EditTodo({ todo, groups }: EditTodoProps) {
   const { push } = useRouter();
 
   const onSubmit = async (props: NewTodoInterface) => {
     const { ok } = await fetchData({
-      url: getEditTodoRoute(params.group, params.id),
+      url: getEditTodoRoute(todo.group.name, todo.id),
       method: "PUT",
       body: props,
     });
-    if (ok) push(getTodosListRoute(props.group));
+    if (ok) push(getTodosListRoute(props.group.name));
   };
 
   return (

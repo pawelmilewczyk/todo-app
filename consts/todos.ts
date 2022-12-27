@@ -6,3 +6,8 @@ export const todoInputs: Array<keyof NewTodoInterface> = [
   "date",
   "time",
 ];
+
+export const todoDefaultValues = {
+  title: "",
+  group: {},
+};

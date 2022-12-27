@@ -2,23 +2,10 @@
 
 import { colors } from "consts/style";
 import ChevronIcon from "icons/ChevronIcon";
-import {
-  ChangeEventHandler,
-  DetailedHTMLProps,
-  SelectHTMLAttributes,
-  useState,
-} from "react";
+import { ChangeEventHandler, useState } from "react";
+import { Option, SelectProps } from "types/ui/select";
 
-interface SelectProps
-  extends DetailedHTMLProps<
-    SelectHTMLAttributes<HTMLSelectElement>,
-    HTMLSelectElement
-  > {
-  label: string;
-  options: { id: string; name: string }[];
-}
-
-function Select({
+function Select<T extends Option>({
   options: initOptions,
   label,
   name,
@@ -26,7 +13,7 @@ function Select({
   defaultValue,
   placeholder,
   ...props
-}: SelectProps) {
+}: SelectProps<T>) {
   const [value, setValue] = useState(defaultValue);
 
   const options = placeholder
@@ -42,7 +29,8 @@ function Select({
   const onChange: ChangeEventHandler<HTMLSelectElement> = ({
     target: { value },
   }) => {
-    setValue(value);
+    const objectValue = JSON.parse(value);
+    setValue(objectValue as T);
   };
 
   return (
@@ -57,16 +45,19 @@ function Select({
         id={id}
         name={name}
         aria-label={label}
-        value={value}
         onChange={onChange}
         style={{ color: placeholder && !value ? colors.gray : colors.white }}
         className="relative bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full outline-none appearance-none
         focus:border-zinc-400"
         {...props}
+        value={JSON.stringify(value)}
       >
-        {options.map(({ id, name }) => (
-          <option key={id} value={name !== placeholder ? name : ""}>
-            {name}
+        {options.map((option) => (
+          <option
+            key={option.id}
+            value={option.name !== placeholder ? JSON.stringify(option) : ""}
+          >
+            {option.name}
           </option>
         ))}
       </select>
