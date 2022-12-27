@@ -11,7 +11,7 @@ function TodoLabel({ todo: { title, group, id } }: TodoElementProps) {
   }) => {
     if (title !== value) {
       const { ok } = await fetchData({
-        url: `/todos/${group}/${id}`,
+        url: `todos/${group}/${id}`,
         method: "PUT",
         body: { title: value },
       });

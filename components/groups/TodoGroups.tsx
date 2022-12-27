@@ -19,17 +19,19 @@ function TodoGroups({ groups }: Props) {
           key={id}
           className="relative flex flex-col overflow-hidden rounded-md text-zinc-400"
         >
-          <div className="absolute top-0 right-0 overflow-hidden flex">
-            <Link
-              className="p-1 hover:text-zinc-100 overflow-hidden"
-              href={getGroupRoute(name)}
-            >
-              <EditIcon />
-            </Link>
-            <button className="p-1 hover:text-zinc-100">
-              <DeleteIcon />
-            </button>
-          </div>
+          {staticGroups.every((group) => group.name !== name) && (
+            <div className="absolute top-0 right-0 overflow-hidden flex">
+              <Link
+                className="p-1 hover:text-zinc-100 overflow-hidden"
+                href={getGroupRoute(name)}
+              >
+                <EditIcon />
+              </Link>
+              <button className="p-1 hover:text-zinc-100">
+                <DeleteIcon />
+              </button>
+            </div>
+          )}
           <Link
             className="py-10 bg-zinc-600 text-white text-center uppercase transition-colors hover:bg-zinc-500 outline-none focus-visible:bg-zinc-500 focus-visible:outline-zinc-400"
             href={getTodosListRoute(

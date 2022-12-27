@@ -20,7 +20,7 @@ function CreateTodo({ groups }: Props) {
 
   const onSubmit = async (props: NewTodoInterface) => {
     const { ok } = await fetchData({
-      url: `/todos`,
+      url: `todos`,
       method: "POST",
       body: { ...props, completed: false },
     });

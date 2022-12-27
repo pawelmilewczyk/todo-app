@@ -14,7 +14,7 @@ import TodoForm from "./elements/TodoForm";
 interface EditTodoProps {
   params: TodoPageParams;
   groups: TodoGroupInterface[];
-  todo: TodoInterface | undefined;
+  todo: TodoInterface;
 }
 
 function EditTodo({ params, todo, groups }: EditTodoProps) {
@@ -29,15 +29,13 @@ function EditTodo({ params, todo, groups }: EditTodoProps) {
     if (ok) push(getTodosListRoute(props.group));
   };
 
-  return todo ? (
+  return (
     <TodoForm
+      title="Edit todo"
       groups={groups}
       values={todo}
-      title="Edit todo"
       onSubmit={onSubmit}
     />
-  ) : (
-    <p>Something went wrong</p>
   );
 }
 

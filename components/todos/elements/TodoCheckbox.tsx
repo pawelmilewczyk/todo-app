@@ -13,7 +13,7 @@ function TodoCheckbox({
     target: { checked },
   }) => {
     const { ok } = await fetchData({
-      url: `/todos/${group}/${id}`,
+      url: `todos/${group}/${id}`,
       method: "PUT",
       body: { completed: checked },
     });

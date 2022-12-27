@@ -1,9 +1,9 @@
-import { addData, deleteData, getData, updateData } from "data/fileSystem";
+import { getData } from "data/fileSystem";
 import { NextApiHandler } from "next";
 import { filterTodos, sortTodos } from "utils/todos";
 
 // api/todos/[group]/list
-const handler: NextApiHandler = async ({ method, body, query }, res) => {
+const handler: NextApiHandler = async ({ method, query }, res) => {
   const group = query.group?.toString().toLowerCase();
 
   switch (method) {

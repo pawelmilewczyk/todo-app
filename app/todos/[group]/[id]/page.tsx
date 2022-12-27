@@ -5,7 +5,7 @@ import fetchData from "utils/fetchData";
 
 async function fetchTodo(group: string, id: string) {
   const { response } = await fetchData<TodoInterface>({
-    url: `/todos/${group}/${id}`,
+    url: `todos/${group}/${id}`,
     cache: "no-store",
   });
   return response;
@@ -22,7 +22,11 @@ async function EditTodoPage({ params }: PageProps<TodoPageParams>) {
   const todo = await fetchTodo(params.group, params.id);
   const groups = await fetchGroups();
 
-  return <EditTodo todo={todo} groups={groups} params={params} />;
+  return todo ? (
+    <EditTodo todo={todo} groups={groups} params={params} />
+  ) : (
+    <p>Something went wrong</p>
+  );
 }
 
 export default EditTodoPage;
