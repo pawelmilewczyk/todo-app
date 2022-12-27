@@ -18,8 +18,6 @@ export const handleSubmit =
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
 
-    console.log(inputs.map((value) => formData.get(value as string)));
-
     const values = inputs.reduce((prev, value) => {
       const input = formData.get(value as string)?.toString() ?? "";
       return {

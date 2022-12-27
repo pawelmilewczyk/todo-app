@@ -33,8 +33,6 @@ function Select<T extends Option>({
     if (onChange) onChange(e);
   };
 
-  console.log({ value, initValue, defaultValue });
-
   return (
     <div className="relative flex flex-col gap-1">
       <label className="px-1 text-xs" htmlFor={id}>
