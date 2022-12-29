@@ -10,6 +10,7 @@
   input[type="time"]::-webkit-calendar-picker-indicator {
     background-position: right;
     background-size: contain;
+    outline: none;
     cursor: pointer;
     position: absolute;
     bottom: 0;

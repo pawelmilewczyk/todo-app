@@ -1,6 +1,6 @@
 "use client";
 
-import { colors } from "consts/style";
+import { colorClasses } from "consts/style";
 import CloseIcon from "icons/CloseIcon";
 import { ChangeEventHandler, useState } from "react";
 import { InputProps } from "types/ui/input";
@@ -24,6 +24,8 @@ function Input({
 
   const clearValue = () => setValue("");
 
+  const textColor = !value ? colorClasses.text.gray : colorClasses.text.white;
+
   return (
     <div className="relative flex flex-col gap-1">
       <label className="px-1 text-xs" htmlFor={id}>
@@ -42,8 +44,7 @@ function Input({
         type={type}
         value={value}
         onChange={handleChange}
-        style={{ color: !value ? colors.gray : colors.white }}
-        className="bg-zinc-600 p-2 pr-8 rounded-md border border-zinc-600 block w-full outline-none focus:border-zinc-400"
+        className={`bg-zinc-600 ${textColor} p-2 pr-8 rounded-md border border-zinc-600 block w-full outline-none focus:border-zinc-400`}
         {...props}
       />
     </div>

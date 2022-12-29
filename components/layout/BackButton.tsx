@@ -1,28 +1,31 @@
 "use client";
 
+import IconButton from "components/ui/IconButton";
 import { routes } from "consts/routes";
 import ChevronIcon from "icons/ChevronIcon";
 import { usePathname, useRouter } from "next/navigation";
 
 function BackButton() {
-  const { replace, back } = useRouter();
+  const { push, back } = useRouter();
   const pathname = usePathname();
 
   const onClick = () => {
     const todosListRoute = /\/todos\/(.*?)\/list/;
-    if (pathname?.match(todosListRoute)) {
-      replace(routes.todos);
+    if (
+      pathname?.match(todosListRoute) ||
+      pathname === routes.newTask ||
+      pathname === routes.newGroup
+    ) {
+      push(routes.todos);
     } else back();
   };
 
   return pathname !== routes.todos ? (
-    <button
-      onClick={onClick}
-      className="mt-3 absolute left-4 top-0 cursor-pointer p-1 text-white leading-none rounded-full outline-none
-    hover:bg-zinc-600 active:scale-95 transition focus-visible:outline-zinc-300"
-    >
-      <ChevronIcon size="md" />
-    </button>
+    <div className="mt-3 absolute left-4 top-0">
+      <IconButton onClick={onClick}>
+        <ChevronIcon size="md" />
+      </IconButton>
+    </div>
   ) : null;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { colors } from "consts/style";
+import { colorClasses } from "consts/style";
 import ChevronIcon from "icons/ChevronIcon";
 import { ChangeEventHandler, useState } from "react";
 import { Option, SelectProps } from "types/ui/select";
@@ -33,6 +33,9 @@ function Select<T extends Option>({
     if (onChange) onChange(e);
   };
 
+  const textColor =
+    placeholder && !value ? colorClasses.text.gray : colorClasses.text.white;
+
   return (
     <div className="relative flex flex-col gap-1">
       <label className="px-1 text-xs" htmlFor={id}>
@@ -47,11 +50,7 @@ function Select<T extends Option>({
         aria-label={label}
         value={value}
         onChange={handleChange}
-        style={{
-          color: placeholder && !value ? colors.gray : colors.white,
-        }}
-        className="relative bg-zinc-600 p-2 rounded-md border border-zinc-600 block w-full outline-none appearance-none
-        focus:border-zinc-400"
+        className={`relative bg-zinc-600 ${textColor} p-2 rounded-md border border-zinc-600 block w-full outline-none appearance-none focus:border-zinc-400`}
         {...props}
       >
         {options.map((option) => (

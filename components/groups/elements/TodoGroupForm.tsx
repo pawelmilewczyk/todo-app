@@ -1,3 +1,4 @@
+import Button from "components/ui/Button";
 import Input from "components/ui/Input";
 import { groupInputs } from "consts/groups";
 import { NewGroupInterface } from "types/todos";
@@ -26,12 +27,7 @@ function TodoGroupForm({ values, onSubmit, title }: TodoGroupFormProps) {
             required
           />
         </div>
-        <button
-          type="submit"
-          className="bg-zinc-600 border border-zinc-600 hover:bg-zinc-600/50 text-white py-2 px-4 rounded uppercase max-w-[10rem] w-full transition-colors outline-none focus-visible:border-zinc-400"
-        >
-          Save
-        </button>
+        <Button label="Save" type="submit" />
       </form>
     </div>
   );

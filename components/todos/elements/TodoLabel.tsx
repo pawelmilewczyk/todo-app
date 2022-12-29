@@ -3,17 +3,17 @@ import { FocusEventHandler } from "react";
 import fetchData from "utils/fetchData";
 import { TodoElementProps } from "./elements.types";
 
-function TodoLabel({ todo: { title, group, id } }: TodoElementProps) {
+function TodoLabel({ todo: { name, group, id } }: TodoElementProps) {
   const { refresh } = useRouter();
 
   const onBlur: FocusEventHandler<HTMLInputElement> = async ({
     target: { value },
   }) => {
-    if (title !== value) {
+    if (name !== value) {
       const { ok } = await fetchData({
         url: `todos/${group}/${id}`,
         method: "PUT",
-        body: { title: value },
+        body: { name: value },
       });
       if (ok) refresh();
     }
@@ -22,7 +22,7 @@ function TodoLabel({ todo: { title, group, id } }: TodoElementProps) {
   return (
     <input
       type="text"
-      defaultValue={title}
+      defaultValue={name}
       onBlur={onBlur}
       // TODO: Colors should be set depending on user preferences
       className="pt-2 text-white bg-transparent outline-none selection:bg-zinc-500 caret-zinc-300"

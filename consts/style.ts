@@ -1,6 +1,16 @@
-export const colors = {
-  red: "rgb(239, 68, 68)",
-  orange: "rgb(251, 146, 60)",
-  gray: "rgb(161, 161, 170)",
-  white: "rgb(255, 255, 255)",
+export const colorClasses = {
+  bg: {
+    red: "bg-red-500",
+    orange: "bg-orange-400",
+    gray: "bg-zinc-400",
+    darkGray: "bg-zinc-600",
+    white: "bg-white",
+  },
+  text: {
+    red: "text-red-500",
+    orange: "text-orange-400",
+    gray: "text-zinc-400",
+    darkGray: "text-zinc-600",
+    white: "text-white",
+  },
 };
