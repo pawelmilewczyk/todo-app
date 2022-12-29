@@ -1,11 +1,12 @@
+"use client";
+
 import { defaultFilters } from "consts/filters";
 import { staticGroups } from "consts/groups";
-import { getGroupRoute, getTodosListRoute } from "consts/routes";
-import DeleteIcon from "icons/DeleteIcon";
-import EditIcon from "icons/EditIcon";
+import { getTodosListRoute } from "consts/routes";
 import Link from "next/link";
 import { TodoGroupInterface } from "types/todos";
 import { filtersToSearchParams } from "utils/searchParams";
+import TodoGroupActions from "./elements/TodoGroupActions";
 
 interface Props {
   groups: TodoGroupInterface[];
@@ -19,19 +20,7 @@ function TodoGroups({ groups }: Props) {
           key={id}
           className="relative flex flex-col overflow-hidden rounded-md text-zinc-400"
         >
-          {staticGroups.every((group) => group.name !== name) && (
-            <div className="absolute top-0 right-0 overflow-hidden flex">
-              <Link
-                className="p-1 hover:text-zinc-100 overflow-hidden"
-                href={getGroupRoute(name)}
-              >
-                <EditIcon />
-              </Link>
-              <button className="p-1 hover:text-zinc-100">
-                <DeleteIcon />
-              </button>
-            </div>
-          )}
+          <TodoGroupActions name={name} id={id} />
           <Link
             className="py-10 bg-zinc-600 text-white text-center uppercase transition-colors hover:bg-zinc-500 outline-none focus-visible:bg-zinc-500 focus-visible:outline-zinc-400"
             href={getTodosListRoute(

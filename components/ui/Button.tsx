@@ -1,13 +1,8 @@
 import { colorClasses } from "consts/style";
-import { ButtonColor, ButtonProps } from "types/ui/button";
+import { ButtonProps } from "types/ui/button";
 
-const colors: Record<ButtonColor, string> = {
-  default: colorClasses.bg.darkGray,
-  danger: colorClasses.bg.red,
-};
-
-function Button({ label, color = "default", ...props }: ButtonProps) {
-  const bgColor = colors[color];
+function Button({ label, color = "darkGray", ...props }: ButtonProps) {
+  const bgColor = colorClasses.bg[color];
 
   return (
     <button

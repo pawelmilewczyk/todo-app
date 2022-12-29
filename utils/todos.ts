@@ -47,7 +47,7 @@ export const sortTodos = (a: TodoInterface, b: TodoInterface) => {
   if (a.completed === b.completed) {
     if (a.date === b.date) {
       if (a.time === b.time) {
-        return a.title > b.title ? 1 : -1;
+        return a.name > b.name ? 1 : -1;
       }
       if (a.completed && b.completed) {
         return compareStringAsDates("desc", [a.time, b.time]);

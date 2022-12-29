@@ -5,10 +5,13 @@ import Button from "./Button";
 
 interface Props extends PropsWithChildren {
   open: boolean;
+  title: string;
+  content?: string;
+  onSubmit: () => void;
   onClose: () => void;
 }
 
-function Modal({ open, onClose, children }: Props) {
+function Modal({ open, onClose, onSubmit, title, content, children }: Props) {
   const handleEscKey = useCallback(
     (event: KeyboardEvent) => {
       if (event.code === "Escape") onClose();
@@ -18,7 +21,6 @@ function Modal({ open, onClose, children }: Props) {
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscKey, false);
-
     return () => {
       document.removeEventListener("keydown", handleEscKey, false);
     };
@@ -32,20 +34,21 @@ function Modal({ open, onClose, children }: Props) {
         onClick={onClose}
       />
       {/* Modal */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[20rem] bg-zinc-700 z-30 p-2 rounded-md flex flex-col gap-4">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[20rem] sm:min-w-[30rem] text-zinc-100 bg-zinc-700 z-30 p-2 rounded-md flex flex-col gap-6">
         {/* Header */}
-        <div className="text-white flex items-center justify-between">
-          <h2 className="text-3xl">Title</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl">{title}</h2>
           <IconButton onClick={onClose}>
             <CloseIcon size="md" />
           </IconButton>
         </div>
         {/* Content */}
-        <div>Content</div>
+        {content && <p className="text-center">{content}</p>}
+        {children}
         {/* Footer */}
-        <div className="flex gap-2 text-sm">
+        <div className="flex gap-2 text-sm justify-center">
           <Button label="Cancel" onClick={onClose} />
-          <Button label="Delete" color="danger" onClick={() => {}} />
+          <Button label="Delete" color="red" onClick={onSubmit} />
         </div>
       </div>
     </div>

@@ -5,6 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    {
+      pattern: /(bg|text)-(red|orange|zinc)-(100|400|500|600)/,
+    },
+  ],
   future: {
     hoverOnlyWhenSupported: true,
   },

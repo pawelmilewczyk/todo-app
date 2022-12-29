@@ -1,15 +1,14 @@
 import Modal from "components/ui/Modal";
-import { getEditTodoRoute } from "consts/routes";
+import { staticGroups } from "consts/groups";
+import { getGroupRoute } from "consts/routes";
 import DeleteIcon from "icons/DeleteIcon";
 import EditIcon from "icons/EditIcon";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { TodoElementProps } from "./elements.types";
+import { TodoGroupInterface } from "types/todos";
 
-function TodoActions({
-  todo: { name, group, id },
-  className,
-}: TodoElementProps) {
+function TodoGroupActions({ name, id }: TodoGroupInterface) {
   const [open, setOpen] = useState(false);
   const { push } = useRouter();
 
@@ -20,7 +19,7 @@ function TodoActions({
     {
       label: "Edit",
       Icon: EditIcon,
-      onClick: () => push(getEditTodoRoute(group.name, id)),
+      onClick: () => push(getGroupRoute(name)),
     },
     {
       label: "Delete",
@@ -29,30 +28,30 @@ function TodoActions({
     },
   ];
 
-  return (
+  return staticGroups.every((group) => group.name !== name) ? (
     <>
-      <div className={`${className} flex text-white text-sm h-full`}>
-        {actions.map(({ label, onClick, Icon }) => (
+      <div className="absolute top-0 right-0 overflow-hidden flex">
+        {actions.map(({ label, Icon, onClick }) => (
           <button
             key={label}
             title={label}
             aria-label={label}
+            className="p-1 hover:text-zinc-100"
             onClick={onClick}
-            className="flex items-center justify-center h-full w-full px-2 hover:bg-zinc-500 cursor-pointer outline-none transition-colors focus:bg-zinc-500"
           >
-            <Icon size="md" />
+            <Icon />
           </button>
         ))}
       </div>
       <Modal
         open={open}
         onClose={closeModal}
-        title="Deleting task"
-        content={`Do you want to delete "${name}" task?`}
+        title="Deleting group"
+        content={`Do you want to delete "${name}" group?`}
         onSubmit={() => {}}
       />
     </>
-  );
+  ) : null;
 }
 
-export default TodoActions;
+export default TodoGroupActions;
