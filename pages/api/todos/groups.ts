@@ -11,7 +11,9 @@ const handler: NextApiHandler = async ({ method, body }, res) => {
     }
     case "POST": {
       const groups = await getData("groups");
-      const nameExists = groups.some(({ name }) => name === body.name);
+      const nameExists = groups.some(
+        ({ name }) => name.toLowerCase() === body.name.toLowerCase()
+      );
       if (nameExists) {
         return res
           .status(409)
