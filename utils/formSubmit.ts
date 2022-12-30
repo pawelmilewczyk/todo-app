@@ -26,6 +26,5 @@ export const handleSubmit =
       };
     }, {}) as T;
 
-    // onSubmit(values);
-    console.log(values);
+    onSubmit(values);
   };

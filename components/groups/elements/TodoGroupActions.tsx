@@ -7,13 +7,22 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TodoGroupInterface } from "types/todos";
+import fetchData from "utils/fetchData";
 
-function TodoGroupActions({ name, id }: TodoGroupInterface) {
+function TodoGroupActions({ name }: TodoGroupInterface) {
   const [open, setOpen] = useState(false);
-  const { push } = useRouter();
+  const { push, refresh } = useRouter();
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+
+  const deleteGroup = async () => {
+    const { ok } = await fetchData({
+      url: getGroupRoute(name),
+      method: "DELETE",
+    });
+    if (ok) refresh();
+  };
 
   const actions = [
     {
@@ -48,7 +57,7 @@ function TodoGroupActions({ name, id }: TodoGroupInterface) {
         onClose={closeModal}
         title="Deleting group"
         content={`Do you want to delete "${name}" group?`}
-        onSubmit={() => {}}
+        onSubmit={deleteGroup}
       />
     </>
   ) : null;

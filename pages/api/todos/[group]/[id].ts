@@ -22,7 +22,9 @@ const handler: NextApiHandler = async ({ method, body, query }, res) => {
       return res.status(404).json({ message: `Couldn't update the task` });
     case "DELETE":
       await deleteData("todos", { key: "id", value: id });
-      res.status(200);
+      return res
+        .status(200)
+        .json({ message: `Task with id "${id}" successfully deleted` });
     default:
       return res.status(501);
   }

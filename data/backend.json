@@ -11,16 +11,6 @@
       "completed": false
     },
     {
-      "id": "2",
-      "name": "meat",
-      "group": {
-        "id": "3",
-        "name": "shopping"
-      },
-      "date": "2022-12-16",
-      "completed": true
-    },
-    {
       "id": "3",
       "name": "50 push-ups",
       "group": {
@@ -90,26 +80,6 @@
       "completed": true
     },
     {
-      "id": "10",
-      "name": "water",
-      "group": {
-        "id": "3",
-        "name": "shopping"
-      },
-      "date": "2022-12-15",
-      "completed": true
-    },
-    {
-      "id": "11",
-      "name": "vegetables",
-      "group": {
-        "id": "3",
-        "name": "shopping"
-      },
-      "date": "2022-12-15",
-      "completed": true
-    },
-    {
       "id": "12",
       "name": "practice spanish",
       "group": {
@@ -136,6 +106,28 @@
       },
       "date": "2022-12-17",
       "completed": true
+    },
+    {
+      "name": "meat",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
+      "date": "2022-12-30",
+      "time": "20:37",
+      "completed": false,
+      "id": "15"
+    },
+    {
+      "name": "water",
+      "group": {
+        "id": "3",
+        "name": "shopping"
+      },
+      "date": "2022-12-29",
+      "time": "",
+      "completed": false,
+      "id": "16"
     }
   ],
   "groups": [

@@ -1,9 +1,10 @@
 import Modal from "components/ui/Modal";
-import { getEditTodoRoute } from "consts/routes";
+import { getSingleTodoRoute } from "consts/routes";
 import DeleteIcon from "icons/DeleteIcon";
 import EditIcon from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import fetchData from "utils/fetchData";
 import { TodoElementProps } from "./elements.types";
 
 function TodoActions({
@@ -11,16 +12,24 @@ function TodoActions({
   className,
 }: TodoElementProps) {
   const [open, setOpen] = useState(false);
-  const { push } = useRouter();
+  const { push, refresh } = useRouter();
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+
+  const deleteTask = async () => {
+    const { ok } = await fetchData({
+      url: getSingleTodoRoute(group.name, id),
+      method: "DELETE",
+    });
+    if (ok) refresh();
+  };
 
   const actions = [
     {
       label: "Edit",
       Icon: EditIcon,
-      onClick: () => push(getEditTodoRoute(group.name, id)),
+      onClick: () => push(getSingleTodoRoute(group.name, id)),
     },
     {
       label: "Delete",
@@ -49,7 +58,7 @@ function TodoActions({
         onClose={closeModal}
         title="Deleting task"
         content={`Do you want to delete "${name}" task?`}
-        onSubmit={() => {}}
+        onSubmit={deleteTask}
       />
     </>
   );

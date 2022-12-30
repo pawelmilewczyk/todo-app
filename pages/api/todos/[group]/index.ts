@@ -33,7 +33,11 @@ const handler: NextApiHandler = async ({ method, body, query }, res) => {
     case "DELETE": {
       await deleteData("groups", { key: "name", value: queryGroup });
       await deleteData("todos", { key: "group", value: queryGroup });
-      res.status(200);
+      return res
+        .status(200)
+        .json({
+          message: `Group with name ${queryGroup} successfully deleted`,
+        });
     }
     default:
       return res.status(501);

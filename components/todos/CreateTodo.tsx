@@ -13,9 +13,10 @@ const defaultValues: NewTodoInterface = {
 
 interface Props {
   groups: TodoGroupInterface[];
+  currentGroup: TodoGroupInterface | undefined;
 }
 
-function CreateTodo({ groups }: Props) {
+function CreateTodo({ groups, currentGroup }: Props) {
   const { push } = useRouter();
 
   const onSubmit = async (props: NewTodoInterface) => {
@@ -30,7 +31,7 @@ function CreateTodo({ groups }: Props) {
   return (
     <TodoForm
       groups={groups}
-      values={defaultValues}
+      values={{ ...defaultValues, group: currentGroup ?? defaultValues.group }}
       title="New todo"
       onSubmit={onSubmit}
     />

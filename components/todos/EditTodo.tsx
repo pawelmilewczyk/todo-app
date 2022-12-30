@@ -1,6 +1,6 @@
 "use client";
 
-import { getEditTodoRoute, getTodosListRoute } from "consts/routes";
+import { getSingleTodoRoute, getTodosListRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
 import {
   NewTodoInterface,
@@ -20,7 +20,7 @@ function EditTodo({ todo, groups }: EditTodoProps) {
 
   const onSubmit = async (props: NewTodoInterface) => {
     const { ok } = await fetchData({
-      url: getEditTodoRoute(todo.group.name, todo.id),
+      url: getSingleTodoRoute(todo.group.name, todo.id),
       method: "PUT",
       body: props,
     });
