@@ -5,6 +5,7 @@ import fetchData from "utils/fetchData";
 async function fetchGroups() {
   const { response } = await fetchData<TodoGroupInterface[]>({
     url: "todos/groups",
+    cache: "no-cache",
   });
   return response;
 }

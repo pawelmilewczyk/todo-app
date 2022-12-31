@@ -1,6 +1,6 @@
 "use client";
 
-import { getTodosListRoute, routes } from "consts/routes";
+import { getTodosListRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewGroupInterface } from "types/todos";
 import fetchData from "utils/fetchData";
