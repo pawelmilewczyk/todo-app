@@ -16,3 +16,22 @@ export const filtersToSearchParams = (searchParams: Filters): SearchParams =>
   Object.entries(searchParams)
     .map(([key, value]) => ({ key, value: String(value) }))
     .reduce((prev, { key, value }) => ({ ...prev, [key]: value }), {});
+
+export const getRouteWithSearchParams = (
+  url: string,
+  searchParams?: SearchParams
+) => {
+  if (searchParams) {
+    const params = new URLSearchParams();
+    Object.entries(searchParams).forEach(([key, value]) => {
+      if (typeof value === "string" && !!value.length) {
+        params.append(key, value);
+      }
+    });
+
+    if (params.toString().length) {
+      return `${url}?${params.toString()}`;
+    }
+  }
+  return url;
+};

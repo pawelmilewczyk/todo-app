@@ -12,7 +12,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body className="bg-zinc-700 flex flex-col h-full">
         <Nav />
-        <div className="h-full w-full overflow-auto">{children}</div>
+        {children}
       </body>
     </html>
   );

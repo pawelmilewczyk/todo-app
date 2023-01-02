@@ -2,7 +2,7 @@
 
 import { defaultFilters } from "consts/filters";
 import { staticGroups } from "consts/groups";
-import { getTodosListRoute } from "consts/routes";
+import { getTodosRoute } from "consts/routes";
 import Link from "next/link";
 import { TodoGroupInterface } from "types/todos";
 import { filtersToSearchParams } from "utils/searchParams";
@@ -23,9 +23,8 @@ function TodoGroups({ groups }: Props) {
           <TodoGroupActions name={name} id={id} />
           <Link
             className="py-10 bg-zinc-600 text-white text-center uppercase transition-colors hover:bg-zinc-500 outline-none focus-visible:bg-zinc-500 focus-visible:outline-zinc-400"
-            href={getTodosListRoute(
-              name,
-              filtersToSearchParams(defaultFilters)
+            href={getTodosRoute(
+              filtersToSearchParams({ group: name, ...defaultFilters })
             )}
           >
             {name}

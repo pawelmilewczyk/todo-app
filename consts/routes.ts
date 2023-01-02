@@ -1,33 +1,22 @@
 import { SearchParams } from "types/filters";
+import { getRouteWithSearchParams } from "utils/searchParams";
 
 export const navRoutes = {
   home: "/",
+  groups: "/groups",
   todos: "/todos",
 };
 
 export const routes = {
   ...navRoutes,
-  newGroup: "/todos/new-group",
-  newTask: "/todos/new-task",
+  newGroup: `${navRoutes.groups}/new-group`,
+  newTodo: `${navRoutes.todos}/new-todo`,
 };
 
-export const getGroupRoute = (group: string) => `${routes.todos}/${group}`;
+export const getSingleGroupRoute = (groupName: string) =>
+  `${routes.groups}/${groupName}`;
 
-export const getSingleTodoRoute = (group: string, id: string) =>
-  `${getGroupRoute(group)}/${id}`;
+export const getSingleTodoRoute = (id: string) => `${routes.todos}/${id}`;
 
-export const getTodosListRoute = (group: string, filters?: SearchParams) => {
-  const url = `${getGroupRoute(group)}/list`;
-  return routeWithFilters(url, filters);
-};
-
-export const routeWithFilters = (url: string, filters?: SearchParams) => {
-  if (filters) {
-    const params = new URLSearchParams();
-    Object.entries(filters).forEach(([key, value]) => {
-      if (typeof value === "string") params.append(key, value);
-    });
-    return `${url}?${params.toString()}`;
-  }
-  return url;
-};
+export const getTodosRoute = (searchParams?: SearchParams) =>
+  getRouteWithSearchParams(routes.todos, searchParams);

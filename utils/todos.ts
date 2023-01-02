@@ -28,7 +28,7 @@ export const filterTodos =
       isValid = isValid && !!todo.date;
     } else if (queryGroup === StaticGroups.Today) {
       isValid = isValid && !!todo.date && isToday(new Date(todo.date));
-    } else {
+    } else if (queryGroup) {
       isValid = isValid && queryGroup === todo.group.name.toLowerCase();
     }
     return isValid;

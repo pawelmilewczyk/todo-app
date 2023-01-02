@@ -7,10 +7,7 @@ import { useState } from "react";
 import fetchData from "utils/fetchData";
 import { TodoElementProps } from "./elements.types";
 
-function TodoActions({
-  todo: { name, group, id },
-  className,
-}: TodoElementProps) {
+function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
   const [open, setOpen] = useState(false);
   const { push, refresh } = useRouter();
 
@@ -19,7 +16,7 @@ function TodoActions({
 
   const deleteTask = async () => {
     const { ok } = await fetchData({
-      url: getSingleTodoRoute(group.name, id),
+      url: getSingleTodoRoute(id),
       method: "DELETE",
     });
     if (ok) refresh();
@@ -29,7 +26,7 @@ function TodoActions({
     {
       label: "Edit",
       Icon: EditIcon,
-      onClick: () => push(getSingleTodoRoute(group.name, id)),
+      onClick: () => push(getSingleTodoRoute(id)),
     },
     {
       label: "Delete",

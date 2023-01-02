@@ -1,25 +1,30 @@
 import EditTodo from "components/todos/EditTodo";
-import { PageProps, TodoPageParams } from "types/pages";
+import { getSingleTodoRoute } from "consts/routes";
+import { PageProps } from "types/pages";
 import { TodoGroupInterface, TodoInterface } from "types/todos";
 import fetchData from "utils/fetchData";
 
-async function fetchTodo(group: string, id: string) {
+interface Params {
+  id: string;
+}
+
+async function fetchTodo(id: string) {
   const { response } = await fetchData<TodoInterface>({
-    url: `todos/${group}/${id}`,
-    cache: "no-store",
+    url: getSingleTodoRoute(id),
+    cache: "no-cache",
   });
   return response;
 }
 
 async function fetchGroups() {
   const { response } = await fetchData<TodoGroupInterface[]>({
-    url: "todos/groups",
+    url: "groups",
   });
   return response ?? [];
 }
 
-async function EditTodoPage({ params }: PageProps<TodoPageParams>) {
-  const todo = await fetchTodo(params.group, params.id);
+async function EditTodoPage({ params }: PageProps<Params>) {
+  const todo = await fetchTodo(params.id);
   const groups = await fetchGroups();
 
   return todo ? (

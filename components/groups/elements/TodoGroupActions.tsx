@@ -1,9 +1,8 @@
 import Modal from "components/ui/Modal";
 import { staticGroups } from "consts/groups";
-import { getGroupRoute } from "consts/routes";
+import { getSingleGroupRoute } from "consts/routes";
 import DeleteIcon from "icons/DeleteIcon";
 import EditIcon from "icons/EditIcon";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TodoGroupInterface } from "types/todos";
@@ -18,7 +17,7 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
 
   const deleteGroup = async () => {
     const { ok } = await fetchData({
-      url: getGroupRoute(name),
+      url: getSingleGroupRoute(name),
       method: "DELETE",
     });
     if (ok) refresh();
@@ -28,7 +27,7 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
     {
       label: "Edit",
       Icon: EditIcon,
-      onClick: () => push(getGroupRoute(name)),
+      onClick: () => push(getSingleGroupRoute(name)),
     },
     {
       label: "Delete",

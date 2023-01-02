@@ -1,6 +1,6 @@
 "use client";
 
-import { getTodosListRoute } from "consts/routes";
+import { routes } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewGroupInterface } from "types/todos";
 import fetchData from "utils/fetchData";
@@ -13,15 +13,15 @@ const defaultValues: NewGroupInterface = {
 function CreateGroup() {
   const { push, refresh } = useRouter();
 
-  const onSubmit = async (props: NewGroupInterface) => {
+  const onSubmit = async (body: NewGroupInterface) => {
     const { ok } = await fetchData({
-      url: `todos/groups`,
+      url: routes.groups,
       method: "POST",
-      body: { ...props },
+      body,
     });
     if (ok) {
       refresh();
-      push(getTodosListRoute(props.name));
+      push(routes.groups);
     }
   };
 

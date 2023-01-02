@@ -1,14 +1,22 @@
 "use client";
 
+import { staticGroups } from "consts/groups";
 import { routes } from "consts/routes";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { getNewTaskRoute } from "./layout.utils";
+import { usePathname, useSearchParams } from "next/navigation";
+import { getRouteWithSearchParams } from "utils/searchParams";
 
-function Footer() {
+const getNewTaskRoute = (searchedGroup: string | null) => {
+  const group = staticGroups.every(({ name }) => name !== searchedGroup)
+    ? searchedGroup ?? ""
+    : "";
+  return getRouteWithSearchParams(routes.newTodo, { group });
+};
+
+function TodosFooter() {
   const pathname = usePathname();
-
-  const newTaskRoute = getNewTaskRoute(pathname);
+  const searchParams = useSearchParams();
+  const newTaskRoute = getNewTaskRoute(searchParams.get("group"));
 
   return (
     <footer className="flex items-center justify-between text-white bg-zinc-600 border-t border-zinc-500">
@@ -32,4 +40,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default TodosFooter;

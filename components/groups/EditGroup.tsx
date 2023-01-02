@@ -1,6 +1,6 @@
 "use client";
 
-import { getTodosListRoute } from "consts/routes";
+import { getSingleGroupRoute, routes } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewGroupInterface, TodoGroupInterface } from "types/todos";
 import fetchData from "utils/fetchData";
@@ -13,13 +13,14 @@ interface EditGroupProps {
 function EditGroup({ group }: EditGroupProps) {
   const { push } = useRouter();
 
-  const onSubmit = async (props: NewGroupInterface) => {
+  const onSubmit = async (body: NewGroupInterface) => {
     const { ok } = await fetchData({
-      url: `todos/${group.name}`,
+      url: getSingleGroupRoute(group.name),
       method: "PUT",
-      body: { ...props },
+      body,
     });
-    if (ok) push(getTodosListRoute(props.name));
+
+    if (ok) push(routes.groups);
   };
 
   return (

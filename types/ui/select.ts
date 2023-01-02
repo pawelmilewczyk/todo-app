@@ -10,6 +10,6 @@ export interface SelectProps<T extends Option>
     SelectHTMLAttributes<HTMLSelectElement>,
     HTMLSelectElement
   > {
-  label: string;
+  label?: string;
   options: T[];
 }

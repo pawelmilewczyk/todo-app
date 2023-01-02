@@ -38,10 +38,12 @@ function Select<T extends Option>({
 
   return (
     <div className="relative flex flex-col gap-1">
-      <label className="px-1 text-xs" htmlFor={id}>
-        {label}
-      </label>
-      <span className="absolute top-8 right-3 z-10 -rotate-90 pointer-events-none">
+      {label && (
+        <label className="px-1 text-xs" htmlFor={id}>
+          {label}
+        </label>
+      )}
+      <span className="absolute bottom-3 right-3 z-10 -rotate-90 pointer-events-none">
         <ChevronIcon />
       </span>
       <select

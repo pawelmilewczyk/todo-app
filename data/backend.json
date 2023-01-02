@@ -18,7 +18,8 @@
         "name": "gym"
       },
       "date": "2022-12-16",
-      "completed": false
+      "completed": false,
+      "time": ""
     },
     {
       "id": "4",

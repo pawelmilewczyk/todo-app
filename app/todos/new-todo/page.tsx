@@ -1,4 +1,5 @@
 import CreateTodo from "components/todos/CreateTodo";
+import { routes } from "consts/routes";
 import { PageProps } from "types/pages";
 import { TodoGroupInterface } from "types/todos";
 import fetchData from "utils/fetchData";
@@ -9,7 +10,8 @@ interface SearchParams {
 
 async function fetchGroups() {
   const { response } = await fetchData<TodoGroupInterface[]>({
-    url: "todos/groups",
+    url: routes.groups,
+    cache: "no-cache",
   });
   return response ?? [];
 }

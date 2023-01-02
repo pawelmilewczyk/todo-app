@@ -6,6 +6,7 @@ export enum StatusFilters {
 export interface Filters
   extends Partial<Record<string, string | boolean | number>> {
   completed?: boolean;
+  group?: string;
 }
 
 export type SearchParameter = string | string[] | undefined;

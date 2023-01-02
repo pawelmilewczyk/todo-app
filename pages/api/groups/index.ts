@@ -2,7 +2,6 @@ import { addData, getData } from "data/fileSystem";
 import { NextApiHandler } from "next";
 
 // api/groups
-
 const handler: NextApiHandler = async ({ method, body }, res) => {
   switch (method) {
     case "GET": {

@@ -1,8 +1,12 @@
 "use client";
 
-import { getTodosListRoute } from "consts/routes";
+import { getTodosRoute, routes } from "consts/routes";
 import { useRouter } from "next/navigation";
-import { NewTodoInterface, TodoGroupInterface } from "types/todos";
+import {
+  NewTodoInterface,
+  TodoGroupInterface,
+  TodoInterface,
+} from "types/todos";
 import fetchData from "utils/fetchData";
 import TodoForm from "./elements/TodoForm";
 
@@ -20,12 +24,15 @@ function CreateTodo({ groups, currentGroup }: Props) {
   const { push } = useRouter();
 
   const onSubmit = async (props: NewTodoInterface) => {
-    const { ok } = await fetchData({
-      url: `todos`,
+    const { ok, response } = await fetchData<TodoInterface>({
+      url: routes.todos,
       method: "POST",
       body: { ...props, completed: false },
     });
-    if (ok) push(getTodosListRoute(props.group.name));
+    if (ok && response) {
+      const group = response.group.name;
+      push(getTodosRoute({ group }));
+    }
   };
 
   return (
