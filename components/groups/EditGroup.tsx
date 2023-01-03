@@ -15,7 +15,6 @@ function EditGroup({ group }: EditGroupProps) {
 
   const onSubmit = async (body: NewGroupInterface) => {
     const { ok } = await updateGroup(group.name, body);
-
     if (ok) push(routes.groups);
   };
 

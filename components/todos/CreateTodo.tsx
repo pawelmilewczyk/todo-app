@@ -1,6 +1,7 @@
 "use client";
 
 import { createTodo } from "api/todos";
+import { defaultGroup } from "consts/groups";
 import { getTodosRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewTodoInterface, TodoGroupInterface } from "types/todos";
@@ -8,7 +9,7 @@ import TodoForm from "./elements/TodoForm";
 
 const defaultValues: NewTodoInterface = {
   name: "",
-  group: { name: "", id: "" },
+  group: { ...defaultGroup, id: "" },
 };
 
 interface Props {

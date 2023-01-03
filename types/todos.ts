@@ -1,6 +1,9 @@
+import { groupColors } from "consts/style";
+
 export interface TodoGroupInterface {
   id: string;
   name: string;
+  color: keyof typeof groupColors;
 }
 
 export type NewGroupInterface = Omit<TodoGroupInterface, "id">;

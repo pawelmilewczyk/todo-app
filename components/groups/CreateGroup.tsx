@@ -1,14 +1,11 @@
 "use client";
 
 import { createGroup } from "api/groups";
+import { defaultGroup } from "consts/groups";
 import { routes } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewGroupInterface } from "types/todos";
 import TodoGroupForm from "./elements/TodoGroupForm";
-
-const defaultValues: NewGroupInterface = {
-  name: "",
-};
 
 function CreateGroup() {
   const { push, refresh } = useRouter();
@@ -24,7 +21,7 @@ function CreateGroup() {
   return (
     <TodoGroupForm
       title="New group"
-      values={defaultValues}
+      values={defaultGroup}
       onSubmit={onSubmit}
     />
   );

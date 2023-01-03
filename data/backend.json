@@ -145,7 +145,8 @@
   "groups": [
     {
       "id": "3",
-      "name": "shopping"
+      "name": "shopping",
+      "color": "white"
     },
     {
       "id": "4",

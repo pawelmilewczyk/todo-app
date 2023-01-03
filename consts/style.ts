@@ -9,6 +9,21 @@ export const colors: ColorInterface = {
   white: "zinc-100",
 };
 
+export const groupColors = {
+  red: colors.red,
+  orange: "orange-500",
+  yellow: "yellow-500",
+  green: "green-500",
+  lime: "lime-500",
+  stone: "stone-500",
+  blue: "blue-500",
+  cyan: "cyan-500",
+  purple: "purple-500",
+  fuchsia: "fuchsia-500",
+  pink: "pink-500",
+  white: colors.white,
+};
+
 export const colorClasses: ColorClassesInterface = {
   bg: formatColorClasses(colors, "bg"),
   text: formatColorClasses(colors, "text"),

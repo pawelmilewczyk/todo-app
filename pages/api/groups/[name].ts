@@ -20,7 +20,7 @@ const handler: NextApiHandler = async ({ method, body, query }, res) => {
       const groups = await getData("groups");
       const { id } = groups.find(({ name }) => name === groupName) ?? {};
       if (id) {
-        const updatedGroup = await updateData("groups", groupName, body);
+        const updatedGroup = await updateData("groups", id, body);
         if (updatedGroup) {
           return res.status(200).json(updatedGroup);
         }
