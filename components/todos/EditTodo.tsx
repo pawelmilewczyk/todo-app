@@ -1,13 +1,13 @@
 "use client";
 
-import { getSingleTodoRoute, getTodosRoute } from "consts/routes";
+import { updateTodo } from "api/todos";
+import { getTodosRoute } from "consts/routes";
 import { useRouter } from "next/navigation";
 import {
   NewTodoInterface,
   TodoGroupInterface,
   TodoInterface,
 } from "types/todos";
-import fetchData from "utils/fetchData";
 import TodoForm from "./elements/TodoForm";
 
 interface EditTodoProps {
@@ -18,13 +18,8 @@ interface EditTodoProps {
 function EditTodo({ todo, groups }: EditTodoProps) {
   const { push } = useRouter();
 
-  const onSubmit = async (props: NewTodoInterface) => {
-    const { ok, response } = await fetchData<TodoInterface>({
-      url: getSingleTodoRoute(todo.id),
-      method: "PUT",
-      body: props,
-    });
-
+  const onSubmit = async (body: NewTodoInterface) => {
+    const { ok, response } = await updateTodo(todo.id, body);
     if (ok && response) {
       const group = response.group.name;
       push(getTodosRoute({ group }));

@@ -1,9 +1,9 @@
 "use client";
 
+import { createGroup } from "api/groups";
 import { routes } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewGroupInterface } from "types/todos";
-import fetchData from "utils/fetchData";
 import TodoGroupForm from "./elements/TodoGroupForm";
 
 const defaultValues: NewGroupInterface = {
@@ -14,11 +14,7 @@ function CreateGroup() {
   const { push, refresh } = useRouter();
 
   const onSubmit = async (body: NewGroupInterface) => {
-    const { ok } = await fetchData({
-      url: routes.groups,
-      method: "POST",
-      body,
-    });
+    const { ok } = await createGroup(body);
     if (ok) {
       refresh();
       push(routes.groups);

@@ -1,8 +1,8 @@
-import TodosLayout from "components/layout/TodosLayout";
+import Layout from "components/layout/TodosLayout";
 import { PropsWithChildren } from "react";
 
-function Layout({ children }: PropsWithChildren) {
-  return <TodosLayout>{children}</TodosLayout>;
+function TodosLayout({ children }: PropsWithChildren) {
+  return <Layout>{children}</Layout>;
 }
 
-export default Layout;
+export default TodosLayout;

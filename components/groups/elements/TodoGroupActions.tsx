@@ -1,3 +1,4 @@
+import { deleteGroup } from "api/groups";
 import Modal from "components/ui/Modal";
 import { staticGroups } from "consts/groups";
 import { getSingleGroupRoute } from "consts/routes";
@@ -6,7 +7,6 @@ import EditIcon from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TodoGroupInterface } from "types/todos";
-import fetchData from "utils/fetchData";
 
 function TodoGroupActions({ name }: TodoGroupInterface) {
   const [open, setOpen] = useState(false);
@@ -15,11 +15,8 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
-  const deleteGroup = async () => {
-    const { ok } = await fetchData({
-      url: getSingleGroupRoute(name),
-      method: "DELETE",
-    });
+  const onDelete = async () => {
+    const { ok } = await deleteGroup(name);
     if (ok) refresh();
   };
 
@@ -56,7 +53,7 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
         onClose={closeModal}
         title="Deleting group"
         content={`Do you want to delete "${name}" group?`}
-        onSubmit={deleteGroup}
+        onSubmit={onDelete}
       />
     </>
   ) : null;

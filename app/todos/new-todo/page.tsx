@@ -1,23 +1,14 @@
+import { getGroups } from "api/groups";
 import CreateTodo from "components/todos/CreateTodo";
-import { routes } from "consts/routes";
 import { PageProps } from "types/pages";
-import { TodoGroupInterface } from "types/todos";
-import fetchData from "utils/fetchData";
 
 interface SearchParams {
   group?: string;
 }
 
-async function fetchGroups() {
-  const { response } = await fetchData<TodoGroupInterface[]>({
-    url: routes.groups,
-    cache: "no-cache",
-  });
-  return response ?? [];
-}
-
-async function NewTaskPage({ searchParams }: PageProps<{}, SearchParams>) {
-  const groups = await fetchGroups();
+async function NewTodoPage({ searchParams }: PageProps<{}, SearchParams>) {
+  const groups = await getGroups();
+  if (!groups) return <p>Could not load groups</p>;
 
   const group = groups.find(({ name }) => name === searchParams.group);
 
@@ -28,4 +19,4 @@ async function NewTaskPage({ searchParams }: PageProps<{}, SearchParams>) {
   );
 }
 
-export default NewTaskPage;
+export default NewTodoPage;

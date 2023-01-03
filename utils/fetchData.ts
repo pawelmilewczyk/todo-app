@@ -9,6 +9,7 @@ const defaultHeaders = {
 
 interface FetchDataReturn<T> {
   response?: T;
+  message?: string;
   status?: number;
   ok: boolean;
 }
@@ -27,13 +28,16 @@ const fetchData = async <T = any>({
       headers,
       ...req,
     });
-    const response: T = await data.json();
+    const response = await data.json();
+
     return {
       response,
+      message: response?.message,
       status: data.status,
       ok: data.ok,
     };
   } catch (error: any) {
+    console.log({ error });
     return {
       ...error,
       ok: false,

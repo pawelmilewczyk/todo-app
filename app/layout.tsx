@@ -2,7 +2,7 @@ import Nav from "components/layout/Nav";
 import { PropsWithChildren } from "react";
 import "styles/globals.css";
 
-export default function RootLayout({ children }: PropsWithChildren) {
+function RootLayout({ children }: PropsWithChildren) {
   return (
     <html className="h-full">
       <head>
@@ -17,3 +17,5 @@ export default function RootLayout({ children }: PropsWithChildren) {
     </html>
   );
 }
+
+export default RootLayout;

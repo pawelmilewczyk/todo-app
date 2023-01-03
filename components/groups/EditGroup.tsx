@@ -1,9 +1,9 @@
 "use client";
 
-import { getSingleGroupRoute, routes } from "consts/routes";
+import { updateGroup } from "api/groups";
+import { routes } from "consts/routes";
 import { useRouter } from "next/navigation";
 import { NewGroupInterface, TodoGroupInterface } from "types/todos";
-import fetchData from "utils/fetchData";
 import TodoGroupForm from "./elements/TodoGroupForm";
 
 interface EditGroupProps {
@@ -14,11 +14,7 @@ function EditGroup({ group }: EditGroupProps) {
   const { push } = useRouter();
 
   const onSubmit = async (body: NewGroupInterface) => {
-    const { ok } = await fetchData({
-      url: getSingleGroupRoute(group.name),
-      method: "PUT",
-      body,
-    });
+    const { ok } = await updateGroup(group.name, body);
 
     if (ok) push(routes.groups);
   };

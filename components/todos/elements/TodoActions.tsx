@@ -1,10 +1,10 @@
+import { deleteTodo } from "api/todos";
 import Modal from "components/ui/Modal";
 import { getSingleTodoRoute } from "consts/routes";
 import DeleteIcon from "icons/DeleteIcon";
 import EditIcon from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import fetchData from "utils/fetchData";
 import { TodoElementProps } from "./elements.types";
 
 function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
@@ -14,11 +14,8 @@ function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
-  const deleteTask = async () => {
-    const { ok } = await fetchData({
-      url: getSingleTodoRoute(id),
-      method: "DELETE",
-    });
+  const onDelete = async () => {
+    const { ok } = await deleteTodo(id);
     if (ok) refresh();
   };
 
@@ -55,7 +52,7 @@ function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
         onClose={closeModal}
         title="Deleting task"
         content={`Do you want to delete "${name}" task?`}
-        onSubmit={deleteTask}
+        onSubmit={onDelete}
       />
     </>
   );
