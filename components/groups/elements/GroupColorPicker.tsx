@@ -18,7 +18,7 @@ function GroupColorPicker({ defaultColor }: Props) {
       {colors.map(({ color, value }) => (
         <div
           key={value}
-          className={`flex items-center justify-self-center rounded-full p-2 focus-within:bg-zinc-600 ${color}`}
+          className={`flex items-center justify-self-center rounded-lg p-2 ${color} hover:bg-zinc-600 transition-colors`}
         >
           <input
             type="radio"
@@ -31,7 +31,7 @@ function GroupColorPicker({ defaultColor }: Props) {
           />
           <label
             htmlFor={value}
-            className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer flex items-center justify-center uppercase rounded-full outline outline-offset-2 outline-transparent bg-current peer-checked:outline-current peer-checked:outline"
+            className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer flex items-center justify-center uppercase rounded-md outline outline-offset-2 outline-transparent bg-current peer-checked:outline-current"
           />
         </div>
       ))}

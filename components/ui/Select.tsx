@@ -43,7 +43,7 @@ function Select<T extends Option>({
           {label}
         </label>
       )}
-      <span className="absolute bottom-3 right-3 z-10 -rotate-90 pointer-events-none">
+      <span className="absolute bottom-3 right-2 z-10 -rotate-90 pointer-events-none">
         <ChevronIcon />
       </span>
       <select

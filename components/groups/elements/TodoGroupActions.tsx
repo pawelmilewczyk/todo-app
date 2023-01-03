@@ -1,9 +1,9 @@
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deleteGroup } from "api/groups";
 import Modal from "components/ui/Modal";
 import { staticGroups } from "consts/groups";
 import { getSingleGroupRoute } from "consts/routes";
-import DeleteIcon from "icons/DeleteIcon";
-import EditIcon from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TodoGroupInterface } from "types/todos";
@@ -23,12 +23,12 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
   const actions = [
     {
       label: "Edit",
-      Icon: EditIcon,
+      icon: faPen,
       onClick: () => push(getSingleGroupRoute(name)),
     },
     {
       label: "Delete",
-      Icon: DeleteIcon,
+      icon: faTrash,
       onClick: openModal,
     },
   ];
@@ -36,7 +36,7 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
   return staticGroups.every((group) => group.name !== name) ? (
     <>
       <div className="absolute top-0 right-0 overflow-hidden flex">
-        {actions.map(({ label, Icon, onClick }) => (
+        {actions.map(({ label, icon, onClick }) => (
           <button
             key={label}
             title={label}
@@ -44,7 +44,7 @@ function TodoGroupActions({ name }: TodoGroupInterface) {
             className="p-1 hover:text-zinc-100"
             onClick={onClick}
           >
-            <Icon />
+            <FontAwesomeIcon icon={icon} size="xs" fixedWidth />
           </button>
         ))}
       </div>

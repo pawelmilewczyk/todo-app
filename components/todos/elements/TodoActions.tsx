@@ -1,8 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
 import { deleteTodo } from "api/todos";
 import Modal from "components/ui/Modal";
 import { getSingleTodoRoute } from "consts/routes";
-import DeleteIcon from "icons/DeleteIcon";
-import EditIcon from "icons/EditIcon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TodoElementProps } from "./elements.types";
@@ -22,12 +22,12 @@ function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
   const actions = [
     {
       label: "Edit",
-      Icon: EditIcon,
+      icon: faPen,
       onClick: () => push(getSingleTodoRoute(id)),
     },
     {
       label: "Delete",
-      Icon: DeleteIcon,
+      icon: faTrash,
       onClick: openModal,
     },
   ];
@@ -35,7 +35,7 @@ function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
   return (
     <>
       <div className={`${className} flex text-white text-sm h-full`}>
-        {actions.map(({ label, onClick, Icon }) => (
+        {actions.map(({ label, onClick, icon }) => (
           <button
             key={label}
             title={label}
@@ -43,7 +43,7 @@ function TodoActions({ todo: { name, id }, className }: TodoElementProps) {
             onClick={onClick}
             className="flex items-center justify-center h-full w-full px-2 hover:bg-zinc-500 cursor-pointer outline-none transition-colors focus:bg-zinc-500"
           >
-            <Icon size="md" />
+            <FontAwesomeIcon icon={icon} size="lg" />
           </button>
         ))}
       </div>

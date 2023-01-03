@@ -1,6 +1,10 @@
 import Nav from "components/layout/Nav";
 import { PropsWithChildren } from "react";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "styles/globals.css";
+
+config.autoAddCss = false;
 
 function RootLayout({ children }: PropsWithChildren) {
   return (
