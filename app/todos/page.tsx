@@ -7,9 +7,9 @@ import { PageProps } from "types/pages";
 import { searchParamsToFilters } from "utils/searchParams";
 
 async function TodosListPage({ searchParams }: PageProps<{}, SearchParams>) {
-  const todosData = await getTodos(searchParams);
+  const todosData = await getTodos(searchParams ?? {});
   const groups = await getGroups();
-  const filters = searchParamsToFilters(searchParams);
+  const filters = searchParamsToFilters(searchParams ?? {});
 
   return (
     <main className="text-white flex flex-col h-full overflow-auto gap-y-4 ">

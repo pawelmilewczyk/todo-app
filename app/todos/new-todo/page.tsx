@@ -10,7 +10,7 @@ async function NewTodoPage({ searchParams }: PageProps<{}, SearchParams>) {
   const groups = await getGroups();
   if (!groups) return <p>Could not load groups</p>;
 
-  const group = groups.find(({ name }) => name === searchParams.group);
+  const group = groups.find(({ name }) => name === searchParams?.group);
 
   return (
     <div className="text-white py-4">
