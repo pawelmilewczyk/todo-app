@@ -146,28 +146,27 @@
     {
       "id": "3",
       "name": "shopping",
-      "color": "white"
+      "icon": "cartShopping"
     },
     {
       "id": "4",
-      "name": "gym"
+      "name": "gym",
+      "icon": "dumbbell"
     },
     {
       "id": "5",
-      "name": "home"
+      "name": "home",
+      "icon": "house"
     },
     {
       "id": "6",
-      "name": "others"
+      "name": "others",
+      "icon": "star"
     },
     {
       "id": "7",
-      "name": "learning"
-    },
-    {
-      "name": "qwe",
-      "color": "white",
-      "id": "8"
+      "name": "learning",
+      "icon": "graduationCap"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { colorClasses } from "consts/style";
+import { colors } from "consts/style";
 import { ChangeEventHandler, useState } from "react";
 import { InputProps } from "types/ui/input";
 
@@ -25,7 +25,7 @@ function Input({
 
   const clearValue = () => setValue("");
 
-  const textColor = !value ? colorClasses.text.gray : colorClasses.text.white;
+  const textColor = `text-${!value ? colors.gray : colors.white}`;
 
   return (
     <div className="relative flex flex-col gap-1">

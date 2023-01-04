@@ -1,4 +1,4 @@
-import { colorClasses } from "consts/style";
+import { colors } from "consts/style";
 import { useMemo } from "react";
 import { formatDate } from "utils/todos";
 import { TodoElementProps } from "./elements.types";
@@ -11,9 +11,9 @@ function TodoDate({
     formatDate(date, time, completed) ?? {};
 
   const textColor = useMemo(() => {
-    if (!completed && isPast) return colorClasses.text.red;
-    else if (!completed && isToday) return colorClasses.text.orange;
-    return colorClasses.text.gray;
+    if (!completed && isPast) return `text-${colors.red}`;
+    else if (!completed && isToday) return `text-${colors.orange}`;
+    return `text-${colors.gray}`;
   }, [completed, isPast, isToday]);
 
   return formattedDate ? (

@@ -1,11 +1,9 @@
-import { groupIcons, staticGroupIcons } from "consts/groupIcons";
-import { groupColors } from "consts/style";
+import { groupIcons } from "consts/groupIcons";
 
 export interface TodoGroupInterface {
   id: string;
   name: string;
-  color: keyof typeof groupColors;
-  icon: keyof typeof groupIcons | keyof typeof staticGroupIcons;
+  icon: keyof typeof groupIcons;
 }
 
 export type NewGroupInterface = Omit<TodoGroupInterface, "id">;

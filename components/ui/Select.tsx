@@ -2,7 +2,7 @@
 
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { colorClasses } from "consts/style";
+import { colors } from "consts/style";
 import { ChangeEventHandler, useState } from "react";
 import { Option, SelectProps } from "types/ui/select";
 
@@ -34,8 +34,9 @@ function Select<T extends Option>({
     if (onChange) onChange(e);
   };
 
-  const textColor =
-    placeholder && !value ? colorClasses.text.gray : colorClasses.text.white;
+  const textColor = `text-${
+    placeholder && !value ? colors.gray : colors.white
+  }`;
 
   return (
     <div className="relative flex flex-col gap-1">

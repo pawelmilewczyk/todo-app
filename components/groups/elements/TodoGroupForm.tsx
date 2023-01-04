@@ -3,7 +3,6 @@ import Input from "components/ui/Input";
 import { groupInputs } from "consts/groups";
 import { NewGroupInterface } from "types/todos";
 import { handleSubmit } from "utils/formSubmit";
-import GroupColorPicker from "./GroupColorPicker";
 import GroupIcons from "./GroupIcons";
 
 export interface TodoGroupFormProps {
@@ -28,7 +27,6 @@ function TodoGroupForm({ values, onSubmit, title }: TodoGroupFormProps) {
             placeholder="Name your group"
             required
           />
-          <GroupColorPicker color={values.color} />
           <GroupIcons icon={values.icon} />
         </div>
         <Button label="Save" type="submit" />

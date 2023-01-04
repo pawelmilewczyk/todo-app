@@ -7,6 +7,7 @@ import {
 export interface TodoElementProps {
   todo: TodoInterface;
   className?: string;
+  selectedGroup?: string;
 }
 
 export interface TodoFormProps {

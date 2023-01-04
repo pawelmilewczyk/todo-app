@@ -5,29 +5,23 @@ export enum StaticGroups {
   Scheduled = "scheduled",
 }
 
-export const staticGroups: TodoGroupInterface[] = [
-  {
-    id: "1",
-    name: StaticGroups.Today,
-    color: "red",
-    icon: "today",
-  },
-  {
-    id: "2",
-    name: StaticGroups.Scheduled,
-    color: "orange",
-    icon: "scheduled",
-  },
-];
+export const todayGroup: TodoGroupInterface = {
+  id: "1",
+  name: StaticGroups.Today,
+  icon: "calendarDay",
+};
 
-export const groupInputs: Array<keyof NewGroupInterface> = [
-  "name",
-  "color",
-  "icon",
-];
+export const scheduledGroup: TodoGroupInterface = {
+  id: "2",
+  name: StaticGroups.Scheduled,
+  icon: "clock",
+};
+
+export const staticGroups: TodoGroupInterface[] = [todayGroup, scheduledGroup];
+
+export const groupInputs: Array<keyof NewGroupInterface> = ["name", "icon"];
 
 export const defaultGroup: NewGroupInterface = {
   name: "",
-  color: "white",
   icon: "list",
 };

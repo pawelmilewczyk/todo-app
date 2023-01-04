@@ -1,8 +1,8 @@
-import { colorClasses } from "consts/style";
+import { colors } from "consts/style";
 import { ButtonProps } from "types/ui/button";
 
 function Button({ label, color = "darkGray", ...props }: ButtonProps) {
-  const bgColor = colorClasses.bg[color];
+  const bgColor = `bg-${colors[color]}`;
 
   return (
     <button

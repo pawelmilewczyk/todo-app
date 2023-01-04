@@ -33,11 +33,6 @@ import {
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const staticGroupIcons = {
-  today: faCalendarDay,
-  scheduled: faClock,
-};
-
 export const groupIcons = {
   list: faList,
   dumbbell: faDumbbell,
@@ -46,10 +41,8 @@ export const groupIcons = {
   house: faHouse,
   peopleGroup: faPeopleGroup,
   personSwimming: faPersonSwimming,
-  personWalking: faPersonWalking,
   personRunning: faPersonRunning,
   car: faCar,
-  truck: faTruck,
   music: faMusic,
   fish: faFish,
   dog: faDog,
@@ -69,4 +62,6 @@ export const groupIcons = {
   tableTennisPaddleBall: faTableTennisPaddleBall,
   utensils: faUtensils,
   gift: faGift,
+  calendarDay: faCalendarDay,
+  clock: faClock,
 };

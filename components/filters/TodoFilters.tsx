@@ -1,6 +1,7 @@
 "use client";
 
 import Select from "components/ui/Select";
+import { staticGroups } from "consts/groups";
 import { usePathname, useRouter } from "next/navigation";
 import { ChangeEventHandler } from "react";
 import { Filters, StatusFilters } from "types/filters";
@@ -67,7 +68,7 @@ function TodosFilters({ filters: initFilters, groups }: Props) {
     <div className="flex flex-col gap-4 justify-center items-center">
       <div className="min-w-[10rem]">
         <Select
-          options={groups}
+          options={[...staticGroups, ...groups]}
           name="group"
           defaultValue={group ? JSON.stringify(group) : ""}
           placeholder="All groups"
