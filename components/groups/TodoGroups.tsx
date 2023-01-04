@@ -23,7 +23,7 @@ function TodoGroups({ groups }: Props) {
             key={id}
             className="relative flex flex-col overflow-hidden rounded-md text-zinc-400"
           >
-            <TodoGroupActions name={name} id={id} color={color} />
+            <TodoGroupActions name={name} />
             <Link
               className="py-10 bg-zinc-600 text-white text-center uppercase transition-colors hover:bg-zinc-500 outline-none focus-visible:bg-zinc-500 focus-visible:outline-zinc-400"
               href={getTodosRoute(

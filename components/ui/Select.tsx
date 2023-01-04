@@ -1,7 +1,8 @@
 "use client";
 
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { colorClasses } from "consts/style";
-import ChevronIcon from "icons/ChevronIcon";
 import { ChangeEventHandler, useState } from "react";
 import { Option, SelectProps } from "types/ui/select";
 
@@ -43,9 +44,10 @@ function Select<T extends Option>({
           {label}
         </label>
       )}
-      <span className="absolute bottom-3 right-2 z-10 -rotate-90 pointer-events-none">
-        <ChevronIcon />
-      </span>
+      <FontAwesomeIcon
+        icon={faChevronDown}
+        className="absolute bottom-3 right-3 z-10 pointer-events-none"
+      />
       <select
         id={id}
         name={name}

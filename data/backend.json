@@ -163,6 +163,11 @@
     {
       "id": "7",
       "name": "learning"
+    },
+    {
+      "name": "qwe",
+      "color": "white",
+      "id": "8"
     }
   ]
 }

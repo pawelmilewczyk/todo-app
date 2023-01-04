@@ -1,11 +1,10 @@
 import { groupColors } from "consts/style";
+import { NewGroupInterface } from "types/todos";
 import { formatColorClasses } from "utils/colors";
 
-interface Props {
-  defaultColor: string;
-}
-
-function GroupColorPicker({ defaultColor }: Props) {
+function GroupColorPicker({
+  color: defaultColor,
+}: Pick<NewGroupInterface, "color">) {
   const colors = Object.entries(formatColorClasses(groupColors, "text")).map(
     ([value, color]) => ({
       value,
@@ -14,11 +13,11 @@ function GroupColorPicker({ defaultColor }: Props) {
   );
 
   return (
-    <div className="grid grid-cols-6">
+    <div className="grid grid-cols-4 xs:grid-cols-6 gap-y-4">
       {colors.map(({ color, value }) => (
         <div
           key={value}
-          className={`flex items-center justify-self-center rounded-lg p-2 ${color} hover:bg-zinc-600 transition-colors`}
+          className={`flex items-center justify-self-center ${color}`}
         >
           <input
             type="radio"
@@ -31,7 +30,7 @@ function GroupColorPicker({ defaultColor }: Props) {
           />
           <label
             htmlFor={value}
-            className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer flex items-center justify-center uppercase rounded-md outline outline-offset-2 outline-transparent bg-current peer-checked:outline-current"
+            className="w-8 h-8 cursor-pointer flex items-center justify-center uppercase rounded-md outline outline-offset-2 outline-transparent bg-current peer-checked:outline-current peer-focus-visible:outline-zinc-400 peer-hover:outline-zinc-500 transition-colors"
           />
         </div>
       ))}

@@ -1,7 +1,7 @@
 import { PropsWithChildren, useCallback, useEffect } from "react";
-import CloseIcon from "icons/CloseIcon";
-import IconButton from "./IconButton";
 import Button from "./Button";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props extends PropsWithChildren {
   open: boolean;
@@ -38,9 +38,11 @@ function Modal({ open, onClose, onSubmit, title, content, children }: Props) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <h2 className="text-2xl">{title}</h2>
-          <IconButton onClick={onClose}>
-            <CloseIcon size="md" />
-          </IconButton>
+          <FontAwesomeIcon
+            icon={faXmark}
+            onClick={onClose}
+            className="w-6 h-6 p-1 cursor-pointer rounded-full hover:bg-zinc-500"
+          />
         </div>
         {/* Content */}
         {content && <p className="text-center">{content}</p>}

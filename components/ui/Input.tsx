@@ -1,7 +1,8 @@
 "use client";
 
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { colorClasses } from "consts/style";
-import CloseIcon from "icons/CloseIcon";
 import { ChangeEventHandler, useState } from "react";
 import { InputProps } from "types/ui/input";
 
@@ -31,12 +32,11 @@ function Input({
       <label className="px-1 text-xs" htmlFor={id}>
         {label}
       </label>
-      <span
-        className="absolute z-10 top-[1.8rem] right-1 cursor-pointer hover:bg-zinc-500 p-1 rounded-full transition-colors"
+      <FontAwesomeIcon
+        icon={faXmark}
         onClick={clearValue}
-      >
-        <CloseIcon />
-      </span>
+        className=" w-4 h-4 absolute bottom-[0.7rem] right-1 p-1 z-10 cursor-pointer rounded-full hover:bg-zinc-500"
+      />
       <input
         id={id}
         name={name}

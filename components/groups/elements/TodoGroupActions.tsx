@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { TodoGroupInterface } from "types/todos";
 
-function TodoGroupActions({ name }: TodoGroupInterface) {
+function TodoGroupActions({ name }: Pick<TodoGroupInterface, "name">) {
   const [open, setOpen] = useState(false);
   const { push, refresh } = useRouter();
 

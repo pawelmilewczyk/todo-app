@@ -2,11 +2,11 @@ import { TodoGroupInterface, TodoInterface } from "types/todos";
 import { getTodayDate } from "utils/dates";
 
 export const TODO_GROUPS: TodoGroupInterface[] = [
-  { id: "1", name: "shopping", color: "yellow" },
-  { id: "2", name: "gym", color: "stone" },
-  { id: "3", name: "home", color: "blue" },
-  { id: "4", name: "others", color: "fuchsia" },
-  { id: "5", name: "learning", color: "orange" },
+  { id: "1", name: "shopping", color: "yellow", icon: "cartShopping" },
+  { id: "2", name: "gym", color: "stone", icon: "dumbbell" },
+  { id: "3", name: "home", color: "blue", icon: "house" },
+  { id: "4", name: "others", color: "fuchsia", icon: "star" },
+  { id: "5", name: "learning", color: "orange", icon: "graduationCap" },
 ];
 
 export const TODOS: TodoInterface[] = [
