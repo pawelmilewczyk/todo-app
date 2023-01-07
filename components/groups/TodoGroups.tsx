@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { defaultFilters } from "consts/filters";
-import { groupIcons } from "consts/groupIcons";
+import { groupIcons } from "consts/groups";
 import { staticGroups } from "consts/groups";
 import { getTodosRoute } from "consts/routes";
 import Link from "next/link";

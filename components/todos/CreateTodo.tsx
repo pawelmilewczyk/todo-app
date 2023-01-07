@@ -1,16 +1,11 @@
 "use client";
 
 import { createTodo } from "api/todos";
-import { defaultGroup } from "consts/groups";
 import { getTodosRoute } from "consts/routes";
+import { defaultTodo } from "consts/todos";
 import { useRouter } from "next/navigation";
 import { NewTodoInterface, TodoGroupInterface } from "types/todos";
 import TodoForm from "./elements/TodoForm";
-
-const defaultValues: NewTodoInterface = {
-  name: "",
-  group: { ...defaultGroup, id: "" },
-};
 
 interface Props {
   groups: TodoGroupInterface[];
@@ -31,7 +26,7 @@ function CreateTodo({ groups, currentGroup }: Props) {
   return (
     <TodoForm
       groups={groups}
-      values={{ ...defaultValues, group: currentGroup ?? defaultValues.group }}
+      values={{ ...defaultTodo, group: currentGroup ?? defaultTodo.group }}
       title="New todo"
       onSubmit={onSubmit}
     />

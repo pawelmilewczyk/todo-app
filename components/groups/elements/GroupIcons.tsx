@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { groupIcons } from "consts/groupIcons";
+import { groupIcons } from "consts/groups";
 import { NewGroupInterface } from "types/todos";
 
 function GroupIcons({ icon: defaultIcon }: Pick<NewGroupInterface, "icon">) {

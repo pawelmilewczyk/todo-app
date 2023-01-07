@@ -18,7 +18,8 @@ interface Props {
 }
 
 function TodosFilters({ filters: initFilters, groups }: Props) {
-  const group = groups.find(({ name }) => name === initFilters.group);
+  const options = [...staticGroups, ...groups];
+  const group = options.find(({ name }) => name === initFilters.group);
 
   const { push } = useRouter();
   const pathname = usePathname();
@@ -68,7 +69,7 @@ function TodosFilters({ filters: initFilters, groups }: Props) {
     <div className="flex flex-col gap-4 justify-center items-center">
       <div className="min-w-[10rem]">
         <Select
-          options={[...staticGroups, ...groups]}
+          options={options}
           name="group"
           defaultValue={group ? JSON.stringify(group) : ""}
           placeholder="All groups"

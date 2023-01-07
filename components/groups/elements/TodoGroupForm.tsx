@@ -1,4 +1,4 @@
-import Button from "components/ui/Button";
+import Form from "components/ui/Form";
 import Input from "components/ui/Input";
 import { groupInputs } from "consts/groups";
 import { NewGroupInterface } from "types/todos";
@@ -13,25 +13,18 @@ export interface TodoGroupFormProps {
 
 function TodoGroupForm({ values, onSubmit, title }: TodoGroupFormProps) {
   return (
-    <div>
-      <h1 className="font-medium text-md text-center uppercase">{title}</h1>
-      <form
-        className="flex flex-col items-center"
-        onSubmit={handleSubmit(groupInputs, onSubmit)}
-      >
-        <div className="p-6 grid gap-8 max-w-lg w-full mx-auto mb-2">
-          <Input
-            label="Name"
-            name="name"
-            defaultValue={values.name}
-            placeholder="Name your group"
-            required
-          />
-          <GroupIcons icon={values.icon} />
-        </div>
-        <Button label="Save" type="submit" />
-      </form>
-    </div>
+    <Form onSubmit={handleSubmit(groupInputs, onSubmit)} title={title}>
+      <div className="p-6 grid gap-8 max-w-lg w-full mx-auto mb-2">
+        <Input
+          label="Name"
+          name="name"
+          defaultValue={values.name}
+          placeholder="Name your group"
+          required
+        />
+        <GroupIcons icon={values.icon} />
+      </div>
+    </Form>
   );
 }
 

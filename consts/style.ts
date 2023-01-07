@@ -4,4 +4,5 @@ export const colors = {
   gray: "zinc-400",
   darkGray: "zinc-600",
   white: "zinc-100",
+  transparent: "transparent",
 };

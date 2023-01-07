@@ -12,11 +12,7 @@ async function NewTodoPage({ searchParams }: PageProps<{}, SearchParams>) {
 
   const group = groups.find(({ name }) => name === searchParams?.group);
 
-  return (
-    <div className="text-white py-4">
-      <CreateTodo groups={groups} currentGroup={group} />
-    </div>
-  );
+  return <CreateTodo groups={groups} currentGroup={group} />;
 }
 
 export default NewTodoPage;

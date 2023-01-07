@@ -1,4 +1,4 @@
-import { groupIcons } from "consts/groupIcons";
+import { groupIcons } from "consts/groups";
 
 export interface TodoGroupInterface {
   id: string;
