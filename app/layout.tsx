@@ -1,12 +1,17 @@
-import Nav from "components/layout/Nav";
 import { PropsWithChildren } from "react";
+import Providers from "./providers";
+import Nav from "components/layout/Nav";
+import { unstable_getServerSession } from "next-auth/next";
+import { authOptions } from "pages/api/auth/[...nextauth]";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "styles/globals.css";
 
 config.autoAddCss = false;
 
-function RootLayout({ children }: PropsWithChildren) {
+async function RootLayout({ children }: PropsWithChildren) {
+  const session = await unstable_getServerSession(authOptions);
+
   return (
     <html className="h-full">
       <head>
@@ -15,8 +20,10 @@ function RootLayout({ children }: PropsWithChildren) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </head>
       <body className="bg-zinc-700 flex flex-col h-full">
-        <Nav />
-        {children}
+        <Providers session={session}>
+          <Nav session={session} />
+          {children}
+        </Providers>
       </body>
     </html>
   );

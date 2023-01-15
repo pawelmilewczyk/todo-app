@@ -1,6 +1,10 @@
-function Spinner() {
+interface Props {
+  message?: React.ReactNode;
+}
+
+function Spinner({ message }: Props) {
   return (
-    <div className="h-full w-full flex justify-center items-center text-center overflow-hidden">
+    <div className="h-full w-full flex flex-col gap-y-4 justify-center items-center text-center overflow-hidden">
       <div role="status">
         <svg
           className="inline mr-2 w-24 h-24 text-zinc-600 animate-spin fill-zinc-300"
@@ -19,6 +23,7 @@ function Spinner() {
         </svg>
         <span className="sr-only">Loading...</span>
       </div>
+      {message && <p>{message}</p>}
     </div>
   );
 }

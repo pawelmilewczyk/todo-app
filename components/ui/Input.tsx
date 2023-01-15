@@ -28,7 +28,7 @@ function Input({
   const textColor = `text-${!value ? colors.gray : colors.white}`;
 
   return (
-    <div className="relative flex flex-col gap-1">
+    <div className="relative flex flex-col gap-1 items-start">
       <label className="px-1 text-xs" htmlFor={id}>
         {label}
       </label>

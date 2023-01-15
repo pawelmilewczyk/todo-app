@@ -1,16 +1,18 @@
 import { SearchParams } from "types/filters";
 import { getRouteWithSearchParams } from "utils/searchParams";
 
-export const navRoutes = {
-  home: "/",
+export const protectedRoutes = {
   groups: "/groups",
   todos: "/todos",
 };
 
 export const routes = {
-  ...navRoutes,
-  newGroup: `${navRoutes.groups}/new-group`,
-  newTodo: `${navRoutes.todos}/new-todo`,
+  ...protectedRoutes,
+  home: "/",
+  newGroup: `/groups/new-group`,
+  newTodo: `/todos/new-todo`,
+  login: "/login",
+  register: "/auth/register",
 };
 
 export const getSingleGroupRoute = (groupName: string) =>
