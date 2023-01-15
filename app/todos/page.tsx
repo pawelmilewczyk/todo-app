@@ -7,7 +7,7 @@ import { PageProps } from "types/pages";
 import { searchParamsToFilters } from "utils/searchParams";
 
 async function TodosListPage({ searchParams }: PageProps<{}, SearchParams>) {
-  const todosData = await getTodos(searchParams ?? {});
+  const todosData = await getTodos(searchParams);
   const groups = await getGroups();
   const filters = searchParamsToFilters(searchParams ?? {});
 

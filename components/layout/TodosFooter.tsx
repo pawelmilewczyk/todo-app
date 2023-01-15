@@ -4,13 +4,13 @@ import { staticGroups } from "consts/groups";
 import { routes } from "consts/routes";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { getRouteWithSearchParams } from "utils/searchParams";
+import { getUrlWithSearchParams } from "utils/searchParams";
 
 const getNewTaskRoute = (searchedGroup: string | null) => {
   const group = staticGroups.every(({ name }) => name !== searchedGroup)
     ? searchedGroup ?? ""
     : "";
-  return getRouteWithSearchParams(routes.newTodo, { group });
+  return getUrlWithSearchParams(routes.newTodo, { group });
 };
 
 function TodosFooter() {

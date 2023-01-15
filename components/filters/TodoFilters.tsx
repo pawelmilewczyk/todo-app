@@ -8,7 +8,7 @@ import { Filters, StatusFilters } from "types/filters";
 import { TodoGroupInterface } from "types/todos";
 import {
   filtersToSearchParams,
-  getRouteWithSearchParams,
+  getUrlWithSearchParams,
 } from "utils/searchParams";
 import FilterButton from "./FilterButton";
 
@@ -42,7 +42,7 @@ function TodosFilters({ filters: initFilters, groups }: Props) {
         default:
           filters = { ...initFilters, completed: false };
       }
-      push(getRouteWithSearchParams(pathname, filtersToSearchParams(filters)));
+      push(getUrlWithSearchParams(pathname, filtersToSearchParams(filters)));
     }
   };
 
@@ -53,14 +53,10 @@ function TodosFilters({ filters: initFilters, groups }: Props) {
       if (value) {
         const { name } = JSON.parse(value) as TodoGroupInterface;
         const filters = { ...initFilters, group: name };
-        push(
-          getRouteWithSearchParams(pathname, filtersToSearchParams(filters))
-        );
+        push(getUrlWithSearchParams(pathname, filtersToSearchParams(filters)));
       } else {
         const { group, ...filters } = initFilters;
-        push(
-          getRouteWithSearchParams(pathname, filtersToSearchParams(filters))
-        );
+        push(getUrlWithSearchParams(pathname, filtersToSearchParams(filters)));
       }
     }
   };

@@ -22,7 +22,7 @@ const fetchData = async <T = any>({
   ...req
 }: FetchDataInterface): Promise<FetchDataReturn<T>> => {
   try {
-    const data = await fetch(`${process.env.NEXTAUTH_URL}/api${url}`, {
+    const data = await fetch(`${process.env.NEXTAUTH_URL}/api/${url}`, {
       body: JSON.stringify(body),
       method,
       headers,

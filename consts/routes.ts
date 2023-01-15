@@ -1,5 +1,5 @@
 import { SearchParams } from "types/filters";
-import { getRouteWithSearchParams } from "utils/searchParams";
+import { getUrlWithSearchParams } from "utils/searchParams";
 
 export const protectedRoutes = {
   groups: "/groups",
@@ -21,4 +21,4 @@ export const getSingleGroupRoute = (groupName: string) =>
 export const getSingleTodoRoute = (id: string) => `${routes.todos}/${id}`;
 
 export const getTodosRoute = (searchParams?: SearchParams) =>
-  getRouteWithSearchParams(routes.todos, searchParams);
+  getUrlWithSearchParams(routes.todos, searchParams);

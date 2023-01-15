@@ -17,7 +17,7 @@ export const filtersToSearchParams = (searchParams: Filters): SearchParams =>
     .map(([key, value]) => ({ key, value: String(value) }))
     .reduce((prev, { key, value }) => ({ ...prev, [key]: value }), {});
 
-export const getRouteWithSearchParams = (
+export const getUrlWithSearchParams = (
   url: string,
   searchParams?: SearchParams
 ) => {
